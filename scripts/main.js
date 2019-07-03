@@ -1,11 +1,17 @@
-let currentBalance = 142195.89;
-let scheduledTransfer = 15350.00;
+let firstName = 'Sam';
+let lastName = 'Caprice';
 
-let currentBalanceObj = document.getElementById('current-balance');
-currentBalanceObj.innerHTML = `$${currentBalance.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+let fullNameObj = document.getElementById('full-name');
+fullNameObj.innerHTML = `${firstName} ${lastName}`;
 
-let scheduledTransferObj = document.getElementById('scheduled-transfer');
-scheduledTransferObj.innerHTML = `$${scheduledTransfer.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+let amountIn = 10000;
+let amountOut = 50000;
+
+let amountInObj = document.getElementById('amount-in');
+amountInObj.innerHTML = `$${amountIn.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+
+let amountOutObj = document.getElementById('amount-out');
+amountOutObj.innerHTML = `$${amountOut.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
 
 let tasks = [
   {
@@ -46,13 +52,13 @@ for (let i = 0; i < tasks.length; i++) {
   dueObj.className = 'task__due';
   dueObj.innerHTML = task.due;
   
-  let cardObj = document.createElement('div');
-  cardObj.className = 'task';
+  let taskObj = document.createElement('div');
+  taskObj.className = 'task';
   
-  cardObj.appendChild(numObj);
-  cardObj.appendChild(nameObj);
-  cardObj.appendChild(detailsObj);
-  cardObj.appendChild(dueObj);
+  taskObj.appendChild(numObj);
+  taskObj.appendChild(nameObj);
+  taskObj.appendChild(detailsObj);
+  taskObj.appendChild(dueObj);
   
-  taskContainerObj.appendChild(cardObj);
+  taskContainerObj.appendChild(taskObj);
 }

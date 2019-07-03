@@ -6,35 +6,89 @@
 
 <header>
   <nav>
-    <img class="nav__item" src="images/menu.svg">
-    <img class="nav__item" src="images/account.svg">
-  </nav>
-  <section>
-    <h1>Hi Sam.</h1>
-    <div id="overview">
-      <div class="overview__item">
-        <h3 class="overview__item__title">Current Balance</h3>
-        <p id="current-balance" class="overview__item__amount"></p>
-      </div>
-      <div class="overview__item">
-        <h3 class="overview__item__title">Scheduled Transfer</h3>
-        <p id="scheduled-transfer" class="overview__item__amount"></p>
-      </div>
+    <div class="nav-item">
+      <img class="icon" src="images/menu.svg">
+      <img id="logo" src="images/logo-full.svg">
     </div>
-  </section>
+    <div class="nav-item">
+      <div id="user">
+        <div id="full-name"></div>
+        <button id="log-out">Log Out</button>
+      </div>
+      <img class="icon" src="images/user.svg">
+    </div>
+  </nav>
 </header>
 
 <main>
-  <section>
-    <h2>TASKS</h2>
-    <div id="task-container">
+  <section id="jumbotron">
+    <h1>Hi Sam.</h1>
+    <div class="jumbotron-item">
+      <div id="in">
+        <h3>IN <img src="images/in.svg"></h3>
+        <h3 id="amount-in"></h3>
+      </div>
+      <div id="out">
+        <h3>OUT <img src="images/out.svg"></h3>
+        <h3 id="amount-out"></h3>
+      </div>
+    </div>
+    <div class="jumbotron-item">
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+      <button id="settings"><img id="settings-icon" src="images/settings.svg"> MANAGE ACCOUNTS AND GROUPS</button>
     </div>
   </section>
-  <section>
-    <h2>ACCOUNT ACTIVITY</h2>
-    <div id="activity-container">
+  <section id="grid">
+    <div id="left">
+      <div id="account-container">
+        <div id="account-all" class="account">
+          <img class="icon" src="images/account-all.svg">
+          <h4 id="amount-all" class="amount">$600.00</h4>
+          <h5>ALL ACCOUNTS</h5>
+        </div>
+        <div class="account">
+          <img class="icon" src="images/account-default.svg">
+          <h4 class="amount">$100.00</h4>
+          <h5>ACCOUNT 1</h5>
+        </div>
+        <div class="account">
+          <img class="icon" src="images/account-default.svg">
+          <h4 class="amount">$200.00</h4>
+          <h5>ACCOUNT 2</h5>
+        </div>
+        <div class="account">
+          <img class="icon" src="images/account-default.svg">
+          <h4 class="amount">$300.00</h4>
+          <h5>ACCOUNT 3</h5>
+        </div>
+        <div class="account">
+          <img class="icon" src="images/account-default.svg">
+          <h4 class="amount">$300.00</h4>
+          <h5>ACCOUNT 4</h5>
+        </div>
+        <div class="account">
+          <img class="icon" src="images/account-default.svg">
+          <h4 class="amount">$300.00</h4>
+          <h5>ACCOUNT 5</h5>
+        </div>
+      </div>
+      <article>
+        <h2>ALL ACCOUNTS</h2>
+      </article>
     </div>
+    <article id="right">
+      <h2>TASKS</h2>
+    </article>
   </section>
 </main>
+
+<footer>
+  <div>Copyright ©2019, The Gringotts Financial Services Group, Inc. All Rights Reserved</div>
+</footer>
+
+<button id="help">?</button>
 
 <script src="scripts/main.js"></script>
