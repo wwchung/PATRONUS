@@ -4,19 +4,6 @@ let lastName = 'Caprice';
 let fullNameObj = document.getElementById('full-name');
 fullNameObj.innerHTML = `${firstName} ${lastName}`;
 
-function formatAmount(amount) {
-  return `$${amount.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
-}
-
-let amountIn = 512677.04;
-let amountOut = 11148524;
-
-let amountInObj = document.getElementById('amount-in');
-amountInObj.innerHTML = formatAmount(amountIn);
-
-let amountOutObj = document.getElementById('amount-out');
-amountOutObj.innerHTML = formatAmount(amountOut);
-
 // Accounts data
 let accounts = [
   {
@@ -237,6 +224,10 @@ accountAll.transactions = transactionsAll;
 // Add accountAll to beginning of accounts array
 accounts.unshift(accountAll);
 
+function formatAmount(amount) {
+  return `$${amount.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+}
+
 function createAccountIconObj() {
   let accountIconObj = document.createElement('img');
   accountIconObj.className = 'icon';
@@ -290,7 +281,10 @@ for (let i = 0; i < accounts.length; i++) {
   accountContainerObj.appendChild(accountObj);
 }
 
-// Add click event listener to account objects 
+// Add click event listener to account objects
+let amountInObj = document.getElementById('amount-in');
+let amountOutObj = document.getElementById('amount-out');
+
 let accountNameObj = document.getElementById('account-name');
 let amountAvailableObj = document.getElementById('amount-available');
 let amountLedgerObj = document.getElementById('amount-ledger');
@@ -396,6 +390,9 @@ function selectAccount(curr) {
     amountLedgerObj.innerHTML = formatAmount(accounts[curr].ledger);
   }
   
+  let amountIn = 0;
+  let amountOut = 0;
+  
   if (accounts[curr].transactions.length === 0) {
     let newNoTransactionObj = document.createElement('p');
     newNoTransactionObj.id = 'no-transaction';
@@ -404,8 +401,17 @@ function selectAccount(curr) {
   } else {
     accounts[curr].transactions.forEach(function(transaction) {
       newTableObj.appendChild(createTrObj(transaction));
+      
+      if (transaction.amount > 0) {
+        amountIn += transaction.amount;
+      } else {
+        amountOut += transaction.amount;
+      }
     });
   }
+  
+  amountInObj.innerHTML = formatAmount(amountIn);
+  amountOutObj.innerHTML = formatAmount(Math.abs(amountOut));
 }
 
 let accountObjs = document.getElementsByClassName('account');
