@@ -7,15 +7,15 @@
 <header>
   <nav>
     <div class="nav-item">
-      <img class="icon" src="images/menu.svg">
-      <img id="logo" src="images/logo-full.svg">
+      <svg id="menu-icon" class="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      <img id="logo" src="images/logo.svg">
     </div>
     <div class="nav-item">
       <div id="user">
         <div id="full-name"></div>
         <button id="log-out">Log Out</button>
       </div>
-      <img class="icon" src="images/user.svg">
+      <svg id="user-icon" class="icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
     </div>
   </nav>
 </header>
@@ -25,12 +25,12 @@
     <h1>Hi Sam.</h1>
     <div class="jumbotron-item">
       <div id="in">
-        <h3>IN <img src="images/in.svg"></h3>
-        <h3 id="amount-in"></h3>
+        <h2>IN <img src="images/in.svg"></h2>
+        <h2 id="amount-in"></h2>
       </div>
       <div id="out">
-        <h3>OUT <img src="images/out.svg"></h3>
-        <h3 id="amount-out"></h3>
+        <h2>OUT <img src="images/out.svg"></h2>
+        <h2 id="amount-out"></h2>
       </div>
     </div>
     <div class="jumbotron-item">
@@ -38,59 +38,33 @@
         <input type="checkbox" checked>
         <span class="slider"></span>
       </label>
-      <button id="settings"><img id="settings-icon" src="images/settings.svg"> MANAGE ACCOUNTS AND GROUPS</button>
+      <button id="settings"><svg id="settings-icon" class="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20"><path fill="none" d="M0 0h20v20H0V0z"/><path d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/></svg>MANAGE ACCOUNTS AND GROUPS</button>
     </div>
   </section>
+  <section id="account-container">
+  </section>
   <section id="grid">
-    <div id="left">
-      <div id="account-container">
-        <div id="account-all" class="account">
-          <img class="icon" src="images/account-all.svg">
-          <h4 id="amount-all" class="amount">$1500.00</h4>
-          <h5>ALL ACCOUNTS</h5>
+    <article id="left">
+      <h3 id="account-name"></h3>
+      <div id="balance-container">
+        <div id="available">
+          <h5>AVAILABLE BALANCE</h5>
+          <h3 id="amount-available"></h3>
         </div>
-        <div class="account">
-          <img class="icon" src="images/account-default.svg">
-          <h4 class="amount">$100.00</h4>
-          <h5>ACCOUNT 1</h5>
-        </div>
-        <div class="account">
-          <img class="icon" src="images/account-default.svg">
-          <h4 class="amount">$200.00</h4>
-          <h5>ACCOUNT 2</h5>
-        </div>
-        <div class="account">
-          <img class="icon" src="images/account-default.svg">
-          <h4 class="amount">$300.00</h4>
-          <h5>ACCOUNT 3</h5>
-        </div>
-        <div class="account">
-          <img class="icon" src="images/account-default.svg">
-          <h4 class="amount">$400.00</h4>
-          <h5>ACCOUNT 4</h5>
-        </div>
-        <div class="account">
-          <img class="icon" src="images/account-default.svg">
-          <h4 class="amount">$500.00</h4>
-          <h5>ACCOUNT 5</h5>
+        <div id="ledger">
+          <h5>LEDGER BALANCE</h5>
+          <h3 id="amount-ledger"></h3>
         </div>
       </div>
-      <article>
-        <h2>ALL ACCOUNTS</h2>
-        <div>
-        </div>
-        <div id="table">
-        </div>
-      </article>
-    </div>
+    </article>
     <article id="right">
-      <h2>TASKS</h2>
+      <h3>TASKS</h3>
     </article>
   </section>
 </main>
 
 <footer>
-  <div>Copyright ©2019, The Gringotts Financial Services Group, Inc. All Rights Reserved</div>
+  <small>Copyright ©2019, The Gringotts Financial Services Group, Inc. All Rights Reserved | <a id="terms">Treasury Management Services Terms & Conditions</a></small>
 </footer>
 
 <button id="help">?</button>

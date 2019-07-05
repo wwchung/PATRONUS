@@ -65,9 +65,42 @@ h3,
 h4,
 h5,
 h6,
-p,
-a {
+p {
   margin: 0;
+}
+
+h1 {
+  font-size: 3.5em;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 2.125em;
+  font-weight: 500;
+}
+
+h3 {
+  color: #0068ac;
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+h5 {
+  font-size: .875em;
+  font-weight: 400;
+}
+
+a {
+  color: #0068ac;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+a:hover {
+  opacity: .7;
 }
 
 header {
@@ -88,6 +121,18 @@ nav {
   display: flex;
 }
 
+.icon {
+  cursor: pointer;
+}
+
+#menu-icon {
+  fill: #00518a;
+}
+
+#menu-icon:hover {
+  fill: #ec6c00;
+}
+
 #logo {
   height: 2rem;
   margin: 0 0 0 1rem;
@@ -102,16 +147,6 @@ nav {
   font-weight: 500;
 }
 
-#log-out {
-  color: #0275d8;
-  font-size: .75em;
-  font-weight: 500;
-}
-
-#log-out:hover {
-  color: #014c8c;
-}
-
 button {
   background: none;
   border: none;
@@ -123,51 +158,32 @@ button:focus {
   outline: none;
 }
 
-.icon {
-  cursor: pointer;
-  height: 2rem;
-}
-
-h1 {
-  font-size: 3.5em;
-  font-weight: 500;
-}
-
-h2 {
-  color: #0068ac;
-  font-size: 1.5em;
-  font-weight: 700;
-}
-
-h3 {
-  font-size: 2.125em;
-  font-weight: 500;
-}
-
-h4 {
-  font-size: 1.25em;
-  font-weight: 700;
-}
-
-h5 {
+#log-out {
+  color: #0275d8;
   font-size: .75em;
   font-weight: 500;
+}
+
+#log-out:hover {
+  color: #014c8c;
+}
+
+#user-icon {
+  fill: #0275d8;
+}
+
+#user-icon:hover {
+  fill: #014c8c;
 }
 
 main {
   padding: 4rem 0 0;
 }
 
-section {
-  margin: 3rem 0;
-  padding: 0 2rem;
-}
-
 #jumbotron {
   background: url(../images/pittsburgh.jpg);
   color: #fff;
-  margin: 0;
-  padding: 3rem 2rem 9rem;
+  padding: 2rem 2rem 7rem;
 }
 
 .jumbotron-item {
@@ -250,17 +266,125 @@ input:checked + .slider:before {
 }
 
 #settings-icon {
+  fill: #fff;
   margin: 0 .5rem 0 0;
-  height: 2rem;
+}
+
+#settings:hover {
+  color: #eee;
+}
+
+#settings:hover #settings-icon {
+  fill: #eee;
+}
+
+#account-container {
+  display: flex;
+  margin: -6rem 2rem 1rem;
+  overflow-y: hidden;
+  padding: 0 0 1rem;
+}
+
+.account {
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: column;
+  height: 10rem;
+  justify-content: center;
+  margin: 1rem;
+  position: relative;
+  width: 10rem;
+}
+
+.account:hover {
+  border: 5px solid #0068ac;
+}
+
+.account h4 {
+  margin: .5rem 0;
+}
+
+.account h5 {
+  color: #0068ac;
+}
+
+#account-all {
+  background: #00518a;
+  margin: 1rem 1rem 1rem 0;
+}
+
+#account-all h4 {
+  color: #fff;
+}
+
+#account-all h5 {
+  color: #fff;
+}
+
+/* Bottom Arrow - Default */
+.account-selected {
+  border: 5px solid #0068ac;
+}
+
+.account-selected:after,
+.account-selected:before {
+  border: solid transparent;
+  content: '';
+  left: 50%;
+  position: absolute;
+  top: 100%;
+}
+
+.account-selected:after {
+  border-top-color: #fff;
+  border-width: 1rem;
+  margin-left: -1rem;
+}
+
+.account-selected:before {
+  border-top-color: #0068ac;
+  border-width: 1.5rem;
+  margin-left: -1.5rem;
+}
+
+/* Bottom Arrow - All */
+.account-all-selected {
+  border: 5px solid #0068ac;
+}
+
+.account-all-selected:after,
+.account-all-selected:before {
+  border: solid transparent;
+  content: '';
+  left: 50%;
+  position: absolute;
+  top: 100%;
+}
+
+.account-all-selected:after {
+  border-top-color: #00518a;
+  border-width: 1rem;
+  margin-left: -1rem;
+}
+
+.account-all-selected:before {
+  border-top-color: #0068ac;
+  border-width: 1.5rem;
+  margin-left: -1.5rem;
 }
 
 #grid {
   display: flex;
-  margin: -6rem 0 3rem;
+  padding: 0 2rem 2rem;
 }
 
 #left {
-  margin: 0 2rem 0 0;
+  margin: 0 1rem 0 0;
   width: 60%;
 }
 
@@ -274,103 +398,90 @@ article {
   padding: 1.25rem;
 }
 
-#account-container {
+#balance-container {
   display: flex;
-  margin: -1rem 0 2rem;
-  overflow-x: auto;
-}
-
-.account {
-  align-items: center;
-  background: #fff;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-  color: #0068ac;
-  cursor: pointer;
-  display: flex;
-  flex: 0 0 auto;
-  flex-flow: column;
-  height: 10rem;
-  justify-content: center;
-  margin: 1rem;
-  transition: box-shadow .2s;
-  width: 10rem;
-}
-
-.account:hover {
-  border: 5px solid #0068ac;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);
-  box-sizing: border-box;
-}
-
-#account-all {
-  background: #00518a;
-  color: #fff;
-  margin: 1rem 1rem 1rem 0rem;
-}
-
-.amount {
-  color: #000;
   margin: 1rem 0;
 }
 
-#amount-all {
-  color: #fff;
+#available h5,
+#ledger h5 {
+  color: #666;
 }
 
-/*
-#task-container {
-  display: flex;
+#available {
+  margin: 0 3rem 0 0;
 }
 
-.task {
-  background: #fff;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-  cursor: pointer;
-  flex: 0 0 auto;
-  line-height: 1.6;
-  margin: 2rem 1rem;
-  padding: 1.5rem;
-  transition: .2s;
-  width: 20rem;
+#amount-available,
+#amount-ledger {
+  color: #000;
+  margin: .25em 0 0;
 }
 
-.task:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
 }
 
-.task:first-child {
-  margin-left: 0;
+th,
+td {
+  padding: 1rem;
 }
 
-.task:last-child {
-  margin-right: 0;
+th {
+  border-bottom: 1px solid #d1d4d7;
+  text-align: left;
 }
 
-.task__num {
-  color: #ababab;
-  font-size: 1.125em;
-  font-weight: 700;
+th:nth-child(1) {
+  width: 6%;
 }
 
-.task__name {
-  color: #5a5a5a;
-  font-size: 1.625em;
-  margin: 1.5rem 0 0;
+th:nth-child(2) {
+  width: 30%;
 }
 
-.task__details,
-.task__due {
-  color: #a5a5a5;
-  font-size: 1.125em;
+th:nth-child(5) {
+  text-align: right;
 }
-*/
+
+td {
+  border-top: 1px solid #eceeef;
+}
+
+td:nth-child(5) {
+  text-align: right;
+}
+
+.td-icon {
+  height: 1rem;
+}
+
+#no-transaction {
+  padding: 1rem;
+}
 
 footer {
   background: #0068ac;
-  color: #fff;
   display: flex;
   justify-content: center;
   padding: 2rem;
+}
+
+small {
+  color: #fff;
+  font-size: 1em;
+}
+
+#terms {
+  color: #fff;
+  text-decoration: none;
+}
+
+#terms:hover {
+  opacity: 1;
+  text-decoration: underline;
 }
 
 #help {
@@ -384,7 +495,6 @@ footer {
   height: 4rem;
   position: fixed;
   right: 1rem;
-  transition: .2s;
   width: 4rem;
 }
 
