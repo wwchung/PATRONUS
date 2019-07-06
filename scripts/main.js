@@ -4,8 +4,36 @@ let lastName = 'Caprice';
 let fullNameObj = document.getElementById('full-name');
 fullNameObj.innerHTML = `${firstName} ${lastName}`;
 
-// Accounts data
-let accounts = [
+let h1Obj = document.getElementsByTagName('h1')[0];
+h1Obj.innerHTML = `Hi ${firstName}.`;
+
+let amountInObj = document.getElementById('amount-in');
+let amountOutObj = document.getElementById('amount-out');
+
+// Selected account index
+let curr = 0;
+
+// Posted or pending status
+let posted = true;
+
+let switchObj = document.getElementById('status-switch');
+switchObj.addEventListener('change', function() {
+  posted = !switchObj.checked;
+  selectPosted(posted);
+});
+
+let accountContainerObj = document.getElementById('account-container');
+
+let leftObj = document.getElementById('left');
+
+let accountNameObj = document.getElementById('account-name');
+let amountAvailableObj = document.getElementById('amount-available');
+let amountLedgerObj = document.getElementById('amount-ledger');
+
+
+// ----- POSTED ACCOUNTS ----- //
+
+let postedAccounts = [
   {
     'name': 'Statement Savings x8466',
     'available': 0.00,
@@ -55,7 +83,7 @@ let accounts = [
       {
         'account': 'No Product Desc x8888',
         'status': 'Posted',
-        'type': 'Money Transfer CR-Wire',
+        'type': 'Money Transfer CR - Wire',
         'amount': 10390.00,
         'date': '07/03/2019'
       },
@@ -139,7 +167,7 @@ let accounts = [
       {
         'account': 'No Product Desc x9999',
         'status': 'Posted',
-        'type': 'Money Transfer CR-Wire',
+        'type': 'Money Transfer CR - Wire',
         'amount': 10390.00,
         'date': '07/03/2019'
       },
@@ -200,46 +228,1072 @@ let accounts = [
   }
 ];
 
-// Create accountAll data
-let availableAll = 0;
-let ledgerAll = 0;
-let transactionsAll = [];
 
-accounts.forEach(function(account) {
-  availableAll += account.available;
-  ledgerAll += account.ledger;
-  transactionsAll = transactionsAll.concat(account.transactions);
+// ----- ALL POSTED ACCOUNTS ----- //
+
+let postedAvailableAll = 0;
+let postedLedgerAll = 0;
+let postedTransactionsAll = [];
+
+postedAccounts.forEach(function(account) {
+  postedAvailableAll += account.available;
+  postedLedgerAll += account.ledger;
+  postedTransactionsAll = postedTransactionsAll.concat(account.transactions);
 });
 
-//console.log(availableAll);
-//console.log(ledgerAll);
-//console.log(transactionsAll);
+let postedAccountAll = {};
+postedAccountAll.name = 'ALL ACCOUNTS';
+postedAccountAll.available = postedAvailableAll;
+postedAccountAll.ledger = postedLedgerAll;
+postedAccountAll.transactions = postedTransactionsAll;
 
-let accountAll = {};
-accountAll.name = 'ALL ACCOUNTS';
-accountAll.available = availableAll;
-accountAll.ledger = ledgerAll;
-accountAll.transactions = transactionsAll;
+postedAccounts.unshift(postedAccountAll);
 
-// Add accountAll to beginning of accounts array
-accounts.unshift(accountAll);
+
+// ----- PENDING ACCOUNTS ----- //
+
+let pendingAccounts = [
+  {
+    'name': 'Statement Savings x8466',
+    'available': -493.54,
+    'ledger': -493.54,
+    'transactions': [
+      {
+        'account': 'Statement Savings x8466',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -500.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x8466',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 6.28,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x8466',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 1.50,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x8466',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -1.25,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x8466',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 1.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x8466',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -1.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x8466',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -0.10,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x8466',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 0.03,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x8466',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 0.02,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x8466',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -0.02,
+        'date': '07/05/2019'
+      }
+    ]
+  },
+  {
+    'name': 'No Product Desc x8888',
+    'available': 5714448.67,
+    'ledger': 6235440.67,
+    'transactions': [
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 6660995.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 355170.32,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Wire',
+        'amount': -300832.59,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Wire',
+        'amount': -283000.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Intl Money Transfer Debits',
+        'amount': -161053.19,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -137193.72,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -111174.41,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Intl Money Transfer Credits',
+        'amount': 110444.05,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 99560.14,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 71698.24,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Checks Paid',
+        'amount': -59900.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'ACH Debits',
+        'amount': -33798.51,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Debit Adjustments',
+        'amount': -33255.39,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Checks Paid',
+        'amount': -28180.30,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 27439.72,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 21800.19,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 11671.38,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 10723.53,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'PNC Bank Transfer Credits',
+        'amount': 9804.29,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'PNC Bank Transfer Debits',
+        'amount': -8403.86,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Checks Paid',
+        'amount': -7441.84,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 7138.71,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 7138.71,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 6873.75,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 6452.07,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Checks Paid',
+        'amount': -6254.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Wire',
+        'amount': -6000.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 5578.01,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -5285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 4989.76,
+        'date': '07/05/2019'
+      }
+      // Page 10
+    ]
+  },
+  {
+    'name': 'No Product Desc x9999',
+    'available': 5723938.67,
+    'ledger': 6234930.67,
+    'transactions': [
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 6660995.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/05/2019'
+      }
+    ]
+  },
+  {
+    'name': 'No Product Desc x08',
+    'available': null,
+    'ledger': null,
+    'transactions': []
+  },
+  {
+    'name': 'Statement Savings x0329',
+    'available': 498.79,
+    'ledger': 498.79,
+    'transactions': [
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 500.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 10.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -6.28,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -2.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -1.50,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -1.50,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 1.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -1.00,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 0.10,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -0.03,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 0.02,
+        'date': '07/05/2019'
+      },
+      {
+        'account': 'Statement Savings x0329',
+        'status': 'Pending',
+        'type': 'Money Transfer DB - Other',
+        'amount': -0.02,
+        'date': '07/05/2019'
+      }
+    ]
+  },
+  {
+    'name': 'No Product Desc x1091',
+    'available': 10.00,
+    'ledger': 10.00,
+    'transactions': [
+      {
+        'account': 'No Product Desc x1091',
+        'status': 'Pending',
+        'type': 'Money Transfer CR - Other',
+        'amount': 10.00,
+        'date': '07/05/2019'
+      }
+    ]
+  }
+];
+
+
+// ----- ALL PENDING ACCOUNTS ----- //
+
+let pendingAvailableAll = 0;
+let pendingLedgerAll = 0;
+let pendingTransactionsAll = [];
+
+pendingAccounts.forEach(function(account) {
+  pendingAvailableAll += account.available;
+  pendingLedgerAll += account.ledger;
+  pendingTransactionsAll = pendingTransactionsAll.concat(account.transactions);
+});
+
+let pendingAccountAll = {};
+pendingAccountAll.name = 'ALL ACCOUNTS';
+pendingAccountAll.available = pendingAvailableAll;
+pendingAccountAll.ledger = pendingLedgerAll;
+pendingAccountAll.transactions = pendingTransactionsAll;
+
+pendingAccounts.unshift(pendingAccountAll);
+
+
+// ----- FORMAT AMOUNT ----- //
 
 function formatAmount(amount) {
-  return `$${amount.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+  if (amount < 0) {
+    return `($${Math.abs(amount).toLocaleString(undefined, {minimumFractionDigits: 2})})`;
+  } else {
+    return `$${amount.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+  }
 }
 
-function createAccountIconObj() {
+
+// ----- ACCOUNT ----- //
+
+function createAccountIconObj(isAccountAll) {
   let accountIconObj = document.createElement('img');
   accountIconObj.className = 'icon';
-  accountIconObj.src = 'images/account-default.svg';
+  if (isAccountAll) {
+    accountIconObj.src = 'images/account-all.svg';
+  } else {
+    accountIconObj.src = 'images/account-default.svg';
+  }
   return accountIconObj;
 }
 
-function createAccountAvailableObj(account) {
+function createAccountAvailableObj(account, isAccountAll) {
   let accountAvailableObj = document.createElement('h4');
+  
+  if (isAccountAll) {
+    accountAvailableObj.id = 'amount-all';
+  }
+  
   if (account.available === null) {
     accountAvailableObj.innerHTML = '---';
   } else {
+    if (account.available < 0) {
+      accountAvailableObj.className = 'negative';
+    }
     accountAvailableObj.innerHTML = formatAmount(account.available);
   }
   return accountAvailableObj;
@@ -251,83 +1305,102 @@ function createAccountNameObj(account) {
   return accountNameObj;
 }
 
-function createAccountObj(accountIconObj, accountAvailableObj, accountNameObj) {
+function createAccountObj(account, isAccountAll) {
   let accountObj = document.createElement('div');
   accountObj.className = 'account';
-  accountObj.appendChild(accountIconObj);
-  accountObj.appendChild(accountAvailableObj);
-  accountObj.appendChild(accountNameObj);
+  accountObj.appendChild(createAccountIconObj(isAccountAll));
+  accountObj.appendChild(createAccountAvailableObj(account, isAccountAll));
+  accountObj.appendChild(createAccountNameObj(account));
+  
+  if (isAccountAll) {
+    accountObj.id = 'account-all';
+    accountObj.classList.add('account-all-selected');
+  }
   return accountObj;
 }
 
-// Add account objects to container
-let accountContainerObj = document.getElementById('account-container');
-for (let i = 0; i < accounts.length; i++) {
-  let accountIconObj = createAccountIconObj();
-  let accountAvailableObj = createAccountAvailableObj(accounts[i]);
-  let accountNameObj = createAccountNameObj(accounts[i]);
+
+// ----- ACCOUNT CONTAINER ----- //
+
+function selectPosted(posted) {
+  // Reset
+  accountContainerObj.innerHTML = '';
   
-  if (i == 0) {
-    accountIconObj.src = 'images/account-all.svg';
-    accountAvailableObj.id = 'amount-all';
+  let accounts = posted ? postedAccounts : pendingAccounts;
+  
+  for (let i = 0; i < accounts.length; i++) {
+    let accountObj = createAccountObj(accounts[i], i === 0);
+    accountContainerObj.appendChild(accountObj);
   }
   
-  let accountObj = createAccountObj(accountIconObj, accountAvailableObj, accountNameObj);
-  
-  if (i == 0) {
-    accountObj.id = 'account-all';
+  // Add event listeners
+  let accountObjs = document.getElementsByClassName('account');
+  for (let i = 0; i < accountObjs.length; i++) {
+    accountObjs[i].addEventListener('click', function() {
+      if (i === curr) {
+        return;
+      }
+
+      if (i === 0) {
+        accountObjs[curr].classList.remove('account-selected');
+        accountObjs[i].classList.add('account-all-selected');
+      } else {
+        if (curr === 0) {
+          accountObjs[curr].classList.remove('account-all-selected');
+        } else {
+          accountObjs[curr].classList.remove('account-selected');
+        }
+        accountObjs[i].classList.add('account-selected');
+      }
+      curr = i;
+      selectAccount(curr);
+    });
   }
-  
-  accountContainerObj.appendChild(accountObj);
+
+  curr = 0;
+  selectAccount(curr);
 }
 
-// Add click event listener to account objects
-let amountInObj = document.getElementById('amount-in');
-let amountOutObj = document.getElementById('amount-out');
 
-let accountNameObj = document.getElementById('account-name');
-let amountAvailableObj = document.getElementById('amount-available');
-let amountLedgerObj = document.getElementById('amount-ledger');
-let leftObj = document.getElementById('left');
+// ----- ACCOUNT DETAILS ----- //
 
 function createTrObj(transaction) {
-  let trObj = document.createElement('tr');
-  
-  let tdIconObj = document.createElement('td');
+  // ICON
   let tdIconImgObj = document.createElement('img');
   tdIconImgObj.className = 'td-icon';
+  tdIconImgObj.src = transaction.amount < 0 ? 'images/out.svg' : 'images/in.svg';
+  let tdIconObj = document.createElement('td');
+  tdIconObj.appendChild(tdIconImgObj);
   
-  let tdAccountObj = document.createElement('td');
+  // ACCOUNT
   let tdAccountAObj = document.createElement('a');
   tdAccountAObj.innerHTML = transaction.account;
+  let tdAccountObj = document.createElement('td');
   tdAccountObj.appendChild(tdAccountAObj);
-  
+
+  // STATUS
   let tdStatusObj = document.createElement('td');
   tdStatusObj.innerHTML = transaction.status;
   
+  // TYPE
   let tdTypeObj = document.createElement('td');
   tdTypeObj.innerHTML = transaction.type;
   
+  // AMOUNT
   let tdAmountObj = document.createElement('td');
+  tdAmountObj.innerHTML = formatAmount(transaction.amount);
   
+  // DATE
   let tdDateObj = document.createElement('td');
   tdDateObj.innerHTML = transaction.date;
   
-  let tdViewObj = document.createElement('td');
+  // VIEW
   let tdViewAObj = document.createElement('a');
   tdViewAObj.innerHTML = 'VIEW';
+  let tdViewObj = document.createElement('td');
   tdViewObj.appendChild(tdViewAObj);
   
-  if (transaction.amount < 0) {
-    tdIconImgObj.src = 'images/out.svg';
-    tdAmountObj.innerHTML = `(${formatAmount(Math.abs(transaction.amount))})`;
-  } else if (transaction.amount > 0) {
-    tdIconImgObj.src = 'images/in.svg';
-    tdAmountObj.innerHTML = formatAmount(transaction.amount);
-  }
-  
-  tdIconObj.appendChild(tdIconImgObj);
-  
+  let trObj = document.createElement('tr');
   trObj.appendChild(tdIconObj);
   trObj.appendChild(tdAccountObj);
   trObj.appendChild(tdStatusObj);
@@ -335,11 +1408,44 @@ function createTrObj(transaction) {
   trObj.appendChild(tdAmountObj);
   trObj.appendChild(tdDateObj);
   trObj.appendChild(tdViewObj);
-  
   return trObj;
 }
 
 function selectAccount(curr) {
+  let accounts = posted ? postedAccounts : pendingAccounts;
+  
+  
+  // ----- ACCOUNT NAME ----- //
+  accountNameObj.innerHTML = accounts[curr].name;
+  
+  
+  // ----- BALANCE CONTAINER ----- //
+  if (accounts[curr].available === null) {
+    amountAvailableObj.innerHTML = '---';
+  } else {
+    if (accounts[curr].available < 0) {
+      amountAvailableObj.className = 'negative';
+    } else {
+      amountAvailableObj.classList.remove('negative');
+    }
+    amountAvailableObj.innerHTML = formatAmount(accounts[curr].available);
+  }
+  
+  if (accounts[curr].ledger === null) {
+    amountLedgerObj.innerHTML = '---';
+  } else {
+    if (accounts[curr].ledger < 0) {
+      amountLedgerObj.className = 'negative';
+    } else {
+      amountLedgerObj.classList.remove('negative');
+    }
+    amountLedgerObj.innerHTML = formatAmount(accounts[curr].ledger);
+  }
+  
+  
+  // ----- TABLE ----- //
+  
+  // Reset table
   let tableObj = document.getElementById('transaction-container');
   if (tableObj !== null) {
     leftObj.removeChild(tableObj);
@@ -349,22 +1455,33 @@ function selectAccount(curr) {
     leftObj.removeChild(noTransactionObj);
   }
   
-  let newTableObj = document.createElement('table');
-  newTableObj.id = 'transaction-container';
-  let trObj = document.createElement('tr');
+  // ICON
   let thIconObj = document.createElement('th');
+  
+  // ACCOUNT
   let thAccountObj = document.createElement('th');
   thAccountObj.innerHTML = 'ACCOUNT';
+  
+  // STATUS
   let thStatusObj = document.createElement('th');
   thStatusObj.innerHTML = 'STATUS';
+  
+  // TYPE
   let thTypeObj = document.createElement('th');
   thTypeObj.innerHTML = 'TYPE';
+  
+  // AMOUNT
   let thAmountObj = document.createElement('th');
   thAmountObj.innerHTML = 'AMOUNT';
+  
+  // DATE
   let thDateObj = document.createElement('th');
   thDateObj.innerHTML = 'DATE';
+  
+  // VIEW
   let thViewObj = document.createElement('th');
   
+  let trObj = document.createElement('tr');
   trObj.appendChild(thIconObj);
   trObj.appendChild(thAccountObj);
   trObj.appendChild(thStatusObj);
@@ -373,23 +1490,14 @@ function selectAccount(curr) {
   trObj.appendChild(thDateObj);
   trObj.appendChild(thViewObj);
   
+  let newTableObj = document.createElement('table');
+  newTableObj.id = 'transaction-container';
   newTableObj.appendChild(trObj);
+  
   leftObj.appendChild(newTableObj);
   
-  accountNameObj.innerHTML = accounts[curr].name;
   
-  if (accounts[curr].available === null) {
-    amountAvailableObj.innerHTML = '---';
-  } else {
-    amountAvailableObj.innerHTML = formatAmount(accounts[curr].available);
-  }
-  
-  if (accounts[curr].ledger === null) {
-    amountLedgerObj.innerHTML = '---';
-  } else {
-    amountLedgerObj.innerHTML = formatAmount(accounts[curr].ledger);
-  }
-  
+  // ----- AMOUNT IN & OUT ----- //
   let amountIn = 0;
   let amountOut = 0;
   
@@ -414,80 +1522,7 @@ function selectAccount(curr) {
   amountOutObj.innerHTML = formatAmount(Math.abs(amountOut));
 }
 
-let accountObjs = document.getElementsByClassName('account');
 
-for (let i = 0; i < accountObjs.length; i++) {
-  accountObjs[i].addEventListener('click', function() {    
-    if (i == 0) {
-      if (curr != i) {
-        accountObjs[curr].classList.remove('account-selected');
-        accountObjs[i].classList.add('account-all-selected');
-      }
-    } else {
-      if (curr == 0) {
-        accountObjs[curr].classList.remove('account-all-selected');
-      } else {
-        accountObjs[curr].classList.remove('account-selected');
-      }
-      accountObjs[i].classList.add('account-selected');
-    }
-    
-    curr = i;
-    selectAccount(curr);
-  });
-}
+// ----- LOAD ----- //
 
-// Initial selected account
-let curr = 0;
-accountObjs[curr].classList.add('account-all-selected');
-selectAccount(curr);
-
-//let tasks = [
-//  {
-//    'name': 'Make a payment to John',
-//    'details': 'XYZ Company ∙ $5,000',
-//    'due': '07/01/2019'
-//  },
-//  {
-//    'name': 'ACH Transfer to XYZ',
-//    'details': 'ABC Company ∙ $10,000',
-//    'due': '07/02/2019'
-//  },
-//  {
-//    'name': 'Approve payments',
-//    'details': '',
-//    'due': ''
-//  }
-//];
-//
-//let taskContainerObj = document.getElementById('task-container');
-//
-//for (let i = 0; i < tasks.length; i++) {
-//  let task = tasks[i];
-//  
-//  let numObj = document.createElement('h4');
-//  numObj.className = 'task__num';
-//  numObj.innerHTML = `TASK ${i + 1}`;
-//  
-//  let nameObj = document.createElement('h3');
-//  nameObj.className = 'task__name';
-//  nameObj.innerHTML = task.name;
-//  
-//  let detailsObj = document.createElement('p');
-//  detailsObj.className = 'task__details';
-//  detailsObj.innerHTML = task.details;
-//  
-//  let dueObj = document.createElement('p');
-//  dueObj.className = 'task__due';
-//  dueObj.innerHTML = task.due;
-//  
-//  let taskObj = document.createElement('div');
-//  taskObj.className = 'task';
-//  
-//  taskObj.appendChild(numObj);
-//  taskObj.appendChild(nameObj);
-//  taskObj.appendChild(detailsObj);
-//  taskObj.appendChild(dueObj);
-//  
-//  taskContainerObj.appendChild(taskObj);
-//}
+selectPosted(posted);

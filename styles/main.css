@@ -80,7 +80,6 @@ h2 {
 }
 
 h3 {
-  color: #0068ac;
   font-size: 1.5em;
 }
 
@@ -107,6 +106,7 @@ header {
   background: #fff;
   position: fixed;
   width: 100%;
+  z-index: 1;
 }
 
 nav {
@@ -200,60 +200,67 @@ main {
   padding: 0 0 0 1rem;
 }
 
-/* The switch - the box around the slider */
 .switch {
   position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 8rem;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+  display: none;
 }
 
-/* The slider */
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
+  background: #fff;
+  border-radius: 1rem;
   bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
+  cursor: pointer;
+  left: 0;
+  padding: .25rem 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   transition: .4s;
-  border-radius: 34px;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  background: #115597;
   border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+  content: '';
+  height: 1.5rem;
+  left: .25rem;
+  position: absolute;
+  transition: .4s;
+  width: 1.5rem;
 }
 
-input:checked + .slider {
-  background-color: #2196F3;
+#posted,
+#pending {
+  color: #115597;
+  font-weight: 700;
+  transition: .4s;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+#posted {
+  margin: 0 0 0 3rem;
+  opacity: 1;
+}
+
+#pending {
+  margin: 0 0 0 -5.25rem;
+  opacity: 0;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  transform: translateX(6rem);
+}
+
+input:checked + .slider #posted {
+  opacity: 0;
+}
+
+input:checked + .slider #pending {
+  opacity: 1;
 }
 
 #settings {
@@ -326,6 +333,10 @@ input:checked + .slider:before {
   color: #fff;
 }
 
+.negative {
+  color: #f00;
+}
+
 /* Bottom Arrow - Default */
 .account-selected {
   border: 5px solid #0068ac;
@@ -380,7 +391,7 @@ input:checked + .slider:before {
 
 #grid {
   display: flex;
-  padding: 0 2rem 2rem;
+  padding: 0 2rem 3rem;
 }
 
 #left {
@@ -396,6 +407,11 @@ article {
   background: #fff;
   border: 1px #d8d8d8 solid;
   padding: 1.25rem;
+}
+
+#account-name,
+#account-tasks {
+  color: #0068ac;
 }
 
 #balance-container {
@@ -414,7 +430,6 @@ article {
 
 #amount-available,
 #amount-ledger {
-  color: #000;
   margin: .25em 0 0;
 }
 
@@ -442,16 +457,13 @@ th:nth-child(2) {
   width: 30%;
 }
 
-th:nth-child(5) {
+th:nth-child(5),
+td:nth-child(5) {
   text-align: right;
 }
 
 td {
   border-top: 1px solid #eceeef;
-}
-
-td:nth-child(5) {
-  text-align: right;
 }
 
 .td-icon {
@@ -464,9 +476,8 @@ td:nth-child(5) {
 
 footer {
   background: #0068ac;
-  display: flex;
-  justify-content: center;
   padding: 2rem;
+  text-align: center;
 }
 
 small {
@@ -480,7 +491,6 @@ small {
 }
 
 #terms:hover {
-  opacity: 1;
   text-decoration: underline;
 }
 
