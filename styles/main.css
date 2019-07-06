@@ -215,6 +215,7 @@ main {
   bottom: 0;
   cursor: pointer;
   left: 0;
+  line-height: 1.5;
   padding: .25rem 0;
   position: absolute;
   right: 0;
