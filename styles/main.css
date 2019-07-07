@@ -102,6 +102,17 @@ a:hover {
   opacity: .7;
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ----- HEADER ----- */
+
 header {
   background: #fff;
   position: fixed;
@@ -125,6 +136,8 @@ nav {
   cursor: pointer;
 }
 
+/* ----- HEADER LEFT ----- */
+
 #menu-icon {
   fill: #00518a;
 }
@@ -137,6 +150,8 @@ nav {
   height: 2rem;
   margin: 0 0 0 1rem;
 }
+
+/* ----- HEADER RIGHT ----- */
 
 #user {
   margin: 0 1rem 0 0;
@@ -176,9 +191,13 @@ button:focus {
   fill: #014c8c;
 }
 
+/* ----- MAIN CONTENT ----- */
+
 main {
   padding: 4rem 0 0;
 }
+
+/* ----- JUMBOTRON ----- */
 
 #jumbotron {
   background: url(../images/pittsburgh.jpg);
@@ -199,6 +218,8 @@ main {
 #out {
   padding: 0 0 0 1rem;
 }
+
+/* ----- STATUS TOGGLE SWITCH ----- */
 
 .switch {
   position: relative;
@@ -264,6 +285,8 @@ input:checked + .slider #pending {
   opacity: 1;
 }
 
+/* ----- MANAGE ACCOUNTS AND GROUPS ----- */
+
 #settings {
   align-items: center;
   color: #fff;
@@ -286,12 +309,16 @@ input:checked + .slider #pending {
   fill: #eee;
 }
 
+/* ----- ACCOUNT LIST ----- */
+
 #account-container {
   display: flex;
   margin: -6rem 2rem 1rem;
   overflow-y: hidden;
   padding: 0 0 1rem;
 }
+
+/* ----- ACCOUNT BOX ----- */
 
 .account {
   align-items: center;
@@ -314,6 +341,7 @@ input:checked + .slider #pending {
 }
 
 .account h4 {
+  animation: fade-in 1s;
   margin: .5rem 0;
 }
 
@@ -338,7 +366,7 @@ input:checked + .slider #pending {
   color: #f00;
 }
 
-/* Bottom Arrow - Default */
+/* Bottom arrow for account box */
 .account-selected {
   border: 5px solid #0068ac;
 }
@@ -364,7 +392,7 @@ input:checked + .slider #pending {
   margin-left: -1.5rem;
 }
 
-/* Bottom Arrow - All */
+/* Bottom arrow for all accounts box */
 .account-all-selected {
   border: 5px solid #0068ac;
 }
@@ -390,6 +418,8 @@ input:checked + .slider #pending {
   margin-left: -1.5rem;
 }
 
+/* ----- GRID LAYOUT ----- */
+
 #grid {
   display: flex;
   padding: 0 2rem 3rem;
@@ -409,6 +439,8 @@ article {
   border: 1px #d8d8d8 solid;
   padding: 1.25rem;
 }
+
+/* ----- ACCOUNT DETAILS ----- */
 
 #account-name,
 #account-tasks {
@@ -434,6 +466,8 @@ article {
   margin: .25em 0 0;
 }
 
+/* ----- TRANSACTION TABLE ----- */
+
 table {
   border-collapse: collapse;
   table-layout: fixed;
@@ -442,7 +476,12 @@ table {
 
 th,
 td {
+  animation: fade-in 1s;
   padding: 1rem;
+}
+
+td {
+  vertical-align: top;
 }
 
 th {
@@ -455,7 +494,7 @@ th:nth-child(1) {
 }
 
 th:nth-child(2) {
-  width: 30%;
+  width: 24%;
 }
 
 th:nth-child(5),
@@ -475,6 +514,8 @@ td {
   padding: 1rem;
 }
 
+/* ----- FOOTER ----- */
+
 footer {
   background: #0068ac;
   padding: 2rem;
@@ -492,8 +533,11 @@ small {
 }
 
 #terms:hover {
+  opacity: 1;
   text-decoration: underline;
 }
+
+/* ----- HELP BUTTON ----- */
 
 #help {
   background: #ec6c00;

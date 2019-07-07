@@ -1268,7 +1268,7 @@ function formatAmount(amount) {
 }
 
 
-// ----- ACCOUNT ----- //
+// ----- ACCOUNT BOX ----- //
 
 function createAccountIconObj(isAccountAll) {
   let accountIconObj = document.createElement('img');
@@ -1314,7 +1314,6 @@ function createAccountObj(account, isAccountAll) {
   
   if (isAccountAll) {
     accountObj.id = 'account-all';
-    accountObj.classList.add('account-all-selected');
   }
   return accountObj;
 }
@@ -1322,7 +1321,7 @@ function createAccountObj(account, isAccountAll) {
 
 // ----- ACCOUNT CONTAINER ----- //
 
-function selectPosted(posted) {
+function selectPosted(posted) {  
   // Reset
   accountContainerObj.innerHTML = '';
   
@@ -1333,14 +1332,16 @@ function selectPosted(posted) {
     accountContainerObj.appendChild(accountObj);
   }
   
-  // Add event listeners
   let accountObjs = document.getElementsByClassName('account');
+  if (curr == 0) {
+    accountObjs[curr].classList.add('account-all-selected');
+  } else {
+    accountObjs[curr].classList.add('account-selected');
+  }
+  
+  // Add event listeners
   for (let i = 0; i < accountObjs.length; i++) {
     accountObjs[i].addEventListener('click', function() {
-      if (i === curr) {
-        return;
-      }
-
       if (i === 0) {
         accountObjs[curr].classList.remove('account-selected');
         accountObjs[i].classList.add('account-all-selected');
@@ -1356,13 +1357,12 @@ function selectPosted(posted) {
       selectAccount(curr);
     });
   }
-
-  curr = 0;
+  
   selectAccount(curr);
 }
 
 
-// ----- ACCOUNT DETAILS ----- //
+// ----- TRANSACTION TABLE ----- //
 
 function createTrObj(transaction) {
   // ICON
@@ -1411,13 +1411,14 @@ function createTrObj(transaction) {
   return trObj;
 }
 
+
+// ----- ACCOUNT DETAILS ----- //
+
 function selectAccount(curr) {
   let accounts = posted ? postedAccounts : pendingAccounts;
   
-  
   // ----- ACCOUNT NAME ----- //
   accountNameObj.innerHTML = accounts[curr].name;
-  
   
   // ----- BALANCE CONTAINER ----- //
   if (accounts[curr].available === null) {
@@ -1442,9 +1443,7 @@ function selectAccount(curr) {
     amountLedgerObj.innerHTML = formatAmount(accounts[curr].ledger);
   }
   
-  
   // ----- TABLE ----- //
-  
   // Reset table
   let tableObj = document.getElementById('transaction-container');
   if (tableObj !== null) {
@@ -1496,7 +1495,6 @@ function selectAccount(curr) {
   
   leftObj.appendChild(newTableObj);
   
-  
   // ----- AMOUNT IN & OUT ----- //
   let amountIn = 0;
   let amountOut = 0;
@@ -1521,8 +1519,5 @@ function selectAccount(curr) {
   amountInObj.innerHTML = formatAmount(amountIn);
   amountOutObj.innerHTML = formatAmount(Math.abs(amountOut));
 }
-
-
-// ----- LOAD ----- //
 
 selectPosted(posted);
