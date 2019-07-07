@@ -476,11 +476,11 @@ table {
 
 th,
 td {
-  animation: fade-in 1s;
   padding: 1rem;
 }
 
 td {
+  animation: fade-in 1s;
   vertical-align: top;
 }
 
