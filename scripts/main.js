@@ -1319,7 +1319,7 @@ function createAccountObj(account, isAccountAll) {
 }
 
 
-// ----- ACCOUNT CONTAINER ----- //
+// ----- ACCOUNT LIST ----- //
 
 function selectPosted(posted) {  
   // Reset
