@@ -511,6 +511,7 @@ td {
 }
 
 #no-transaction {
+  animation: fade-in 1s;
   padding: 1rem;
 }
 
@@ -550,6 +551,7 @@ small {
   height: 4rem;
   position: fixed;
   right: 1rem;
+  transition: .2s;
   width: 4rem;
 }
 
