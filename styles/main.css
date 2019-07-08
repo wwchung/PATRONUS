@@ -427,7 +427,7 @@ input:checked + .slider #pending {
 
 #left {
   margin: 0 1rem 0 0;
-  width: 60%;
+  width: 64%;
 }
 
 #right {
@@ -494,7 +494,27 @@ th:nth-child(1) {
 }
 
 th:nth-child(2) {
-  width: 24%;
+  width: 28%;
+}
+
+th:nth-child(3) {
+  width: 14%;
+}
+
+th:nth-child(4) {
+  width: 14%;
+}
+
+th:nth-child(5) {
+  width: 14%;
+}
+
+th:nth-child(6) {
+  width: 14%;
+}
+
+th:nth-child(7) {
+  width: 10%;
 }
 
 th:nth-child(5),
