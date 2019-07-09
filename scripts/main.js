@@ -1521,3 +1521,20 @@ function selectAccount(curr) {
 }
 
 selectPosted(posted);
+
+
+// ----- QUICK HELP ----- //
+let helpObj = document.getElementById('help');
+let helpContainerObj = document.getElementById('help-container');
+
+helpObj.addEventListener('click', function() {
+  if (helpContainerObj.style.opacity == 1) {
+    helpContainerObj.style.opacity = 0;
+    helpContainerObj.style.visibility = 'hidden';
+    helpObj.innerHTML = '?';
+  } else {
+    helpContainerObj.style.opacity = 1;
+    helpContainerObj.style.visibility = 'visible';
+    helpObj.innerHTML = 'X';
+  }
+});

@@ -539,13 +539,9 @@ td {
 
 footer {
   background: #0068ac;
+  color: #fff;
   padding: 2rem;
   text-align: center;
-}
-
-small {
-  color: #fff;
-  font-size: 1em;
 }
 
 #terms {
@@ -575,6 +571,27 @@ small {
   width: 4rem;
 }
 
-#help:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,.4);
+#help-container {
+  background: #fff;
+  border-radius: 8px;
+  bottom: 6rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+  display: flex;
+  flex-flow: column;
+  height: 40rem;
+  opacity: 0;
+  overflow: hidden;
+  position: fixed;
+  right: 1rem;
+  transition: .2s;
+  visibility: hidden;
+  width: 20rem;
+  z-index: 2;
+}
+
+#help-title {
+  background: #00518a;
+  color: #fff;
+  font-weight: 700;
+  padding: 1rem;
 }
