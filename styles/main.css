@@ -223,6 +223,7 @@ main {
 
 .switch {
   position: relative;
+  user-select: none;
   width: 8rem;
 }
 
@@ -362,6 +363,11 @@ input:checked + .slider #pending {
   color: #fff;
 }
 
+#add-icon {
+  height: 4rem;
+  margin: 0 0 1.625rem;
+}
+
 .negative {
   color: #f00;
 }
@@ -421,6 +427,7 @@ input:checked + .slider #pending {
 /* ----- GRID LAYOUT ----- */
 
 #grid {
+  align-items: flex-start;
   display: flex;
   padding: 0 2rem 3rem;
 }
@@ -568,6 +575,7 @@ footer {
   position: fixed;
   right: 1rem;
   transition: .2s;
+  user-select: none;
   width: 4rem;
 }
 

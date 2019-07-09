@@ -1318,6 +1318,23 @@ function createAccountObj(account, isAccountAll) {
   return accountObj;
 }
 
+function createAddAccountObj() {
+  let addAccountIconObj = document.createElement('img');
+  addAccountIconObj.id = 'add-icon';
+  addAccountIconObj.className = 'icon';
+  addAccountIconObj.src = 'images/add.svg';
+  
+  let addAccountNameObj = document.createElement('h5');
+  addAccountNameObj.innerHTML = 'Add Account or Group';
+
+  let addAccountObj = document.createElement('div');
+  addAccountObj.className = 'account';
+  addAccountObj.appendChild(addAccountIconObj);
+  addAccountObj.appendChild(addAccountNameObj);
+  
+  return addAccountObj;
+}
+
 
 // ----- ACCOUNT LIST ----- //
 
@@ -1332,6 +1349,8 @@ function selectPosted(posted) {
     accountContainerObj.appendChild(accountObj);
   }
   
+  accountContainerObj.appendChild(createAddAccountObj());
+  
   let accountObjs = document.getElementsByClassName('account');
   if (curr == 0) {
     accountObjs[curr].classList.add('account-all-selected');
@@ -1339,8 +1358,8 @@ function selectPosted(posted) {
     accountObjs[curr].classList.add('account-selected');
   }
   
-  // Add event listeners
-  for (let i = 0; i < accountObjs.length; i++) {
+  // Add event listeners (except Add Account or Group)
+  for (let i = 0; i < accountObjs.length - 1; i++) {
     accountObjs[i].addEventListener('click', function() {
       if (i === 0) {
         accountObjs[curr].classList.remove('account-selected');
