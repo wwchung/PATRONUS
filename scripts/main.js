@@ -16,9 +16,9 @@ let curr = 0;
 // Posted or pending status
 let posted = true;
 
-let switchObj = document.getElementById('status-switch');
-switchObj.addEventListener('change', function() {
-  posted = !switchObj.checked;
+let switchInputObj = document.getElementById('switch-input');
+switchInputObj.addEventListener('change', function() {
+  posted = !switchInputObj.checked;
   selectPosted(posted);
 });
 
@@ -1545,15 +1545,19 @@ selectPosted(posted);
 // ----- QUICK HELP ----- //
 let helpObj = document.getElementById('help');
 let helpContainerObj = document.getElementById('help-container');
+let helpIconObj = document.getElementById('help-icon')
+let helpCloseIconObj = document.getElementById('help-close-icon');
 
 helpObj.addEventListener('click', function() {
   if (helpContainerObj.style.opacity == 1) {
     helpContainerObj.style.opacity = 0;
     helpContainerObj.style.visibility = 'hidden';
-    helpObj.innerHTML = '?';
+    helpIconObj.style.display = 'inline';
+    helpCloseIconObj.style.display = 'none';
   } else {
     helpContainerObj.style.opacity = 1;
     helpContainerObj.style.visibility = 'visible';
-    helpObj.innerHTML = 'X';
+    helpIconObj.style.display = 'none';
+    helpCloseIconObj.style.display = 'inline';
   }
 });

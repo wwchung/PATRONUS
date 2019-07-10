@@ -221,17 +221,17 @@ main {
 
 /* ----- STATUS TOGGLE SWITCH ----- */
 
-.switch {
+#switch {
   position: relative;
   user-select: none;
   width: 8rem;
 }
 
-.switch input {
+#switch input {
   display: none;
 }
 
-.slider {
+#slider {
   background: #fff;
   border-radius: 1rem;
   bottom: 0;
@@ -245,7 +245,7 @@ main {
   transition: .4s;
 }
 
-.slider:before {
+#slider:before {
   background: #115597;
   border-radius: 50%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
@@ -274,15 +274,15 @@ main {
   opacity: 0;
 }
 
-input:checked + .slider:before {
+#switch input:checked + #slider:before {
   transform: translateX(6rem);
 }
 
-input:checked + .slider #posted {
+#switch input:checked + #slider #posted {
   opacity: 0;
 }
 
-input:checked + .slider #pending {
+#switch input:checked + #slider #pending {
   opacity: 1;
 }
 
@@ -564,42 +564,58 @@ footer {
 /* ----- HELP BUTTON ----- */
 
 #help {
+  align-items: center;
   background: #ec6c00;
   border-radius: 50%;
-  bottom: 1rem;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-  color: #fff;
-  font-size: 2em;
-  font-weight: 500;
-  height: 4rem;
+  bottom: 1.25rem;
+  box-shadow: 0 18px 40px -12px rgba(0,0,0,.35);
+  display: flex;
+  height: 3.75rem;
+  justify-content: center;
   position: fixed;
-  right: 1rem;
+  right: 1.25rem;
   transition: .2s;
-  user-select: none;
-  width: 4rem;
+  width: 3.75rem;
+}
+
+#help:hover {
+  background: #ed7a19;
+}
+
+#help:active {
+  background: #ec6c00;
+}
+
+#help-icon,
+#help-close-icon {
+  fill: #fff;
+}
+
+#help-close-icon {
+  display: none;
 }
 
 #help-container {
   background: #fff;
   border-radius: 8px;
-  bottom: 6rem;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-  display: flex;
-  flex-flow: column;
-  height: 40rem;
+  bottom: 6.25rem;
+  box-shadow: 0 18px 40px -12px rgba(0,0,0,.35);
+  height: calc(100% - 7.5rem);
+  max-height: 44rem;
   opacity: 0;
   overflow: hidden;
   position: fixed;
-  right: 1rem;
+  right: 1.25rem;
   transition: .2s;
   visibility: hidden;
-  width: 20rem;
+  width: 23.5rem;
   z-index: 2;
 }
 
 #help-title {
   background: #00518a;
   color: #fff;
-  font-weight: 700;
-  padding: 1rem;
+  font-size: 1.5em;
+  font-weight: 500;
+  padding: 1.25rem;
 }
