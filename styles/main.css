@@ -569,6 +569,7 @@ footer {
   border-radius: 50%;
   bottom: 1.25rem;
   box-shadow: 0 18px 40px -12px rgba(0,0,0,.35);
+  cursor: pointer;
   display: flex;
   height: 3.75rem;
   justify-content: center;
