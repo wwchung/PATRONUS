@@ -470,7 +470,7 @@ article {
 
 #amount-available,
 #amount-ledger {
-  margin: .25em 0 0;
+  margin: .25rem 0 0;
 }
 
 /* ----- TRANSACTION TABLE ----- */
@@ -540,6 +540,90 @@ td {
 #no-transaction {
   animation: fade-in 1s;
   padding: 1rem;
+}
+
+/* ----- TASKS ----- */
+
+#right-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#manage-tasks {
+  color: #0275d8;
+  font-size: .75em;
+  font-weight: 500;
+}
+
+#manage-tasks:hover {
+  color: #014c8c;
+}
+
+#task-container {
+  display: flex;
+  flex-flow: column;
+  margin: 1.25rem 0 0;
+}
+
+.task {
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+  cursor: pointer;
+  line-height: 1.6;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  transition: .2s;
+}
+
+.tag-complete {
+  border-left: 8px solid #6bb536;
+}
+
+.tag-attention {
+  border-left: 8px solid #ec6c00;
+}
+
+.tag-alert {
+  border-left: 8px solid #ce0000;
+}
+
+.tag-links {
+  border-left: 8px solid #0068ac;
+}
+
+.tag-locked {
+  border-left: 8px solid #eaeaea;
+}
+
+.tag-company {
+  border-left: 8px solid #3ec7ff;
+}
+
+.task:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);
+}
+
+.task-num {
+  color: #ababab;
+  font-size: 1.125em;
+  font-weight: 700;
+}
+
+.task-name {
+  color: #5a5a5a;
+  font-size: 1.625em;
+  font-weight: 400;
+  margin: 1rem 0 0;
+}
+
+.task-details,
+.task-due {
+  color: #a5a5a5;
+  font-size: 1.125em;
+}
+
+#no-tasks {
+  font-weight: 700;
 }
 
 /* ----- FOOTER ----- */

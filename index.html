@@ -45,7 +45,7 @@
   </section>
   <section id="grid">
     <article id="left">
-      <h3 id="account-name"></h3>
+      <h3 class="account-name"></h3>
       <div id="balance-container">
         <div id="available">
           <h5>AVAILABLE BALANCE</h5>
@@ -58,7 +58,14 @@
       </div>
     </article>
     <article id="right">
-      <h3 id="account-tasks">TASKS</h3>
+      <div id="right-header">
+        <hgroup>
+          <h3 id="account-tasks">TASKS</h3>
+          <h5 class="account-name"></h5>
+        </hgroup>
+        <button id="manage-tasks">Manage Tasks</button>
+      </div>
+      <div id="task-container"></div>
     </article>
   </section>
 </main>

@@ -10,254 +10,40 @@ h1Obj.innerHTML = `Hi ${firstName}.`;
 let amountInObj = document.getElementById('amount-in');
 let amountOutObj = document.getElementById('amount-out');
 
+let accountContainerObj = document.getElementById('account-container');
+
+let leftObj = document.getElementById('left');
+let rightObj = document.getElementById('right');
+
+let accountNameObjs = document.getElementsByClassName('account-name');
+let amountAvailableObj = document.getElementById('amount-available');
+let amountLedgerObj = document.getElementById('amount-ledger');
+
 // Selected account index
 let curr = 0;
 
 // Posted or pending status
-let posted = true;
+let isPosted = true;
 
 let switchInputObj = document.getElementById('switch-input');
 switchInputObj.addEventListener('change', function() {
-  posted = !switchInputObj.checked;
-  selectPosted(posted);
+  isPosted = !switchInputObj.checked;
+  setAccounts();
 });
 
-let accountContainerObj = document.getElementById('account-container');
 
-let leftObj = document.getElementById('left');
+// ----- ACCOUNTS ----- //
 
-let accountNameObj = document.getElementById('account-name');
-let amountAvailableObj = document.getElementById('amount-available');
-let amountLedgerObj = document.getElementById('amount-ledger');
-
-
-// ----- POSTED ACCOUNTS ----- //
-
-let postedAccounts = [
+let accounts = [
   {
     'name': 'Statement Savings x8466',
-    'available': 0.00,
-    'ledger': 0.00,
-    'transactions': []
-  },
-  {
-    'name': 'No Product Desc x8888',
-    'available': 203193.00,
-    'ledger': 254764.00,
-    'transactions': [
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'Detail Deposits',
-        'amount': 193598.92,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'ZBA Debits',
-        'amount': -178652.27,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'Lockbox Deposits',
-        'amount': 27504.60,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'Lockbox Deposits',
-        'amount': 14435.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Wire',
-        'amount': 10390.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'Miscellaneous Credits',
-        'amount': 8460.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'Miscellaneous Credits',
-        'amount': 1850.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'ACH Debits',
-        'amount': -1705.35,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'ACH Credits',
-        'amount': 100.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x8888',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -100.00,
-        'date': '07/03/2019'
-      }
-    ]
-  },
-  {
-    'name': 'No Product Desc x9999',
-    'available': 203193.00,
-    'ledger': 254764.00,
-    'transactions': [
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'Detail Deposits',
-        'amount': 193598.92,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'ZBA Debits',
-        'amount': -178652.27,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'Lockbox Deposits',
-        'amount': 27504.60,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'Lockbox Deposits',
-        'amount': 14435.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Wire',
-        'amount': 10390.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'Miscellaneous Credits',
-        'amount': 8460.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'Miscellaneous Credits',
-        'amount': 1850.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'ACH Debits',
-        'amount': -1705.35,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'ACH Credits',
-        'amount': 100.00,
-        'date': '07/03/2019'
-      },
-      {
-        'account': 'No Product Desc x9999',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -100.00,
-        'date': '07/03/2019'
-      }
-    ]
-  },
-  {
-    'name': 'No Product Desc x08',
-    'available': null,
-    'ledger': null,
-    'transactions': []
-  },
-  {
-    'name': 'Statement Savings x0329',
-    'available': null,
-    'ledger': null,
-    'transactions': []
-  },
-  {
-    'name': 'No Product Desc x1091',
-    'available': null,
-    'ledger': null,
-    'transactions': []
-  }
-];
-
-
-// ----- ALL POSTED ACCOUNTS ----- //
-
-let postedAvailableAll = 0;
-let postedLedgerAll = 0;
-let postedTransactionsAll = [];
-
-postedAccounts.forEach(function(account) {
-  postedAvailableAll += account.available;
-  postedLedgerAll += account.ledger;
-  postedTransactionsAll = postedTransactionsAll.concat(account.transactions);
-});
-
-let postedAccountAll = {};
-postedAccountAll.name = 'ALL ACCOUNTS';
-postedAccountAll.available = postedAvailableAll;
-postedAccountAll.ledger = postedLedgerAll;
-postedAccountAll.transactions = postedTransactionsAll;
-
-postedAccounts.unshift(postedAccountAll);
-
-
-// ----- PENDING ACCOUNTS ----- //
-
-let pendingAccounts = [
-  {
-    'name': 'Statement Savings x8466',
-    'available': -493.54,
-    'ledger': -493.54,
-    'transactions': [
+    'tasks': [],
+    'postedAvailable': 0.00,
+    'postedLedger': 0.00,
+    'pendingAvailable': -493.54,
+    'pendingLedger': -493.54,
+    'postedTransactions': [],
+    'pendingTransactions': [
       {
         'account': 'Statement Savings x8466',
         'status': 'Pending',
@@ -332,9 +118,113 @@ let pendingAccounts = [
   },
   {
     'name': 'No Product Desc x8888',
-    'available': 5714448.67,
-    'ledger': 6235440.67,
-    'transactions': [
+    'tasks': [
+      {
+        'name': 'Make a payment to John',
+        'details': 'XYZ Company ∙ $5,000',
+        'due': '07/01/2019 ∙ 2:00pm',
+        'recurring': true,
+        'tag': 'alert'
+      },
+      {
+        'name': 'ACH Transfer to XYZ',
+        'details': 'XYZ Company ∙ $1,250',
+        'due': '07/07/2019',
+        'recurring': true,
+        'tag': 'attention'
+      },
+      {
+        'name': 'Assign user X to team Y',
+        'details': '',
+        'due': '07/09/2019',
+        'recurring': false,
+        'tag': 'company'
+      }
+    ],
+    'postedAvailable': 203193.00,
+    'postedLedger': 254764.00,
+    'pendingAvailable': 5714448.67,
+    'pendingLedger': 6235440.67,
+    'postedTransactions': [
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'Miscellaneous Credits',
+        'amount': 1850.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'ACH Debits',
+        'amount': -1705.35,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'ACH Credits',
+        'amount': 100.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x8888',
+        'status': 'Posted',
+        'type': 'Money Transfer DB - Other',
+        'amount': -100.00,
+        'date': '07/04/2019'
+      }
+    ],
+    'pendingTransactions': [
       {
         'account': 'No Product Desc x8888',
         'status': 'Pending',
@@ -1047,9 +937,91 @@ let pendingAccounts = [
   },
   {
     'name': 'No Product Desc x9999',
-    'available': 5723938.67,
-    'ledger': 6234930.67,
-    'transactions': [
+    'tasks': [],
+    'postedAvailable': 203193.00,
+    'postedLedger': 254764.00,
+    'pendingAvailable': 5723938.67,
+    'pendingLedger': 6234930.67,
+    'postedTransactions': [
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 10390.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'Miscellaneous Credits',
+        'amount': 1850.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'ACH Debits',
+        'amount': -1705.35,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'ACH Credits',
+        'amount': 100.00,
+        'date': '07/04/2019'
+      },
+      {
+        'account': 'No Product Desc x9999',
+        'status': 'Posted',
+        'type': 'Money Transfer DB - Other',
+        'amount': -100.00,
+        'date': '07/04/2019'
+      }
+    ],
+    'pendingTransactions': [
       {
         'account': 'No Product Desc x9999',
         'status': 'Pending',
@@ -1124,15 +1096,23 @@ let pendingAccounts = [
   },
   {
     'name': 'No Product Desc x08',
-    'available': null,
-    'ledger': null,
-    'transactions': []
+    'tasks': [],
+    'postedAvailable': null,
+    'postedLedger': null,
+    'pendingAvailable': null,
+    'pendingLedger': null,
+    'postedTransactions': [],
+    'pendingTransactions': []
   },
   {
     'name': 'Statement Savings x0329',
-    'available': 498.79,
-    'ledger': 498.79,
-    'transactions': [
+    'tasks': [],
+    'postedAvailable': null,
+    'postedLedger': null,
+    'pendingAvailable': 498.79,
+    'pendingLedger': 498.79,
+    'postedTransactions': [],
+    'pendingTransactions': [
       {
         'account': 'Statement Savings x0329',
         'status': 'Pending',
@@ -1221,9 +1201,13 @@ let pendingAccounts = [
   },
   {
     'name': 'No Product Desc x1091',
-    'available': 10.00,
-    'ledger': 10.00,
-    'transactions': [
+    'tasks': [],
+    'postedAvailable': null,
+    'postedLedger': null,
+    'pendingAvailable': 10.00,
+    'pendingLedger': 10.00,
+    'postedTransactions': [],
+    'pendingTransactions': [
       {
         'account': 'No Product Desc x1091',
         'status': 'Pending',
@@ -1236,25 +1220,37 @@ let pendingAccounts = [
 ];
 
 
-// ----- ALL PENDING ACCOUNTS ----- //
+// ----- ALL ACCOUNTS ----- //
 
+let tasksAll = [];
+let postedAvailableAll = 0;
+let postedLedgerAll = 0;
+let postedTransactionsAll = [];
 let pendingAvailableAll = 0;
 let pendingLedgerAll = 0;
 let pendingTransactionsAll = [];
 
-pendingAccounts.forEach(function(account) {
-  pendingAvailableAll += account.available;
-  pendingLedgerAll += account.ledger;
-  pendingTransactionsAll = pendingTransactionsAll.concat(account.transactions);
+accounts.forEach((account) => {
+  tasksAll = tasksAll.concat(account.tasks);
+  postedAvailableAll += account.postedAvailable;
+  postedLedgerAll += account.postedLedger;
+  postedTransactionsAll = postedTransactionsAll.concat(account.postedTransactions);
+  pendingAvailableAll += account.pendingAvailable;
+  pendingLedgerAll += account.pendingLedger;
+  pendingTransactionsAll = pendingTransactionsAll.concat(account.pendingTransactions);
 });
 
-let pendingAccountAll = {};
-pendingAccountAll.name = 'ALL ACCOUNTS';
-pendingAccountAll.available = pendingAvailableAll;
-pendingAccountAll.ledger = pendingLedgerAll;
-pendingAccountAll.transactions = pendingTransactionsAll;
+let accountAll = {};
+accountAll.name = 'ALL ACCOUNTS';
+accountAll.tasks = tasksAll;
+accountAll.postedAvailable = postedAvailableAll;
+accountAll.postedLedger = postedLedgerAll;
+accountAll.postedTransactions = postedTransactionsAll;
+accountAll.pendingAvailable = pendingAvailableAll;
+accountAll.pendingLedger = pendingLedgerAll;
+accountAll.pendingTransactions = pendingTransactionsAll;
 
-pendingAccounts.unshift(pendingAccountAll);
+accounts.unshift(accountAll);
 
 
 // ----- FORMAT AMOUNT ----- //
@@ -1288,13 +1284,15 @@ function createAccountAvailableObj(account, isAccountAll) {
     accountAvailableObj.id = 'amount-all';
   }
   
-  if (account.available === null) {
+  let available = isPosted ? account.postedAvailable : account.pendingAvailable;
+  
+  if (available === null) {
     accountAvailableObj.innerHTML = '---';
   } else {
-    if (account.available < 0) {
+    if (available < 0) {
       accountAvailableObj.className = 'negative';
     }
-    accountAvailableObj.innerHTML = formatAmount(account.available);
+    accountAvailableObj.innerHTML = formatAmount(available);
   }
   return accountAvailableObj;
 }
@@ -1336,14 +1334,12 @@ function createAddAccountObj() {
 }
 
 
-// ----- ACCOUNT LIST ----- //
+// ----- ACCOUNTS ----- //
 
-function selectPosted(posted) {  
+function setAccounts() {  
   // Reset
   accountContainerObj.innerHTML = '';
-  
-  let accounts = posted ? postedAccounts : pendingAccounts;
-  
+    
   for (let i = 0; i < accounts.length; i++) {
     let accountObj = createAccountObj(accounts[i], i === 0);
     accountContainerObj.appendChild(accountObj);
@@ -1352,7 +1348,7 @@ function selectPosted(posted) {
   accountContainerObj.appendChild(createAddAccountObj());
   
   let accountObjs = document.getElementsByClassName('account');
-  if (curr == 0) {
+  if (curr === 0) {
     accountObjs[curr].classList.add('account-all-selected');
   } else {
     accountObjs[curr].classList.add('account-selected');
@@ -1373,11 +1369,11 @@ function selectPosted(posted) {
         accountObjs[i].classList.add('account-selected');
       }
       curr = i;
-      selectAccount(curr);
+      setAccount();
     });
   }
   
-  selectAccount(curr);
+  setAccount();
 }
 
 
@@ -1431,35 +1427,123 @@ function createTrObj(transaction) {
 }
 
 
-// ----- ACCOUNT DETAILS ----- //
+// ----- TASK ----- //
 
-function selectAccount(curr) {
-  let accounts = posted ? postedAccounts : pendingAccounts;
+function createTaskObj(task, num) {
+  let numObj = document.createElement('h4');
+  numObj.className = 'task-num';
+  numObj.innerHTML = `TASK ${num + 1}`;
+
+  let nameObj = document.createElement('h3');
+  nameObj.className = 'task-name';
+  nameObj.innerHTML = task.name;
+
+  let detailsObj = document.createElement('p');
+  detailsObj.className = 'task-details';
+  detailsObj.innerHTML = task.details === '' ? '<br>' : task.details;
+
+  let dueObj = document.createElement('p');
+  dueObj.className = 'task-due';
+  dueObj.innerHTML = task.due;
+
+  let taskObj = document.createElement('div');
+  taskObj.className = 'task';
   
+  if (task.tag === 'complete') {
+    taskObj.classList.add('tag-complete');
+  } else if (task.tag === 'attention') {
+    taskObj.classList.add('tag-attention');
+  } else if (task.tag === 'alert') {
+    taskObj.classList.add('tag-alert');
+  } else if (task.tag === 'links') {
+    taskObj.classList.add('tag-links');
+  } else if (task.tag === 'locked') {
+    taskObj.classList.add('tag-locked');
+  } else if (task.tag === 'company') {
+    taskObj.classList.add('tag-company');
+  }
+
+  taskObj.appendChild(numObj);
+  taskObj.appendChild(nameObj);
+  taskObj.appendChild(detailsObj);
+  taskObj.appendChild(dueObj);
+  
+  return taskObj;
+}
+
+
+// ----- TASKS LIST ----- //
+
+function setTasks(tasks) {
+  // Reset tasks
+  let taskContainerObj = document.getElementById('task-container');
+  if (taskContainerObj !== null) {
+    rightObj.removeChild(taskContainerObj);
+  }
+  let noTasksObj = document.getElementById('no-tasks');
+  if (noTasksObj !== null) {
+    rightObj.removeChild(noTasksObj);
+  }
+  
+  let newTaskContainerObj = document.createElement('div');
+  newTaskContainerObj.id = 'task-container';
+  rightObj.appendChild(newTaskContainerObj);
+  
+  if (tasks.length === 0) {
+    let newNoTasksObj = document.createElement('div');
+    newNoTasksObj.id = 'no-tasks';
+    newNoTasksObj.innerHTML = 'You have no outstanding tasks.';
+    newTaskContainerObj.appendChild(newNoTasksObj);
+  } else {
+    for (let i = 0; i < tasks.length; i++) {
+      newTaskContainerObj.appendChild(createTaskObj(tasks[i], i));
+    }
+  }
+}
+
+
+// ----- ACCOUNT ----- //
+
+function setAccount() {
   // ----- ACCOUNT NAME ----- //
-  accountNameObj.innerHTML = accounts[curr].name;
+  accountNameObjs[0].innerHTML = accounts[curr].name;
+  accountNameObjs[1].innerHTML = accounts[curr].name;
+  
+  let available = 0;
+  let ledger = 0;
+  let transactions = [];
+  
+  if (isPosted) {
+    available = accounts[curr].postedAvailable;
+    ledger = accounts[curr].postedLedger;
+    transactions = accounts[curr].postedTransactions;
+  } else {
+    available = accounts[curr].pendingAvailable;
+    ledger = accounts[curr].pendingLedger;
+    transactions = accounts[curr].pendingTransactions;
+  }
   
   // ----- BALANCE CONTAINER ----- //
-  if (accounts[curr].available === null) {
+  if (available === null) {
     amountAvailableObj.innerHTML = '---';
   } else {
-    if (accounts[curr].available < 0) {
+    if (available < 0) {
       amountAvailableObj.className = 'negative';
     } else {
       amountAvailableObj.classList.remove('negative');
     }
-    amountAvailableObj.innerHTML = formatAmount(accounts[curr].available);
+    amountAvailableObj.innerHTML = formatAmount(available);
   }
   
-  if (accounts[curr].ledger === null) {
+  if (ledger === null) {
     amountLedgerObj.innerHTML = '---';
   } else {
-    if (accounts[curr].ledger < 0) {
+    if (ledger < 0) {
       amountLedgerObj.className = 'negative';
     } else {
       amountLedgerObj.classList.remove('negative');
     }
-    amountLedgerObj.innerHTML = formatAmount(accounts[curr].ledger);
+    amountLedgerObj.innerHTML = formatAmount(ledger);
   }
   
   // ----- TABLE ----- //
@@ -1518,13 +1602,13 @@ function selectAccount(curr) {
   let amountIn = 0;
   let amountOut = 0;
   
-  if (accounts[curr].transactions.length === 0) {
+  if (transactions.length === 0) {
     let newNoTransactionObj = document.createElement('p');
     newNoTransactionObj.id = 'no-transaction';
     newNoTransactionObj.innerHTML = 'The data is not currently available.';
     leftObj.appendChild(newNoTransactionObj);
   } else {
-    accounts[curr].transactions.forEach(function(transaction) {
+    transactions.forEach((transaction) => {
       newTableObj.appendChild(createTrObj(transaction));
       
       if (transaction.amount > 0) {
@@ -1537,19 +1621,23 @@ function selectAccount(curr) {
   
   amountInObj.innerHTML = formatAmount(amountIn);
   amountOutObj.innerHTML = formatAmount(Math.abs(amountOut));
+  
+  let tasks = accounts[curr].tasks;
+  setTasks(tasks);
 }
 
-selectPosted(posted);
+setAccounts();
 
 
 // ----- QUICK HELP ----- //
+
 let helpObj = document.getElementById('help');
 let helpContainerObj = document.getElementById('help-container');
 let helpIconObj = document.getElementById('help-icon')
 let helpCloseIconObj = document.getElementById('help-close-icon');
 
 helpObj.addEventListener('click', function() {
-  if (helpContainerObj.style.opacity == 1) {
+  if (helpContainerObj.style.opacity === '1') {
     helpContainerObj.style.opacity = 0;
     helpContainerObj.style.visibility = 'hidden';
     helpIconObj.style.display = 'inline';
