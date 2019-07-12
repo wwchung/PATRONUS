@@ -164,13 +164,6 @@ let accounts = [
         'due': '07/07/2019',
         'recurring': true,
         'tag': 'attention'
-      },
-      {
-        'name': 'Assign user X to team Y',
-        'details': '',
-        'due': '07/09/2019',
-        'recurring': false,
-        'tag': 'company'
       }
     ],
     'postedAvailable': 203193.00,
@@ -324,7 +317,15 @@ let accounts = [
   },
   {
     'name': 'Commercial x9012',
-    'tasks': [],
+    'tasks': [
+      {
+        'name': 'Assign user X to team Y',
+        'details': '',
+        'due': '07/09/2019',
+        'recurring': false,
+        'tag': 'company'
+      }
+    ],
     'postedAvailable': 203193.00,
     'postedLedger': 254764.00,
     'postedTransactions': [
