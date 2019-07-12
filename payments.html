@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <title>PATRONUS</title>
 <link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="styles/payments.css">
 
 <header>
   <div id="header-container">
@@ -22,7 +23,7 @@
   </div>
 </header>
 
-<div class="main-overlay"></div>
+<div class="side-nav-overlay"></div>
 
 <nav class="side-nav">
   <div id="big-nav">
@@ -32,30 +33,74 @@
   </div>
   <div id="small-nav">
     <a class="small-nav-item">Settings</a>
-    <div>
-      <div class="small-nav-item">Need help?</div>
-      <div id="need-help-group">
-        <a id="help-item" class="need-help-item"><img class="need-help-icon" src="images/item-help.svg">Quick Help</a>
-        <a class="need-help-item" href="mailto:TMCC@pnc.com"><img class="need-help-icon" src="images/item-email.svg">TMCC@pnc.com</a>
-        <a class="need-help-item" href="tel:800-669-1518"><img class="need-help-icon" src="images/item-call.svg">800-669-1518</a>
-      </div>
+    <div class="small-nav-item">Need help?</div>
+    <div id="need-help-group">
+      <a id="help-item" class="need-help-item"><img class="need-help-icon" src="images/item-help.svg">Quick Help</a>
+      <a class="need-help-item" href="mailto:TMCC@pnc.com"><img class="need-help-icon" src="images/item-email.svg">TMCC@pnc.com</a>
+      <a class="need-help-item" href="tel:800-669-1518"><img class="need-help-icon" src="images/item-call.svg">800-669-1518</a>
     </div>
   </div>
 </nav>
 
-<main></main>
+<main>
+  <section id="jumbotron">
+    <div id="payments-tab-group">
+      <label id="payments-tab-label">Payments:</label>
+      <a class="payments-tab payments-tab-selected">Payments Hub</a>
+      <a class="payments-tab">Payees</a>
+    </div>
+    <div>
+      <h1>Payments</h1>
+      <div id="payment-container">
+        <div id="pending">
+          <h5 id="pending-payment">0 PAYMENTS PENDING APPROVAL</h5>
+          <h2 id="pending-amount">$0.00</h2>
+        </div>
+        <div id="scheduled">
+          <h5 id="scheduled-payment">0 PAYMENTS SCHEDULED</h5>
+          <h2 id="scheduled-amount">$0.00</h2>
+        </div>
+      </div>
+      <button id="payment">MAKE A PAYMENT</button>
+    </div>
+  </section>
+  <section>
+    <div id="payments-hub-tab-group">
+      <a class="payments-hub-tab payments-hub-tab-selected">SCHEDULED</a>
+      <a class="payments-hub-tab">REJECTED</a>
+      <a class="payments-hub-tab">COMPLETED</a>
+      <a class="payments-hub-tab">PENDING APPROVAL</a>
+    </div>
+    <h3 id="table-title">SCHEDULED (0)</h3>
+    <table>
+      <tr>
+        <th>NAME</th>
+        <th>DATE</th>
+        <th>ACCOUNT</th>
+        <th>TRACE ID</th>
+        <th>TYPE</th>
+        <th>STATUS</th>
+        <th>FREQUENCY</th>
+        <th>AMOUNT</th>
+        <th>ACTIONS</th>
+      </tr>
+    </table>
+    <div id="no-payment">You currently have no scheduled payments.</div>
+  </section>
+</main>
 
 <footer>
-  <div>Copyright ©2019, The Gringotts Financial Services Group, Inc. All Rights Reserved | <a id="terms">Treasury Management Services Terms & Conditions</a></div>
+  <div>Copyright ©2019, The Gringotts Financial Services Group, Inc. All Rights Reserved</div>
 </footer>
 
 <div id="help"><img id="help-icon" src="images/help.svg"><img id="help-close-icon" class="hidden" src="images/close.svg"></div>
 
-<div class="help-container">
-  <div id="help-title">Quick Help</div>
-  <div id="help-body"></div>
-  <div id="help-search"></div>
+<div class="help-app">
+  <div id="help-app-header">Quick Help</div>
+  <div id="help-app-body"></div>
+  <div id="help-app-search"></div>
 </div>
 
 <!-- Warning! Do not open! (But I know you will) It's a Pandora's box full of code. Will update to React if I have time -->
+<script src="scripts/main.js"></script>
 <script src="scripts/payments.js"></script>

@@ -1,0 +1,133 @@
+h1 {
+  font-size: 2.75em;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 2.5em;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-size: 700;
+}
+
+h5 {
+  font-size: .75em;
+  font-weight: 500;
+}
+
+section {
+  padding: 0 1.25rem 1.5rem;
+}
+
+/* ----- JUMBOTRON ----- */
+
+#jumbotron {
+  background: linear-gradient(225deg, #00a1d6 0, #0068ac 100%);
+  color: #fff;
+}
+
+/* ----- PAYMENTS TAB ----- */
+
+#payments-tab-group {
+  border-bottom: 1px solid #fff;
+  display: flex;
+  margin: 0 0 1rem;
+}
+
+#payments-tab-label,
+.payments-tab {
+  align-items: center;
+  display: flex;
+  font-weight: 500;
+  height: 4rem;
+}
+
+#payments-tab-label {
+  font-size: 1.25em;
+  margin: 0 1.25rem 0 0;
+}
+
+.payments-tab {
+  margin: 0 1.25rem;
+}
+
+.payments-tab:hover {
+  opacity: .5;
+}
+
+.payments-tab-selected {
+  border-bottom: 4px solid #fff;
+}
+
+/* ----- PAYMENTS HUB ----- */
+
+#payment-container {
+  display: flex;
+  margin: 1rem 0 0;
+}
+
+#pending {
+  margin: 0 3rem 0 0;
+}
+
+/* ----- MAKE A PAYMENT ----- */
+
+#payment {
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+  color: #0068ac;
+  font-size: 1em;
+  margin: 1.25rem 0 0;
+  padding: .625rem 1rem;
+}
+
+#payment:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,.4);
+}
+
+#payment:active {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+}
+
+/* ----- PAYMENTS HUB TAB ----- */
+
+#payments-hub-tab-group {
+  display: flex;
+  margin: 0 0 3rem;
+}
+
+.payments-hub-tab {
+  align-items: center;
+  display: flex;
+  font-weight: 700;
+  height: 4rem;
+  margin: 0 1.25rem;
+}
+
+.payments-hub-tab:hover {
+  color: #00518a;
+}
+
+.payments-hub-tab:first-child {
+  margin: 0 1.25rem 0 0;
+}
+
+.payments-hub-tab-selected {
+  border-bottom: 4px solid #00518a;
+  color: #00518a;
+}
+
+/* ----- PAYMENTS HUB TAB ----- */
+
+#table-title {
+  color: #0068ac;
+  margin: 0 0 .5rem;
+}
+
+#no-payment {
+  animation: fade-in 1s;
+  padding: 1rem;
+}

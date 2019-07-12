@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <title>PATRONUS</title>
 <link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="styles/index.css">
 
 <header>
   <div id="header-container">
@@ -22,7 +23,7 @@
   </div>
 </header>
 
-<div class="main-overlay"></div>
+<div class="side-nav-overlay"></div>
 
 <nav class="side-nav">
   <div id="big-nav">
@@ -32,13 +33,11 @@
   </div>
   <div id="small-nav">
     <a class="small-nav-item">Settings</a>
-    <div>
-      <div class="small-nav-item">Need help?</div>
-      <div id="need-help-group">
-        <a id="help-item" class="need-help-item"><img class="need-help-icon" src="images/item-help.svg">Quick Help</a>
-        <a class="need-help-item" href="mailto:TMCC@pnc.com"><img class="need-help-icon" src="images/item-email.svg">TMCC@pnc.com</a>
-        <a class="need-help-item" href="tel:800-669-1518"><img class="need-help-icon" src="images/item-call.svg">800-669-1518</a>
-      </div>
+    <div class="small-nav-item">Need help?</div>
+    <div id="need-help-group">
+      <a id="help-item" class="need-help-item"><img class="need-help-icon" src="images/item-help.svg">Quick Help</a>
+      <a class="need-help-item" href="mailto:TMCC@pnc.com"><img class="need-help-icon" src="images/item-email.svg">TMCC@pnc.com</a>
+      <a class="need-help-item" href="tel:800-669-1518"><img class="need-help-icon" src="images/item-call.svg">800-669-1518</a>
     </div>
   </div>
 </nav>
@@ -99,11 +98,12 @@
 
 <div id="help"><img id="help-icon" src="images/help.svg"><img id="help-close-icon" class="hidden" src="images/close.svg"></div>
 
-<div class="help-container">
-  <div id="help-title">Quick Help</div>
-  <div id="help-body"></div>
-  <div id="help-search"></div>
+<div class="help-app">
+  <div id="help-app-header">Quick Help</div>
+  <div id="help-app-body"></div>
+  <div id="help-app-search"></div>
 </div>
 
 <!-- Warning! Do not open! (But I know you will) It's a Pandora's box full of code. Will update to React if I have time -->
+<script src="scripts/main.js"></script>
 <script src="scripts/index.js"></script>
