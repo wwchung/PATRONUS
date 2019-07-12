@@ -59,6 +59,10 @@ menuObj.addEventListener('click', function() {
   }
 });
 
+mainOverlayObj.addEventListener('click', function() {
+  toggleMenu();
+});
+
 
 // ----- ACCOUNTS DATA ----- //
 
