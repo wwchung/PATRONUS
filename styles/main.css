@@ -331,7 +331,7 @@ footer {
   border-radius: 8px;
   bottom: 6.25rem;
   box-shadow: 0 18px 40px -12px rgba(0,0,0,.35);
-  height: calc(100% - 7.5rem);
+  height: calc(100vh - 7.5rem);
   max-height: 44rem;
   opacity: 0;
   transform: translateY(1rem);

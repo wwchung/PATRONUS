@@ -314,16 +314,13 @@ td:nth-child(5) {
   height: 1rem;
 }
 
-.td-account {
-  color: #0068ac;
-  text-decoration: underline;
-}
-
+.td-account,
 .td-view {
   color: #0068ac;
   text-decoration: underline;
 }
 
+.td-account:hover,
 .td-view:hover {
   opacity: .7;
 }
@@ -367,6 +364,10 @@ td:nth-child(5) {
 
 .task:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,.4);
+}
+
+.task:active {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
 }
 
 .tag-complete {
