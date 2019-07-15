@@ -245,7 +245,7 @@ a.small-nav-item:hover {
   height: 100%;
   opacity: 0;
   position: fixed;
-  top: 4rem;
+  top: 4.375rem;
   transition: .2s;
   visibility: hidden;
   width: 100%;
