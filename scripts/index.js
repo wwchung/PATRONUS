@@ -8,83 +8,83 @@ let accounts = [
   {
     'name': 'Residential x8901',
     'tasks': [],
-    'postedAvailable': 0.00,
-    'postedLedger': 0.00,
-    'postedTransactions': [],
-    'pendingAvailable': -493.54,
-    'pendingLedger': -493.54,
-    'pendingTransactions': [
+    'postedAvailable': -493.54,
+    'postedLedger': -493.54,
+    'postedTransactions': [
       {
         'account': 'Residential x8901',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -500.00,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Residential x8901',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer CR - Other',
         'amount': 6.28,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Residential x8901',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer CR - Other',
         'amount': 1.50,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Residential x8901',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -1.25,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Residential x8901',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer CR - Other',
         'amount': 1.00,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Residential x8901',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -1.00,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Residential x8901',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -0.10,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Residential x8901',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer CR - Other',
         'amount': 0.03,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Residential x8901',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer CR - Other',
         'amount': 0.02,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Residential x8901',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -0.02,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       }
-    ]
+    ],
+    'pendingAvailable': 0.00,
+    'pendingLedger': 0.00,
+    'pendingTransactions': []
   },
   {
     'name': 'Payroll x0123',
@@ -104,152 +104,153 @@ let accounts = [
         'tag': 'attention'
       }
     ],
-    'postedAvailable': 203193.00,
-    'postedLedger': 254764.00,
+    'postedAvailable': 5714448.67,
+    'postedLedger': 6235440.67,
     'postedTransactions': [
+      
+      {
+        'account': 'Payroll x0123',
+        'status': 'Posted',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 6660995.00,
+        'date': '07/14/2019'
+      },
       {
         'account': 'Payroll x0123',
         'status': 'Posted',
         'type': 'Corporate Cash Sweep Debits',
         'amount': -375285.00,
-        'date': '07/04/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Posted',
-        'type': 'Detail Deposits',
-        'amount': 193598.92,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Posted',
-        'type': 'ZBA Debits',
-        'amount': -178652.27,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Posted',
-        'type': 'Lockbox Deposits',
-        'amount': 27504.60,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Posted',
-        'type': 'Lockbox Deposits',
-        'amount': 14435.00,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Posted',
-        'type': 'Money Transfer CR - Wire',
-        'amount': 10390.00,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Posted',
-        'type': 'Miscellaneous Credits',
-        'amount': 8460.00,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Posted',
-        'type': 'Miscellaneous Credits',
-        'amount': 1850.00,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Posted',
-        'type': 'ACH Debits',
-        'amount': -1705.35,
-        'date': '07/04/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'ACH Credits',
-        'amount': 100.00,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       }
     ],
-    'pendingAvailable': 5714448.67,
-    'pendingLedger': 6235440.67,
+    'pendingAvailable': 203193.00,
+    'pendingLedger': 254764.00,
     'pendingTransactions': [
       {
         'account': 'Payroll x0123',
         'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/15/2019'
+      },
+      {
+        'account': 'Payroll x0123',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/15/2019'
+      },
+      {
+        'account': 'Payroll x0123',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/15/2019'
+      },
+      {
+        'account': 'Payroll x0123',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/15/2019'
+      },
+      {
+        'account': 'Payroll x0123',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/15/2019'
+      },
+      {
+        'account': 'Payroll x0123',
+        'status': 'Pending',
         'type': 'Money Transfer CR - Wire',
-        'amount': 6660995.00,
-        'date': '07/05/2019'
+        'amount': 10390.00,
+        'date': '07/15/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/15/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
+        'type': 'Miscellaneous Credits',
+        'amount': 1850.00,
+        'date': '07/15/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
+        'type': 'ACH Debits',
+        'amount': -1705.35,
+        'date': '07/15/2019'
       },
       {
         'account': 'Payroll x0123',
         'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
+        'type': 'ACH Credits',
+        'amount': 100.00,
+        'date': '07/15/2019'
       }
     ]
   },
@@ -264,253 +265,253 @@ let accounts = [
         'tag': 'company'
       }
     ],
-    'postedAvailable': 203193.00,
-    'postedLedger': 254764.00,
+    'postedAvailable': 5723938.67,
+    'postedLedger': 6234930.67,
     'postedTransactions': [
       {
         'account': 'Commercial x9012',
         'status': 'Posted',
+        'type': 'Money Transfer CR - Wire',
+        'amount': 6660995.00,
+        'date': '07/14/2019'
+      },
+      {
+        'account': 'Commercial x9012',
+        'status': 'Posted',
         'type': 'Corporate Cash Sweep Debits',
         'amount': -375285.00,
-        'date': '07/04/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Posted',
-        'type': 'Detail Deposits',
-        'amount': 193598.92,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Posted',
-        'type': 'ZBA Debits',
-        'amount': -178652.27,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Posted',
-        'type': 'Lockbox Deposits',
-        'amount': 27504.60,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Posted',
-        'type': 'Lockbox Deposits',
-        'amount': 14435.00,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Posted',
-        'type': 'Money Transfer CR - Wire',
-        'amount': 10390.00,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Posted',
-        'type': 'Miscellaneous Credits',
-        'amount': 8460.00,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Posted',
-        'type': 'Miscellaneous Credits',
-        'amount': 1850.00,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Posted',
-        'type': 'ACH Debits',
-        'amount': -1705.35,
-        'date': '07/04/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'ACH Credits',
-        'amount': 100.00,
-        'date': '07/04/2019'
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/14/2019'
       }
     ],
-    'pendingAvailable': 5723938.67,
-    'pendingLedger': 6234930.67,
+    'pendingAvailable': 203193.00,
+    'pendingLedger': 254764.00,
     'pendingTransactions': [
       {
         'account': 'Commercial x9012',
         'status': 'Pending',
+        'type': 'Corporate Cash Sweep Debits',
+        'amount': -375285.00,
+        'date': '07/15/2019'
+      },
+      {
+        'account': 'Commercial x9012',
+        'status': 'Pending',
+        'type': 'Detail Deposits',
+        'amount': 193598.92,
+        'date': '07/15/2019'
+      },
+      {
+        'account': 'Commercial x9012',
+        'status': 'Pending',
+        'type': 'ZBA Debits',
+        'amount': -178652.27,
+        'date': '07/15/2019'
+      },
+      {
+        'account': 'Commercial x9012',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 27504.60,
+        'date': '07/15/2019'
+      },
+      {
+        'account': 'Commercial x9012',
+        'status': 'Pending',
+        'type': 'Lockbox Deposits',
+        'amount': 14435.00,
+        'date': '07/15/2019'
+      },
+      {
+        'account': 'Commercial x9012',
+        'status': 'Pending',
         'type': 'Money Transfer CR - Wire',
-        'amount': 6660995.00,
-        'date': '07/05/2019'
+        'amount': 10390.00,
+        'date': '07/15/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
+        'type': 'Miscellaneous Credits',
+        'amount': 8460.00,
+        'date': '07/15/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
+        'type': 'Miscellaneous Credits',
+        'amount': 1850.00,
+        'date': '07/15/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
+        'type': 'ACH Debits',
+        'amount': -1705.35,
+        'date': '07/15/2019'
       },
       {
         'account': 'Commercial x9012',
         'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/05/2019'
+        'type': 'ACH Credits',
+        'amount': 100.00,
+        'date': '07/15/2019'
       }
     ]
   },
   {
     'name': 'Utilities x7890',
     'tasks': [],
-    'postedAvailable': null,
-    'postedLedger': null,
-    'postedTransactions': [],
-    'pendingAvailable': 498.79,
-    'pendingLedger': 498.79,
-    'pendingTransactions': [
+    'postedAvailable': 498.79,
+    'postedLedger': 498.79,
+    'postedTransactions': [
       {
         'account': 'Utilities x7890',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer CR - Other',
         'amount': 500.00,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Utilities x7890',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer CR - Other',
         'amount': 10.00,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Utilities x7890',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -6.28,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Utilities x7890',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -2.00,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Utilities x7890',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -1.50,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Utilities x7890',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -1.50,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Utilities x7890',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer CR - Other',
         'amount': 1.00,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Utilities x7890',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -1.00,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Utilities x7890',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer CR - Other',
         'amount': 0.10,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       },
       {
         'account': 'Utilities x7890',
-        'status': 'Pending',
+        'status': 'Posted',
         'type': 'Money Transfer DB - Other',
         'amount': -0.03,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       }
-    ]
+    ],
+    'pendingAvailable': null,
+    'pendingLedger': null,
+    'pendingTransactions': []
   },
   {
     'name': 'Checking x1234',
     'tasks': [],
-    'postedAvailable': null,
-    'postedLedger': null,
-    'postedTransactions': [],
-    'pendingAvailable': 10.00,
-    'pendingLedger': 10.00,
-    'pendingTransactions': [
+    'postedAvailable': 10.00,
+    'postedLedger': 10.00,
+    'postedTransactions': [
       {
         'account': 'Checking x1234',
         'status': 'Pending',
         'type': 'Money Transfer CR - Other',
         'amount': 10.00,
-        'date': '07/05/2019'
+        'date': '07/14/2019'
       }
-    ]
+    ],
+    'pendingAvailable': null,
+    'pendingLedger': null,
+    'pendingTransactions': []
   }
 ];
 
