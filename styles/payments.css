@@ -77,15 +77,19 @@ section {
 
 #payment {
   background: #fff;
+  border: 2px solid #00518a;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-  color: #0068ac;
+  color: #00518a;
   font-size: 1em;
   margin: 1.25rem 0 0;
-  padding: .625rem 1rem;
+  padding: .75rem 0;
+  width: 12rem;
 }
 
 #payment:hover {
+  background: #00518a;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,.4);
+  color: #fff;
 }
 
 #payment:active {
@@ -103,7 +107,7 @@ section {
   align-items: center;
   display: flex;
   font-weight: 700;
-  height: 4rem;
+  height: 3rem;
   margin: 0 1.25rem;
 }
 
@@ -122,7 +126,7 @@ section {
 
 /* ----- PAYMENTS HUB TAB ----- */
 
-#table-title {
+#table-name {
   color: #0068ac;
   margin: 0 0 .5rem;
 }
@@ -130,4 +134,146 @@ section {
 #no-payment {
   animation: fade-in 1s;
   padding: 1rem;
+}
+
+/* ----- MODAL ----- */
+
+.modal {
+  align-items: center;
+  background: #0009;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: .2s;
+  visibility: hidden;
+  width: 100%;
+  z-index: 1;
+}
+
+.modal-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: #fff;
+  box-shadow: 0 18px 40px -12px rgba(0,0,0,.35);
+  max-height: 100%;
+  max-width: 100%;
+  overflow: auto;
+  transform: translateY(1rem);
+  transition: .2s;
+  width: 64rem;
+}
+
+.modal-content-visible {
+  transform: translateY(0);
+}
+
+.modal-header {
+  background: #00518a;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+#modal-close-icon {
+  fill: #fff;
+}
+
+#modal-close-icon:hover {
+  opacity: .7;
+}
+
+.modal-body {
+  padding: 2rem 2rem 0;
+}
+
+.modal-row {
+  display: grid;
+  grid: auto-flow / repeat(2, 1fr);
+  grid-gap: 2rem;
+  margin: 0 0 1.25rem;
+}
+
+.modal-row:last-child {
+  margin: 0;
+}
+
+.modal h1,
+.modal h2,
+.modal label {
+  font-weight: 700;
+}
+
+.modal h1 {
+  font-size: 2em;
+}
+
+.modal h2 {
+  color: #0068ac;
+  font-size: 1.5em;
+  margin: 0 0 1.25rem;
+}
+
+.input-field {
+  border-bottom: 1px solid #bbb;
+  display: flex;
+  flex-flow: column;
+}
+
+.input-field label {
+  color: #bbb;
+  font-size: .875em;
+}
+
+.input-field select,
+.input-field input {
+  border: none;
+  color: #585858;
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+.input-field select:focus,
+.input-field input:focus {
+  outline: none;
+}
+
+.input-field input {
+  padding: .625rem 0;
+}
+
+.input-field select {
+  background: none;
+  height: 2.75rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+#submit {
+  background: #0068ac;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+  color: #fff;
+  font-size: 1em;
+  padding: .75rem 0;
+  width: 12rem;
+}
+
+#submit:hover {
+  background: #00518a;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,.4);
+  color: #fff;
+}
+
+#submit:active {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
 }

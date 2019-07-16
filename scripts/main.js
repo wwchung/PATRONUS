@@ -4,7 +4,6 @@ let lastName = 'Caprice';
 let fullNameObj = document.getElementById('full-name');
 fullNameObj.innerHTML = `${firstName} ${lastName}`;
 
-
 // ----- QUICK HELP ----- //
 
 let helpObj = document.getElementById('help');
@@ -29,7 +28,6 @@ helpItemObj.addEventListener('click', function() {
   toggleMenu();
   toggleHelp();
 });
-
 
 // ----- SIDE NAV ----- //
 
@@ -56,6 +54,7 @@ menuObj.addEventListener('click', function() {
   }
 });
 
+// Remove overlay
 sideNavOverlayObj.addEventListener('click', function() {
   toggleMenu();
 });

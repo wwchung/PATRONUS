@@ -72,7 +72,7 @@
       <a class="payments-hub-tab">COMPLETED</a>
       <a class="payments-hub-tab">PENDING APPROVAL</a>
     </div>
-    <h3 id="table-title">SCHEDULED (0)</h3>
+    <h3 id="table-name">SCHEDULED (0)</h3>
     <table>
       <tr>
         <th>NAME</th>
@@ -93,6 +93,70 @@
 <footer>
   <div>Copyright ©2019, The Gringotts Financial Services Group, Inc. All Rights Reserved</div>
 </footer>
+
+<div id="payment-modal" class="modal">
+  <div id="payment-modal-content" class="modal-content">
+    <div class="modal-header">
+      <h1>Make a Payemnt</h1>
+      <svg id="modal-close-icon" class="icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </div>
+    <div class="modal-body">
+      <h2>Payee Details</h2>
+      <div class="modal-row">
+        <div class="input-field">
+          <label>Search existing payees</label>
+          <select>
+            <option>John</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label>Payment type</label>
+          <select>
+            <option>Bill Pay</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <h2>Payment Details</h2>
+      <div class="modal-row">
+        <div class="input-field">
+          <label>From Account</label>
+          <select>
+            <option value="1">Residential x8901</option>
+            <option value="2">Payroll x0123</option>
+            <option value="3">Commercial x9012</option>
+            <option value="4">Utilities x7890</option>
+            <option value="5">Checking x1234</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label>Amount</label>
+          <input id="amount-input">
+        </div>
+      </div>
+      <div class="modal-row">
+        <div class="input-field">
+          <label>Expected arrival date</label>
+          <input id="date-input">
+        </div>
+        <div class="input-field">
+          <label>Memo</label>
+          <input id="memo-input">
+        </div>
+      </div>
+      <div class="modal-row">
+        <div class="input-field">
+          <label>Note to self</label>
+          <input id="note-to-self-input">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="submit">SUBMIT</button>
+    </div>
+  </div>
+</div>
 
 <div id="help"><img id="help-icon" src="images/help.svg"><img id="help-close-icon" class="hidden" src="images/help-close.svg"></div>
 

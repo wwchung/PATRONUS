@@ -1,7 +1,6 @@
 let h1Obj = document.getElementsByTagName('h1')[0];
 h1Obj.innerHTML = `Hi ${firstName}.`;
 
-
 // ----- ACCOUNTS DATA ----- //
 
 let accounts = [
@@ -515,7 +514,6 @@ let accounts = [
   }
 ];
 
-
 // ----- ALL ACCOUNTS DATA ----- //
 
 let tasksAll = [];
@@ -548,7 +546,6 @@ accountAll.pendingTransactions = pendingTransactionsAll;
 
 accounts.unshift(accountAll);
 
-
 // ----- FORMAT AMOUNT ----- //
 
 function formatAmount(amount) {
@@ -559,7 +556,6 @@ function formatAmount(amount) {
   }
 }
 
-
 // ----- GLOBAL VARIABLE ----- //
 
 // Selected account index
@@ -567,7 +563,6 @@ let curr = 0;
 
 // Posted or pending status
 let isPosted = true;
-
 
 // ----- SWITCH ----- //
 
@@ -577,13 +572,12 @@ switchInputObj.addEventListener('change', function() {
   setAccounts();
 });
 
-
 // ----- ACCOUNT LIST ----- //
 
 let accountContainerObj = document.getElementById('account-container');
 
 function setAccounts() {  
-  // Reset account container
+  // Reset account list
   accountContainerObj.innerHTML = '';
   
   // Add account boxes
@@ -624,7 +618,6 @@ function setAccounts() {
   
   setAccount();
 }
-
 
 // ----- ACCOUNT BOX ----- //
 
@@ -691,13 +684,12 @@ function createAddAccountObj() {
   return addAccountObj;
 }
 
-
 // ----- TASK LIST ----- //
 
 let taskContainerObj = document.getElementById('task-container');
 
 function setTasks(tasks) {
-  // Reset tasks
+  // Reset task list
   taskContainerObj.innerHTML = '';
   
   if (tasks.length === 0) {
@@ -711,7 +703,6 @@ function setTasks(tasks) {
     }
   }
 }
-
 
 // ----- TASK ----- //
 
@@ -764,8 +755,7 @@ function createTaskObj(task, num) {
   return taskObj;
 }
 
-
-// ----- ACCOUNT DETAILS ----- //
+// ----- ACCOUNT OVERVIEW ----- //
 
 let leftObj = document.getElementById('left');
 
@@ -777,9 +767,9 @@ let amountInObj = document.getElementById('amount-in');
 let amountOutObj = document.getElementById('amount-out');
 
 function setAccount() {
-  // Account details
+  // Account name for transactions
   accountNameObjs[0].innerHTML = accounts[curr].name;
-  // Account tasks
+  // Account name for tasks
   accountNameObjs[1].innerHTML = accounts[curr].name;
   
   let available = 0;
@@ -835,7 +825,6 @@ function setAccount() {
   setTasks(tasks);
 }
 
-
 // ----- AVAILABLE & LEDGER BALANCES ----- //
 
 let amountAvailableObj = document.getElementById('amount-available');
@@ -871,7 +860,6 @@ function setLedgerBalance(ledger) {
     amountLedgerObj.innerHTML = formatAmount(ledger);
   }
 }
-
 
 // ----- TABLE HEADER ----- //
 
@@ -913,7 +901,6 @@ function createTableHeader() {
   
   return trObj;
 }
-
 
 // ----- TABLE ROW ----- //
 
@@ -966,6 +953,5 @@ function createTrObj(transaction) {
   
   return trObj;
 }
-
 
 setAccounts();
