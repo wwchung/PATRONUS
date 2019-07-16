@@ -166,7 +166,7 @@ button {
   cursor: pointer;
   font-weight: 500;
   padding: 0;
-/*  transition: .2s;*/
+  transition: .2s;
 }
 
 button:focus {
@@ -320,10 +320,6 @@ footer {
 
 #help:hover {
   background: #ee7b1a;
-}
-
-#help:active {
-  background: #ec6c00;
 }
 
 .help-app {
