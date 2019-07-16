@@ -359,7 +359,7 @@ td:nth-child(5) {
   line-height: 1.6;
   margin: 1.25rem 0 0;
   padding: 1.25rem;
-/*  transition: .2s;*/
+  transition: .2s;
 }
 
 .task:hover {

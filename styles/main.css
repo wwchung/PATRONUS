@@ -72,7 +72,7 @@ p {
 a {
   cursor: pointer;
   text-decoration: none;
-/*  transition: .2s;*/
+  transition: .2s;
 }
 
 @keyframes fade-in {
@@ -107,7 +107,7 @@ header {
 
 .icon {
   cursor: pointer;
-/*  transition: .2s;*/
+  transition: .2s;
 }
 
 .hidden {
@@ -313,7 +313,7 @@ footer {
   justify-content: center;
   position: fixed;
   right: 1.25rem;
-/*  transition: .2s;*/
+  transition: .2s;
   width: 3.75rem;
   z-index: 1;
 }
