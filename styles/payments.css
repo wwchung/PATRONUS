@@ -204,12 +204,6 @@ section {
   margin: 0;
 }
 
-.modal h1,
-.modal h2,
-.modal label {
-  font-weight: 700;
-}
-
 .modal h1 {
   font-size: 2em;
 }
@@ -217,6 +211,7 @@ section {
 .modal h2 {
   color: #0068ac;
   font-size: 1.5em;
+  font-weight: 700;
   margin: 0 0 1.25rem;
 }
 
@@ -229,6 +224,7 @@ section {
 .input-field label {
   color: #bbb;
   font-size: .875em;
+  font-weight: 500;
 }
 
 .input-field select,
