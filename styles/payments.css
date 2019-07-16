@@ -174,7 +174,7 @@ section {
   color: #fff;
   display: flex;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1.75rem;
 }
 
 #modal-close-icon {
@@ -186,8 +186,23 @@ section {
 }
 
 .modal-body {
-  padding: 2rem 2rem 0;
+  padding: 1.75rem;
 }
+
+.modal-section {
+  padding: 0 0 1.75em;
+}
+
+.modal-section:last-child {
+  padding: 0;
+}
+
+.modal-section-button {
+  display: flex;
+  justify-content: center;
+}
+
+/* ----- PAYMENT MODAL BODY ----- */
 
 .modal-row {
   display: grid;
@@ -201,7 +216,7 @@ section {
 }
 
 .modal h1 {
-  font-size: 2em;
+  font-size: 1.875em;
 }
 
 .modal h2 {
@@ -212,13 +227,13 @@ section {
 }
 
 .input-field {
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid rgba(0,0,0,.5);
   display: flex;
   flex-flow: column;
 }
 
 .input-field label {
-  color: #bbb;
+  color: rgba(0,0,0,.5);
   font-size: .875em;
   font-weight: 500;
 }
@@ -226,8 +241,8 @@ section {
 .input-field select,
 .input-field input {
   border: none;
-  color: #585858;
-  font-size: 1.25em;
+  font-family: 'PNC Sans', sans-serif;
+  font-size: 1.125em;
   font-weight: 500;
 }
 
@@ -237,18 +252,18 @@ section {
 }
 
 .input-field input {
-  padding: .625rem 0;
+  padding: .375rem 0;
 }
 
 .input-field select {
   background: none;
-  height: 2.75rem;
+  height: 2.25rem;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 
-.modal-footer {
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
+#amount-input {
+  text-align: right;
 }
 
 #submit {
@@ -263,4 +278,20 @@ section {
 #submit:hover {
   background: #00518a;
   color: #fff;
+}
+
+/* ----- CONFIRMATION MODAL BODY ----- */
+
+#confirmation {
+  margin: 0 0 1.25rem;
+}
+
+#confirmation-table th:nth-child(5),
+#confirmation-table td:nth-child(5) {
+  padding: 1rem 4rem 1rem 1rem;
+  text-align: right;
+}
+
+#confirmation-table td {
+  animation: none;
 }
