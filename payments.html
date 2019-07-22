@@ -72,20 +72,8 @@
       <a class="payments-hub-tab">COMPLETED</a>
       <a class="payments-hub-tab">PENDING APPROVAL</a>
     </div>
-    <h3 id="table-name">SCHEDULED (0)</h3>
-    <table>
-      <tr>
-        <th>NAME</th>
-        <th>DATE</th>
-        <th>ACCOUNT</th>
-        <th>TRACE ID</th>
-        <th>TYPE</th>
-        <th>STATUS</th>
-        <th>FREQUENCY</th>
-        <th>AMOUNT</th>
-        <th>ACTIONS</th>
-      </tr>
-    </table>
+    <h3 id="payments-table-name">SCHEDULED (0)</h3>
+    <table id="payments-table"></table>
     <div id="no-payment">You currently have no scheduled payments.</div>
   </section>
 </main>
@@ -94,13 +82,15 @@
   <div>Copyright ©2019, The Gringotts Financial Services Group, Inc. All Rights Reserved</div>
 </footer>
 
-<div id="payment-modal" class="modal">
-  <div id="payment-modal-content" class="modal-content">
+<div class="modal-overlay"></div>
+
+<div class="modal">
+  <div class="modal-content">
     <div class="modal-header">
       <h1>Make a Payment</h1>
-      <svg id="modal-close-icon" class="icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      <svg class="icon modal-close-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
     </div>
-    <div id="payment-modal-body" class="modal-body">
+    <div class="modal-body">
       <div class="modal-section">
         <h2>Payee Details</h2>
         <div class="modal-row">
@@ -153,21 +143,22 @@
           </div>
         </div>
       </div>
-      <div class="modal-section modal-section-button">
+      <div class="modal-section">
         <button id="submit">SUBMIT</button>
       </div>
     </div>
-    <div id="confirmation-modal-body" class="modal-body hidden">
+  </div>
+</div>
+
+<div class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1>Make a Payment</h1>
+      <svg class="icon modal-close-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </div>
+    <div class="modal-body">
       <p id="confirmation">1 payment for a total of <b id="confirmation-amount"></b> was submitted for approval.</p>
-      <table id="confirmation-table">
-        <tr>
-          <th>NAME</th>
-          <th>DATE</th>
-          <th>ACCOUNT</th>
-          <th>TYPE</th>
-          <th>AMOUNT</th>
-        </tr>
-      </table>
+      <table id="confirmation-table"></table>
     </div>
   </div>
 </div>

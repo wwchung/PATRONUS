@@ -1,519 +1,6 @@
 let h1Obj = document.getElementsByTagName('h1')[0];
 h1Obj.innerHTML = `Hi ${firstName}.`;
 
-// ----- ACCOUNTS DATA ----- //
-
-let accounts = [
-  {
-    'name': 'Residential x8901',
-    'tasks': [],
-    'postedAvailable': -493.54,
-    'postedLedger': -493.54,
-    'postedTransactions': [
-      {
-        'account': 'Residential x8901',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -500.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Residential x8901',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Other',
-        'amount': 6.28,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Residential x8901',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Other',
-        'amount': 1.50,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Residential x8901',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -1.25,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Residential x8901',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Other',
-        'amount': 1.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Residential x8901',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -1.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Residential x8901',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -0.10,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Residential x8901',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Other',
-        'amount': 0.03,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Residential x8901',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Other',
-        'amount': 0.02,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Residential x8901',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -0.02,
-        'date': '07/14/2019'
-      }
-    ],
-    'pendingAvailable': 0.00,
-    'pendingLedger': 0.00,
-    'pendingTransactions': []
-  },
-  {
-    'name': 'Payroll x0123',
-    'tasks': [
-      {
-        'name': 'Make a payment to John',
-        'details': 'XYZ Company ∙ $5,000',
-        'due': '07/01/2019 ∙ 2:00pm',
-        'recurring': true,
-        'tag': 'alert'
-      },
-      {
-        'name': 'ACH Transfer to XYZ',
-        'details': 'XYZ Company ∙ $1,250',
-        'due': '07/07/2019',
-        'recurring': true,
-        'tag': 'attention'
-      }
-    ],
-    'postedAvailable': 5714448.67,
-    'postedLedger': 6235440.67,
-    'postedTransactions': [
-      
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Wire',
-        'amount': 6660995.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      }
-    ],
-    'pendingAvailable': 203193.00,
-    'pendingLedger': 254764.00,
-    'pendingTransactions': [
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Detail Deposits',
-        'amount': 193598.92,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'ZBA Debits',
-        'amount': -178652.27,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Lockbox Deposits',
-        'amount': 27504.60,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Lockbox Deposits',
-        'amount': 14435.00,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Money Transfer CR - Wire',
-        'amount': 10390.00,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Miscellaneous Credits',
-        'amount': 8460.00,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'Miscellaneous Credits',
-        'amount': 1850.00,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'ACH Debits',
-        'amount': -1705.35,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Payroll x0123',
-        'status': 'Pending',
-        'type': 'ACH Credits',
-        'amount': 100.00,
-        'date': '07/15/2019'
-      }
-    ]
-  },
-  {
-    'name': 'Commercial x9012',
-    'tasks': [
-      {
-        'name': 'Assign user X to team Y',
-        'details': '',
-        'due': '07/09/2019',
-        'recurring': false,
-        'tag': 'company'
-      }
-    ],
-    'postedAvailable': 5723938.67,
-    'postedLedger': 6234930.67,
-    'postedTransactions': [
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Wire',
-        'amount': 6660995.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Posted',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/14/2019'
-      }
-    ],
-    'pendingAvailable': 203193.00,
-    'pendingLedger': 254764.00,
-    'pendingTransactions': [
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Corporate Cash Sweep Debits',
-        'amount': -375285.00,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Detail Deposits',
-        'amount': 193598.92,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'ZBA Debits',
-        'amount': -178652.27,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Lockbox Deposits',
-        'amount': 27504.60,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Lockbox Deposits',
-        'amount': 14435.00,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Money Transfer CR - Wire',
-        'amount': 10390.00,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Miscellaneous Credits',
-        'amount': 8460.00,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'Miscellaneous Credits',
-        'amount': 1850.00,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'ACH Debits',
-        'amount': -1705.35,
-        'date': '07/15/2019'
-      },
-      {
-        'account': 'Commercial x9012',
-        'status': 'Pending',
-        'type': 'ACH Credits',
-        'amount': 100.00,
-        'date': '07/15/2019'
-      }
-    ]
-  },
-  {
-    'name': 'Utilities x7890',
-    'tasks': [],
-    'postedAvailable': 498.79,
-    'postedLedger': 498.79,
-    'postedTransactions': [
-      {
-        'account': 'Utilities x7890',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Other',
-        'amount': 500.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Utilities x7890',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Other',
-        'amount': 10.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Utilities x7890',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -6.28,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Utilities x7890',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -2.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Utilities x7890',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -1.50,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Utilities x7890',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -1.50,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Utilities x7890',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Other',
-        'amount': 1.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Utilities x7890',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -1.00,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Utilities x7890',
-        'status': 'Posted',
-        'type': 'Money Transfer CR - Other',
-        'amount': 0.10,
-        'date': '07/14/2019'
-      },
-      {
-        'account': 'Utilities x7890',
-        'status': 'Posted',
-        'type': 'Money Transfer DB - Other',
-        'amount': -0.03,
-        'date': '07/14/2019'
-      }
-    ],
-    'pendingAvailable': null,
-    'pendingLedger': null,
-    'pendingTransactions': []
-  },
-  {
-    'name': 'Checking x1234',
-    'tasks': [],
-    'postedAvailable': 10.00,
-    'postedLedger': 10.00,
-    'postedTransactions': [
-      {
-        'account': 'Checking x1234',
-        'status': 'Pending',
-        'type': 'Money Transfer CR - Other',
-        'amount': 10.00,
-        'date': '07/14/2019'
-      }
-    ],
-    'pendingAvailable': null,
-    'pendingLedger': null,
-    'pendingTransactions': []
-  }
-];
-
 // ----- ALL ACCOUNTS DATA ----- //
 
 let tasksAll = [];
@@ -669,7 +156,7 @@ function createAccountNameObj(account) {
 
 function createAddAccountObj() {
   let addAccountIconObj = document.createElement('img');
-  addAccountIconObj.id = 'add-icon';
+  addAccountIconObj.id = 'account-add-icon';
   addAccountIconObj.className = 'icon';
   addAccountIconObj.src = 'images/add.svg';
   
@@ -677,6 +164,7 @@ function createAddAccountObj() {
   addAccountNameObj.innerHTML = 'Add Account or Group';
 
   let addAccountObj = document.createElement('div');
+  addAccountObj.id = 'account-add';
   addAccountObj.className = 'account';
   addAccountObj.appendChild(addAccountIconObj);
   addAccountObj.appendChild(addAccountNameObj);
@@ -726,31 +214,38 @@ function createTaskObj(task, num) {
   let taskObj = document.createElement('div');
   taskObj.className = 'task';
   
-  switch (task.tag) {
-    case 'complete':
-      taskObj.classList.add('tag-complete');
-      break;
-    case 'attention':
-      taskObj.classList.add('tag-attention');
-      break;
-    case 'alert':
-      taskObj.classList.add('tag-alert');
-      break;
-    case 'links':
-      taskObj.classList.add('tag-links');
-      break;
-    case 'locked':
-      taskObj.classList.add('tag-locked');
-      break;
-    case 'company':
-      taskObj.classList.add('tag-company');
-      break;
-  }
+//  switch (task.tag) {
+//    case 'complete':
+//      taskObj.classList.add('tag-complete');
+//      break;
+//    case 'attention':
+//      taskObj.classList.add('tag-attention');
+//      break;
+//    case 'alert':
+//      taskObj.classList.add('tag-alert');
+//      break;
+//    case 'links':
+//      taskObj.classList.add('tag-links');
+//      break;
+//    case 'locked':
+//      taskObj.classList.add('tag-locked');
+//      break;
+//    case 'company':
+//      taskObj.classList.add('tag-company');
+//      break;
+//  }
+  
+  let repeatObj = document.createElement('img');
+  repeatObj.className = 'repeat';
+  repeatObj.src = 'images/repeat.svg';
 
   taskObj.appendChild(numObj);
   taskObj.appendChild(nameObj);
   taskObj.appendChild(detailsObj);
   taskObj.appendChild(dueObj);
+  if(task.recurring) {
+    taskObj.appendChild(repeatObj);
+  }
   
   return taskObj;
 }
@@ -955,3 +450,76 @@ function createTrObj(transaction) {
 }
 
 setAccounts();
+
+// ----- TASK MANAGER ----- //
+
+let manageTasksObj = document.getElementById('manage-tasks');
+manageTasksObj.addEventListener('click', function() {
+  openTaskManagerModal();
+});
+
+let modalOverlayObj = document.getElementsByClassName('modal-overlay')[0];
+let taskManagerModalObj = document.getElementsByClassName('modal')[0];
+
+function openTaskManagerModal() {
+  modalOverlayObj.classList.add('modal-overlay-visible');
+  taskManagerModalObj.classList.add('modal-visible');
+  loadTasks(accounts[curr]);
+}
+
+function closeTaskManagerModal() {
+  taskManagerModalObj.classList.remove('modal-visible');
+  modalOverlayObj.classList.remove('modal-overlay-visible');
+  saveTasks();
+}
+
+let taskManagerModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[0];
+taskManagerModalCloseIconObj.addEventListener('click', function() {
+  closeTaskManagerModal();
+});
+
+let taskManagerHeaderObj = document.getElementById('task-manager-header');
+let currentTasksObj = document.getElementById('current-tasks');
+let suggestedTasksObj = document.getElementById('suggested-tasks');
+
+function createNewTaskObj() {
+  let newTaskIconObj = document.createElement('img');
+  newTaskIconObj.id = 'task-add-icon';
+  newTaskIconObj.className = 'icon';
+  newTaskIconObj.src = 'images/add.svg';
+  
+  let newTaskNameObj = document.createElement('h5');
+  newTaskNameObj.innerHTML = 'Create New Task';
+
+  let newTaskObj = document.createElement('div');
+  newTaskObj.id = 'task-add';
+  newTaskObj.className = 'task';
+  newTaskObj.appendChild(newTaskIconObj);
+  newTaskObj.appendChild(newTaskNameObj);
+  
+  return newTaskObj;
+}
+
+function loadTasks(account) {
+  taskManagerHeaderObj.innerHTML = `Task Manager - ${account.name}`;
+  
+  // Reset current tasks
+  currentTasksObj.innerHTML = '';
+  
+  for (let i = 0; i < account.tasks.length; i++) {
+    currentTasksObj.appendChild(createTaskObj(account.tasks[i], i));
+  }
+  
+  currentTasksObj.appendChild(createNewTaskObj());
+  
+  // Reset suggested tasks
+  suggestedTasksObj.innerHTML = '';
+  
+  for (let i = 0; i < account.tasks.length; i++) {
+    suggestedTasksObj.appendChild(createTaskObj(account.suggestedTasks[i], i));
+  }
+}
+
+function saveTasks() {
+  
+}

@@ -1,26 +1,89 @@
-// ----- PAYMENT MODAL ----- //
+// ----- PAYMENTS HUB TAB ----- //
 
-let paymentModalObj = document.getElementById('payment-modal');
-let paymentModalContentObj = document.getElementById('payment-modal-content');
+let currHubTab = 0;
 
-function openPaymentModal() {
-  paymentModalObj.classList.add('modal-visible');
-  paymentModalContentObj.classList.add('modal-content-visible');
+let paymentsHubTabObjs = document.getElementsByClassName('payments-hub-tab');
+for (let i = 0; i < paymentsHubTabObjs.length; i++) {
+  paymentsHubTabObjs[i].addEventListener('click', function() {
+    setPaymentsHubTab(i);
+  });
 }
 
-function closePaymentModal() {
-  paymentModalObj.classList.remove('modal-visible');
-  paymentModalContentObj.classList.remove('modal-content-visible');
+function setPaymentsHubTab(i) {
+  paymentsHubTabObjs[currHubTab].classList.remove('payments-hub-tab-selected');
+  paymentsHubTabObjs[i].classList.add('payments-hub-tab-selected');
+  createPaymentsTable(paymentsHubTabObjs[i].innerHTML);
+  currHubTab = i;
+}
+
+// ----- PAYMENTS TABLE ----- //
+
+let paymentsTableNameObj = document.getElementById('payments-table-name');
+let paymentsTableObj = document.getElementById('payments-table');
+let noPaymentObj = document.getElementById('no-payment');
+
+function createPaymentsTableHeader() {
+  // NAME
+  let thNameObj = document.createElement('th');
+  thNameObj.innerHTML = 'NAME';
   
-  setTimeout(resetPaymentModal, 200);
+  // DATE
+  let thDateObj = document.createElement('th');
+  thDateObj.innerHTML = 'DATE';
+
+  // ACCOUNT
+  let thAccountObj = document.createElement('th');
+  thAccountObj.innerHTML = 'ACCOUNT';
+  
+  // TRACE ID
+  let thTraceIdObj = document.createElement('th');
+  thTraceIdObj.innerHTML = 'TRACE ID';
+  
+  // TYPE
+  let thTypeObj = document.createElement('th');
+  thTypeObj.innerHTML = 'TYPE';
+  
+  // STATUS
+  let thStatusObj = document.createElement('th');
+  thStatusObj.innerHTML = 'STATUS';
+  
+  // FREQUENCY
+  let thFrequencyObj = document.createElement('th');
+  thFrequencyObj.innerHTML = 'FREQUENCY';
+  
+  // AMOUNT
+  let thAmountObj = document.createElement('th');
+  thAmountObj.innerHTML = 'AMOUNT';
+  
+  // ACTIONS
+  let thActionsObj = document.createElement('th');
+  thActionsObj.innerHTML = 'ACTIONS';
+  
+  let trObj = document.createElement('tr');
+  trObj.appendChild(thNameObj);
+  trObj.appendChild(thDateObj);
+  trObj.appendChild(thAccountObj);
+  trObj.appendChild(thTraceIdObj);
+  trObj.appendChild(thTypeObj);
+  trObj.appendChild(thStatusObj);
+  trObj.appendChild(thFrequencyObj);
+  trObj.appendChild(thAmountObj);
+  trObj.appendChild(thActionsObj);
+  
+  return trObj;
 }
 
-function resetPaymentModal() {
-  paymentModalBodyObj.classList.remove('hidden');
-  confirmationModalBodyObj.classList.add('hidden');
+function createPaymentsTable(paymentsTableName) {
+  paymentsTableNameObj.innerHTML = `${paymentsTableName} (0)`;
   
-  resetPaymentInfo();
+  // Reset table
+  paymentsTableObj.innerHTML = '';
+  paymentsTableObj.appendChild(createPaymentsTableHeader());
+  
+  noPaymentObj.innerHTML = `You currently have no ${paymentsTableName.toLowerCase()} payments.`;
 }
+
+setPaymentsHubTab(currHubTab);
 
 // ----- MAKE A PAYMENT ----- //
 
@@ -29,16 +92,27 @@ paymentObj.addEventListener('click', function() {
   openPaymentModal();
 });
 
-// ----- MODAL CLOSE ICON ----- //
+// ----- PAYMENT MODAL ----- //
 
-let modalCloseIconObj = document.getElementById('modal-close-icon');
-modalCloseIconObj.addEventListener('click', function() {
+let modalOverlayObj = document.getElementsByClassName('modal-overlay')[0];
+let paymentModalObj = document.getElementsByClassName('modal')[0];
+
+function openPaymentModal() {
+  modalOverlayObj.classList.add('modal-overlay-visible');
+  paymentModalObj.classList.add('modal-visible');
+}
+
+function closePaymentModal() {
+  paymentModalObj.classList.remove('modal-visible');
+  modalOverlayObj.classList.remove('modal-overlay-visible');
+}
+
+let paymentModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[0];
+paymentModalCloseIconObj.addEventListener('click', function() {
   closePaymentModal();
 });
 
-// ----- PAYMENT MODAL BODY ----- //
-
-let paymentModalBodyObj = document.getElementById('payment-modal-body');
+let paymentModalBodyObj = document.getElementsByClassName('modal-body')[0];
 
 let payeeInput = document.getElementById('payee-input');
 let typeInput = document.getElementById('type-input');
@@ -75,26 +149,40 @@ function resetPaymentInfo() {
   noteToSelfInput.value = '';
 }
 
-function showConfirmation() {
-  paymentModalBodyObj.classList.add('hidden');
-  confirmationModalBodyObj.classList.remove('hidden');
-  confirmationAmountObj.innerHTML = amount;
-  setTable();
-}
-
 let submitObj = document.getElementById('submit');
 
 submitObj.addEventListener('click', function() {
-  getPaymentInfo();
-  showConfirmation();
+  submit();
 });
 
-// ----- CONFIRMATION MODAL BODY ----- //
+function submit() {
+  getPaymentInfo();
+  paymentModalObj.classList.remove('modal-visible');
+  setTimeout(openConfirmationModal, 100);
+}
 
-let confirmationModalBodyObj = document.getElementById('confirmation-modal-body');
+// ----- CONFIRMATION MODAL ----- //
+
+let confirmationModalObj = document.getElementsByClassName('modal')[1];
 let confirmationAmountObj = document.getElementById('confirmation-amount');
 
-function createTableHeader() {
+function openConfirmationModal() {
+  confirmationModalObj.classList.add('modal-visible');
+  confirmationAmountObj.innerHTML = amount;
+  setConfirmationTable();
+}
+
+function closeConfirmationModal() {
+  confirmationModalObj.classList.remove('modal-visible');
+  modalOverlayObj.classList.remove('modal-overlay-visible');
+}
+
+let confirmationModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[1];
+confirmationModalCloseIconObj.addEventListener('click', function() {
+  closeConfirmationModal();
+});
+
+function createConfirmationTableHeader() {
   // NAME
   let thNameObj = document.createElement('th');
   thNameObj.innerHTML = 'NAME';
@@ -125,12 +213,12 @@ function createTableHeader() {
   return trObj;
 }
 
-let tableObj = document.getElementById('confirmation-table');
+let confirmationTableObj = document.getElementById('confirmation-table');
 
-function setTable() {
+function setConfirmationTable() {
   // Reset table
-  tableObj.innerHTML = '';
-  tableObj.appendChild(createTableHeader());
+  confirmationTableObj.innerHTML = '';
+  confirmationTableObj.appendChild(createConfirmationTableHeader());
   
   // NAME
   let tdNameObj = document.createElement('td');
@@ -159,5 +247,5 @@ function setTable() {
   trObj.appendChild(tdTypeObj);
   trObj.appendChild(tdAmountObj);
   
-  tableObj.appendChild(trObj);
+  confirmationTableObj.appendChild(trObj);
 }
