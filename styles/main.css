@@ -449,17 +449,18 @@ footer {
   background: #ec6c00;
   display: flex;
   justify-content: space-between;
-  padding: 1.25rem;
 }
 
 #help-app-header h1 {
   color: #fff;
   font-size: 1.5em;
   font-weight: 500;
+  padding: 1.25rem;
 }
 
 #help-app-drag {
   cursor: grab;
+  padding: 1.25rem;
 }
 
 #help-app-drag:active {
