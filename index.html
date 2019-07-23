@@ -118,11 +118,26 @@
 
 <div class="help-app">
   <div id="help-app-header">
-    <h1>Quick Help</h1>
+    <h1>WELCOME, SAM.</h1>
+    <p>PINACLE's Quick Help is available on every screen of the platform to provide you with contextually relevant support. Click through cards for more information, or type into the search bar below to find what you need.</p>
     <img id="help-app-drag" draggable="false" src="images/drag.svg">
   </div>
-  <div id="help-app-body"></div>
-  <div id="help-app-search"></div>
+  <div id="help-app-tabs">
+    <span class="help-app-tab">FAQs</span>
+    <span class="help-app-tab help-app-tab-selected">WHAT'S ON THIS PAGE</span>
+    <span class="help-app-tab">DISCOVER</span>
+  </div>
+  <div id="help-app-body">
+    <div class="help-app-card">
+      <h2>Account Cards</h2>
+      <p>The account tiles display the available balance for each of your corresponding accounts. Click on one to view data about that account, or click on "All Accounts" to view aggregate information.</p>
+    </div>
+    <div class="help-app-card">
+      <h2>Tasks</h2>
+      <p>Create, manage, and complete your tasks in the task manager on the homepage. The system will also suggest tasks to you based on your PINACLE user over time. Click on a task to complete it, or click on "Manage Tasks" to create or delete tasks.</p>
+    </div>
+  </div>
+  <div id="help-app-search"><img id="search-icon" src="images/search.svg">What would you like to search for?</div>
 </div>
 
 <!-- Warning! Do not open! (But I know you will) It's a Pandora's box full of code. Will update to React if I have time -->

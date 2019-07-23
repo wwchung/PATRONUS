@@ -4,6 +4,7 @@ h1Obj.innerHTML = `Hi ${firstName}.`;
 // ----- ALL ACCOUNTS DATA ----- //
 
 let tasksAll = [];
+let suggestedTasksAll = [];
 let postedAvailableAll = 0;
 let postedLedgerAll = 0;
 let postedTransactionsAll = [];
@@ -13,6 +14,7 @@ let pendingTransactionsAll = [];
 
 accounts.forEach((account) => {
   tasksAll = tasksAll.concat(account.tasks);
+  suggestedTasksAll = suggestedTasksAll.concat(account.suggestedTasks);
   postedAvailableAll += account.postedAvailable;
   postedLedgerAll += account.postedLedger;
   postedTransactionsAll = postedTransactionsAll.concat(account.postedTransactions);
@@ -24,6 +26,7 @@ accounts.forEach((account) => {
 let accountAll = {};
 accountAll.name = 'ALL ACCOUNTS';
 accountAll.tasks = tasksAll;
+accountAll.suggestedTasks = suggestedTasksAll;
 accountAll.postedAvailable = postedAvailableAll;
 accountAll.postedLedger = postedLedgerAll;
 accountAll.postedTransactions = postedTransactionsAll;
@@ -197,7 +200,11 @@ function setTasks(tasks) {
 function createTaskObj(task, num) {
   let numObj = document.createElement('h4');
   numObj.className = 'task-num';
-  numObj.innerHTML = `TASK ${num + 1}`;
+  if (curr === 0) {
+    numObj.innerHTML = `TASK ${num + 1} - <span class="task-account">${task.account}</span>`;
+  } else {
+    numObj.innerHTML = `TASK ${num + 1}`;
+  }
 
   let nameObj = document.createElement('h3');
   nameObj.className = 'task-name';
@@ -483,19 +490,40 @@ let currentTasksObj = document.getElementById('current-tasks');
 let suggestedTasksObj = document.getElementById('suggested-tasks');
 
 function createNewTaskObj() {
-  let newTaskIconObj = document.createElement('img');
-  newTaskIconObj.id = 'task-add-icon';
-  newTaskIconObj.className = 'icon';
-  newTaskIconObj.src = 'images/add.svg';
+  let iconObj = document.createElement('img');
+  iconObj.id = 'task-add-icon';
+  iconObj.className = 'icon';
+  iconObj.src = 'images/add.svg';
   
-  let newTaskNameObj = document.createElement('h5');
-  newTaskNameObj.innerHTML = 'Create New Task';
+  let dropdownButtonObj = document.createElement('h5');
+  dropdownButtonObj.className = 'dropbtn';
+  dropdownButtonObj.innerHTML = 'CREATE NEW TASK';
+  
+  let payObj = document.createElement('a');
+  payObj.innerHTML = 'MAKE PAYMENT';
+  
+  let approveObj = document.createElement('a');
+  approveObj.innerHTML = 'APPROVE PAYMENT';
+  
+  let assignObj = document.createElement('a');
+  assignObj.innerHTML = 'ASSIGN TEAM';
+    
+  let dropdownContentObj = document.createElement('div');
+  dropdownContentObj.className = 'dropdown-content';
+  dropdownContentObj.appendChild(payObj);
+  dropdownContentObj.appendChild(approveObj);
+  dropdownContentObj.appendChild(assignObj);
+  
+  let dropdownObj = document.createElement('div');
+  dropdownObj.className = 'dropdown';
+  dropdownObj.appendChild(dropdownButtonObj);
+  dropdownObj.appendChild(dropdownContentObj);
 
   let newTaskObj = document.createElement('div');
   newTaskObj.id = 'task-add';
   newTaskObj.className = 'task';
-  newTaskObj.appendChild(newTaskIconObj);
-  newTaskObj.appendChild(newTaskNameObj);
+  newTaskObj.appendChild(iconObj);
+  newTaskObj.appendChild(dropdownObj);
   
   return newTaskObj;
 }
@@ -505,7 +533,7 @@ function loadTasks(account) {
   
   // Reset current tasks
   currentTasksObj.innerHTML = '';
-  
+    
   for (let i = 0; i < account.tasks.length; i++) {
     currentTasksObj.appendChild(createTaskObj(account.tasks[i], i));
   }
@@ -514,8 +542,8 @@ function loadTasks(account) {
   
   // Reset suggested tasks
   suggestedTasksObj.innerHTML = '';
-  
-  for (let i = 0; i < account.tasks.length; i++) {
+    
+  for (let i = 0; i < account.suggestedTasks.length; i++) {
     suggestedTasksObj.appendChild(createTaskObj(account.suggestedTasks[i], i));
   }
 }

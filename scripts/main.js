@@ -184,18 +184,21 @@ let accountsData = [
     'name': 'Payroll x0123',
     'tasks': [
       {
+        'account': 'Payroll x0123',
         'name': 'ACH payment to ABC',
         'details': 'ABC Company ∙ $10,000 ∙ ACH',
         'due': '07/29/2019',
         'recurring': false
       },
       {
+        'account': 'Payroll x0123',
         'name': 'Approve account transfers',
         'details': '3 Pending Transfers',
         'due': '07/29/2019 12:00 PM',
         'recurring': true
       },
       {
+        'account': 'Payroll x0123',
         'name': 'Approve payments',
         'details': '4 Pending Payments',
         'due': '07/29/2019 12:00 PM',
@@ -204,12 +207,14 @@ let accountsData = [
     ],
     'suggestedTasks': [
       {
+        'account': 'Payroll x0123',
         'name': 'ACH payment to XYZ',
         'details': 'ABC Company ∙ $10,000',
         'due': '07/30/2019',
         'recurring': true
       },
       {
+        'account': 'Payroll x0123',
         'name': 'ACH payment to John',
         'details': 'XYZ Company ∙ $1,250',
         'due': '07/30/2019',
@@ -370,6 +375,7 @@ let accountsData = [
     'name': 'Commercial x9012',
     'tasks': [
       {
+        'account': 'Commercial x9012',
         'name': 'Assign user X to team Y',
         'details': '',
         'due': '07/09/2019',

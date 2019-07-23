@@ -88,7 +88,7 @@ section {
 
 #payment:hover {
   background: #215586;
-  border: 2px solid #215586;
+  border: 2px solid #01549b;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
   color: #fff;
 }
@@ -204,7 +204,7 @@ section {
 }
 
 #submit:hover {
-  background: #00518a;
+  background: #215586;
   box-shadow: 0 4px 8px 0 rgba(0,81,138,.2);
   color: #fff;
 }
