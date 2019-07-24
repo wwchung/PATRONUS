@@ -143,6 +143,16 @@ section {
 
 /* ----- PAYMENT MODAL BODY ----- */
 
+.modal-section {
+  padding: 0 0 1.75em;
+}
+
+.modal-section:last-child {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
 .modal-row {
   display: grid;
   grid: auto-flow / repeat(2, 1fr);

@@ -15,7 +15,7 @@ let helpAppDragObj = document.getElementById('help-app-drag');
 function toggleHelp() {
   helpIconObj.classList.toggle('hidden');
   helpCloseIconObj.classList.toggle('hidden');
-  helpAppObj.classList.toggle('help-app-visible');
+  helpAppObj.classList.toggle('invisible-slide-down');
   setTimeout(resetDragHelp, 200);
 }
 
@@ -76,8 +76,8 @@ let sideNavOverlayObj = document.getElementsByClassName('side-nav-overlay')[0];
 function toggleMenu() {
   menuIconObj.classList.toggle('hidden');
   menuCloseIconObj.classList.toggle('hidden');
-  sideNavObj.classList.toggle('side-nav-visible');
-  sideNavOverlayObj.classList.toggle('side-nav-overlay-visible');
+  sideNavObj.classList.toggle('slide-left');
+  sideNavOverlayObj.classList.toggle('invisible');
 }
 
 // Menu button
@@ -85,7 +85,7 @@ menuObj.addEventListener('click', function() {
   toggleMenu();
   
   // Close help
-  if (helpAppObj.classList.contains('help-app-visible')) {
+  if (helpAppObj.classList.contains('visible')) {
     toggleHelp();
   }
 });

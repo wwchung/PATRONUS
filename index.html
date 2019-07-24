@@ -24,9 +24,9 @@
   </div>
 </header>
 
-<div class="side-nav-overlay"></div>
+<div class="side-nav-overlay invisible"></div>
 
-<nav class="side-nav">
+<nav class="side-nav slide-left">
   <div id="big-nav">
     <a class="big-nav-item" href=".">Home</a>
     <a class="big-nav-item">Accounts</a>
@@ -97,9 +97,9 @@
   <div>Copyright ©2019, The Gringotts Financial Services Group, Inc. All Rights Reserved | <a id="terms">Treasury Management Services Terms & Conditions</a></div>
 </footer>
 
-<div class="modal-overlay"></div>
+<div class="modal-overlay invisible"></div>
 
-<div class="modal">
+<div class="modal invisible-slide-down">
   <div class="modal-content task-manager-modal-content">
     <div class="modal-header">
       <h1 id="task-manager-header"></h1>
@@ -116,11 +116,11 @@
 
 <div id="help"><img id="help-icon" src="images/help.svg"><img id="help-close-icon" class="hidden" src="images/help-close.svg"></div>
 
-<div class="help-app">
+<div class="help-app invisible-slide-down">
   <div id="help-app-header">
     <h1>WELCOME, SAM.</h1>
     <p>PINACLE's Quick Help is available on every screen of the platform to provide you with contextually relevant support. Click through cards for more information, or type into the search bar below to find what you need.</p>
-    <img id="help-app-drag" draggable="false" src="images/drag.svg">
+    <img id="help-app-drag" src="images/drag.svg" draggable="false">
   </div>
   <div id="help-app-tabs">
     <span class="help-app-tab">FAQs</span>
@@ -128,16 +128,19 @@
     <span class="help-app-tab">DISCOVER</span>
   </div>
   <div id="help-app-body">
-    <div class="help-app-card">
+    <div id="account-help-card" class="help-card">
       <h2>Account Cards</h2>
       <p>The account tiles display the available balance for each of your corresponding accounts. Click on one to view data about that account, or click on "All Accounts" to view aggregate information.</p>
     </div>
-    <div class="help-app-card">
+    <div id="task-help-card" class="help-card">
       <h2>Tasks</h2>
       <p>Create, manage, and complete your tasks in the task manager on the homepage. The system will also suggest tasks to you based on your PINACLE user over time. Click on a task to complete it, or click on "Manage Tasks" to create or delete tasks.</p>
     </div>
   </div>
-  <div id="help-app-search"><img id="search-icon" src="images/search.svg">What would you like to search for?</div>
+  <div id="help-app-search">
+    <img id="search-icon" src="images/search.svg">
+    <input id="search-input" type="text" placeholder="What would you like to search for?">
+  </div>
 </div>
 
 <!-- Warning! Do not open! (But I know you will) It's a Pandora's box full of code. Will update to React if I have time -->

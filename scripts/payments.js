@@ -98,13 +98,13 @@ let modalOverlayObj = document.getElementsByClassName('modal-overlay')[0];
 let paymentModalObj = document.getElementsByClassName('modal')[0];
 
 function openPaymentModal() {
-  modalOverlayObj.classList.add('modal-overlay-visible');
-  paymentModalObj.classList.add('modal-visible');
+  modalOverlayObj.classList.remove('invisible');
+  paymentModalObj.classList.remove('invisible-slide-down');
 }
 
 function closePaymentModal() {
-  paymentModalObj.classList.remove('modal-visible');
-  modalOverlayObj.classList.remove('modal-overlay-visible');
+  paymentModalObj.classList.add('invisible-slide-down');
+  modalOverlayObj.classList.add('invisible');
 }
 
 let paymentModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[0];
@@ -157,7 +157,7 @@ submitObj.addEventListener('click', function() {
 
 function submit() {
   getPaymentInfo();
-  paymentModalObj.classList.remove('modal-visible');
+  paymentModalObj.classList.add('invisible-slide-down');
   setTimeout(openConfirmationModal, 100);
 }
 
@@ -167,14 +167,14 @@ let confirmationModalObj = document.getElementsByClassName('modal')[1];
 let confirmationAmountObj = document.getElementById('confirmation-amount');
 
 function openConfirmationModal() {
-  confirmationModalObj.classList.add('modal-visible');
+  confirmationModalObj.classList.remove('invisible-slide-down');
   confirmationAmountObj.innerHTML = amount;
   setConfirmationTable();
 }
 
 function closeConfirmationModal() {
-  confirmationModalObj.classList.remove('modal-visible');
-  modalOverlayObj.classList.remove('modal-overlay-visible');
+  confirmationModalObj.classList.add('invisible-slide-down');
+  modalOverlayObj.classList.add('invisible');
 }
 
 let confirmationModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[1];

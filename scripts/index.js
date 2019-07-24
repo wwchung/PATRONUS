@@ -76,9 +76,6 @@ function setAccounts() {
     accountContainerObj.appendChild(accountObj);
   }
   
-  // Add Add Account or Group box
-  accountContainerObj.appendChild(createAddAccountObj());
-  
   let accountObjs = document.getElementsByClassName('account');
   
   // Add border to current account box
@@ -87,8 +84,8 @@ function setAccounts() {
     accountObjs[curr].classList.add('account-all-selected');
   }
   
-  // Add event listeners except Add Account or Group box
-  for (let i = 0; i < accountObjs.length - 1; i++) {
+  // Add event listeners
+  for (let i = 0; i < accountObjs.length; i++) {
     accountObjs[i].addEventListener('click', function() {
       // Remove border from current account box
       accountObjs[curr].classList.remove('account-selected');
@@ -105,6 +102,9 @@ function setAccounts() {
       setAccount();
     });
   }
+  
+  // Add Add Account or Group box
+  accountContainerObj.appendChild(createAddAccountObj());
   
   setAccount();
 }
@@ -175,98 +175,15 @@ function createAddAccountObj() {
   return addAccountObj;
 }
 
-// ----- TASK LIST ----- //
-
-let taskContainerObj = document.getElementById('task-container');
-
-function setTasks(tasks) {
-  // Reset task list
-  taskContainerObj.innerHTML = '';
-  
-  if (tasks.length === 0) {
-    let noTasksObj = document.createElement('div');
-    noTasksObj.id = 'no-tasks';
-    noTasksObj.innerHTML = 'You have no outstanding tasks.';
-    taskContainerObj.appendChild(noTasksObj);
-  } else {
-    for (let i = 0; i < tasks.length; i++) {
-      taskContainerObj.appendChild(createTaskObj(tasks[i], i));
-    }
-  }
-}
-
-// ----- TASK ----- //
-
-function createTaskObj(task, num) {
-  let numObj = document.createElement('h4');
-  numObj.className = 'task-num';
-  if (curr === 0) {
-    numObj.innerHTML = `TASK ${num + 1} - <span class="task-account">${task.account}</span>`;
-  } else {
-    numObj.innerHTML = `TASK ${num + 1}`;
-  }
-
-  let nameObj = document.createElement('h3');
-  nameObj.className = 'task-name';
-  nameObj.innerHTML = task.name;
-
-  let detailsObj = document.createElement('p');
-  detailsObj.className = 'task-details';
-  detailsObj.innerHTML = task.details === '' ? '<br>' : task.details;
-
-  let dueObj = document.createElement('p');
-  dueObj.className = 'task-due';
-  dueObj.innerHTML = task.due;
-
-  let taskObj = document.createElement('div');
-  taskObj.className = 'task';
-  
-//  switch (task.tag) {
-//    case 'complete':
-//      taskObj.classList.add('tag-complete');
-//      break;
-//    case 'attention':
-//      taskObj.classList.add('tag-attention');
-//      break;
-//    case 'alert':
-//      taskObj.classList.add('tag-alert');
-//      break;
-//    case 'links':
-//      taskObj.classList.add('tag-links');
-//      break;
-//    case 'locked':
-//      taskObj.classList.add('tag-locked');
-//      break;
-//    case 'company':
-//      taskObj.classList.add('tag-company');
-//      break;
-//  }
-  
-  let repeatObj = document.createElement('img');
-  repeatObj.className = 'repeat';
-  repeatObj.src = 'images/repeat.svg';
-
-  taskObj.appendChild(numObj);
-  taskObj.appendChild(nameObj);
-  taskObj.appendChild(detailsObj);
-  taskObj.appendChild(dueObj);
-  if(task.recurring) {
-    taskObj.appendChild(repeatObj);
-  }
-  
-  return taskObj;
-}
-
 // ----- ACCOUNT OVERVIEW ----- //
 
 let leftObj = document.getElementById('left');
 
 let accountNameObjs = document.getElementsByClassName('account-name');
-
-let tableObj = document.getElementById('table');
-
 let amountInObj = document.getElementById('amount-in');
 let amountOutObj = document.getElementById('amount-out');
+
+let tableObj = document.getElementById('table');
 
 function setAccount() {
   // Account name for transactions
@@ -309,7 +226,7 @@ function setAccount() {
     noTransactionObj.innerHTML = 'The data is not currently available.';
     leftObj.appendChild(noTransactionObj);
   } else {
-    transactions.forEach((transaction) => {
+    transactions.forEach(transaction => {
       tableObj.appendChild(createTrObj(transaction));
       
       if (transaction.amount > 0) {
@@ -456,6 +373,67 @@ function createTrObj(transaction) {
   return trObj;
 }
 
+// ----- TASK LIST ----- //
+
+let taskContainerObj = document.getElementById('task-container');
+
+function setTasks(tasks) {
+  // Reset task list
+  taskContainerObj.innerHTML = '';
+  
+  if (tasks.length === 0) {
+    let noTasksObj = document.createElement('div');
+    noTasksObj.id = 'no-tasks';
+    noTasksObj.innerHTML = 'You have no outstanding tasks.';
+    taskContainerObj.appendChild(noTasksObj);
+  } else {
+    for (let i = 0; i < tasks.length; i++) {
+      taskContainerObj.appendChild(createTaskObj(tasks[i], i));
+    }
+  }
+}
+
+// ----- TASK ----- //
+
+function createTaskObj(task, num) {
+  let numObj = document.createElement('h4');
+  numObj.className = 'task-num';
+  if (curr === 0) {
+    numObj.innerHTML = `TASK ${num + 1}<span class="task-account"> - ${task.account}</span>`;
+  } else {
+    numObj.innerHTML = `TASK ${num + 1}`;
+  }
+
+  let nameObj = document.createElement('h3');
+  nameObj.className = 'task-name';
+  nameObj.innerHTML = task.name;
+
+  let detailsObj = document.createElement('p');
+  detailsObj.className = 'task-details';
+  detailsObj.innerHTML = task.details === '' ? '<br>' : task.details;
+
+  let dueObj = document.createElement('p');
+  dueObj.className = 'task-due';
+  dueObj.innerHTML = task.due;
+
+  let taskObj = document.createElement('div');
+  taskObj.className = 'task';
+  
+  let repeatObj = document.createElement('img');
+  repeatObj.className = 'repeat';
+  repeatObj.src = 'images/repeat.svg';
+
+  taskObj.appendChild(numObj);
+  taskObj.appendChild(nameObj);
+  taskObj.appendChild(detailsObj);
+  taskObj.appendChild(dueObj);
+  if (task.recurring) {
+    taskObj.appendChild(repeatObj);
+  }
+  
+  return taskObj;
+}
+
 setAccounts();
 
 // ----- TASK MANAGER ----- //
@@ -469,14 +447,14 @@ let modalOverlayObj = document.getElementsByClassName('modal-overlay')[0];
 let taskManagerModalObj = document.getElementsByClassName('modal')[0];
 
 function openTaskManagerModal() {
-  modalOverlayObj.classList.add('modal-overlay-visible');
-  taskManagerModalObj.classList.add('modal-visible');
+  modalOverlayObj.classList.remove('invisible');
+  taskManagerModalObj.classList.remove('invisible-slide-down');
   loadTasks(accounts[curr]);
 }
 
 function closeTaskManagerModal() {
-  taskManagerModalObj.classList.remove('modal-visible');
-  modalOverlayObj.classList.remove('modal-overlay-visible');
+  taskManagerModalObj.classList.add('invisible-slide-down');
+  modalOverlayObj.classList.add('invisible');
   saveTasks();
 }
 
@@ -495,9 +473,12 @@ function createNewTaskObj() {
   iconObj.className = 'icon';
   iconObj.src = 'images/add.svg';
   
-  let dropdownButtonObj = document.createElement('h5');
-  dropdownButtonObj.className = 'dropbtn';
+  let dropdownButtonObj = document.createElement('button');
+  dropdownButtonObj.id = 'dropdown-btn';
   dropdownButtonObj.innerHTML = 'CREATE NEW TASK';
+  
+  let typeObj = document.createElement('a');
+  typeObj.innerHTML = 'TASK TYPE';
   
   let payObj = document.createElement('a');
   payObj.innerHTML = 'MAKE PAYMENT';
@@ -509,13 +490,15 @@ function createNewTaskObj() {
   assignObj.innerHTML = 'ASSIGN TEAM';
     
   let dropdownContentObj = document.createElement('div');
-  dropdownContentObj.className = 'dropdown-content';
+  dropdownContentObj.id = 'dropdown-content';
+  dropdownContentObj.className = 'hidden';
+  dropdownContentObj.appendChild(typeObj);
   dropdownContentObj.appendChild(payObj);
   dropdownContentObj.appendChild(approveObj);
   dropdownContentObj.appendChild(assignObj);
   
   let dropdownObj = document.createElement('div');
-  dropdownObj.className = 'dropdown';
+  dropdownObj.id = 'dropdown';
   dropdownObj.appendChild(dropdownButtonObj);
   dropdownObj.appendChild(dropdownContentObj);
 
@@ -524,6 +507,10 @@ function createNewTaskObj() {
   newTaskObj.className = 'task';
   newTaskObj.appendChild(iconObj);
   newTaskObj.appendChild(dropdownObj);
+  
+  newTaskObj.addEventListener('click', function() {
+    dropdownContentObj.classList.toggle('hidden');
+  });
   
   return newTaskObj;
 }
@@ -551,3 +538,22 @@ function loadTasks(account) {
 function saveTasks() {
   
 }
+
+// ----- HELP CARD ----- //
+
+let accountHelpCardObj = document.getElementById('account-help-card');
+accountHelpCardObj.addEventListener('mouseover', function() {
+  accountContainerObj.classList.add('outline');
+});
+accountHelpCardObj.addEventListener('mouseout', function() {
+  accountContainerObj.classList.remove('outline');
+});
+
+let taskHelpCardObj = document.getElementById('task-help-card');
+let rightObj = document.getElementById('right');
+taskHelpCardObj.addEventListener('mouseover', function() {
+  rightObj.classList.add('outline');
+});
+taskHelpCardObj.addEventListener('mouseout', function() {
+  rightObj.classList.remove('outline');
+});
