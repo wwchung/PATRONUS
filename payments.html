@@ -93,18 +93,27 @@
     <div class="modal-body">
       <div class="modal-section">
         <h2>Payee Details</h2>
-        <div class="modal-row">
+        <div id="payee" class="modal-row">
           <div class="input-field">
             <label>Search existing payees</label>
-            <select id="payee-input">
-              <option value="1">John</option>
-            </select>
+            <div class="input-container">
+              <select id="payee-input">
+                <option value="1">Candid Consulting</option>
+              </select>
+              <img src="images/caret.svg">
+            </div>
           </div>
           <div class="input-field">
             <label>Payment type</label>
-            <select id="type-input">
-              <option value="1">Bill Pay</option>
-            </select>
+            <div class="input-container">
+              <select id="type-input">
+                <option value="1">Bill Pay</option>
+                <option value="2">ACH Transfer</option>
+                <option value="3">Funds Transfer</option>
+                <option value="4">Payroll</option>
+              </select>
+              <img src="images/caret.svg">
+            </div>
           </div>
         </div>
       </div>
@@ -113,23 +122,29 @@
         <div class="modal-row">
           <div class="input-field">
             <label>From Account</label>
-            <select id="account-input">
-              <option value="1">Residential x8901</option>
-              <option value="2">Payroll x0123</option>
-              <option value="3">Commercial x9012</option>
-              <option value="4">Utilities x7890</option>
-              <option value="5">Checking x1234</option>
-            </select>
+            <div class="input-container">
+              <select id="account-input">
+                <option value="1">Residential x8901</option>
+                <option value="2">Payroll x0123</option>
+                <option value="3">Commercial x9012</option>
+                <option value="4">Utilities x7890</option>
+                <option value="5">Checking x1234</option>
+              </select>
+              <img src="images/caret.svg">
+            </div>
           </div>
-          <div class="input-field">
+          <div id="amount" class="input-field">
             <label>Amount</label>
             <input id="amount-input" value="$0.00">
           </div>
         </div>
         <div class="modal-row">
-          <div class="input-field">
+          <div id="date" class="input-field">
             <label>Expected arrival date</label>
-            <input id="date-input" value="7/14/2019">
+            <div class="input-container">
+              <input id="date-input" value="7/14/2019">
+              <img src="images/date.svg">
+            </div>
           </div>
           <div class="input-field">
             <label>Memo</label>
@@ -177,13 +192,21 @@
     <span class="help-app-tab">DISCOVER</span>
   </div>
   <div id="help-app-body">
-    <div id="account-help-card" class="help-card">
-      <h2>Account Cards</h2>
-      <p>The account tiles display the available balance for each of your corresponding accounts. Click on one to view data about that account, or click on "All Accounts" to view aggregate information.</p>
+    <div id="payee-help-card" class="help-card">
+      <h2>Payee and Payment Type</h2>
+      <p>Payee will receive the payment with the indicated type of transaction. You can edit the information in the payee page.</p>
+      <h3>Selecting Payee</h3>
+      <h3>Method of Payment</h3>
     </div>
-    <div id="task-help-card" class="help-card">
-      <h2>Tasks</h2>
-      <p>Create, manage, and complete your tasks in the task manager on the homepage. The system will also suggest tasks to you based on your PINACLE user over time. Click on a task to complete it, or click on "Manage Tasks" to create or delete tasks.</p>
+    <div id="amount-help-card" class="help-card">
+      <h2>Payment Amount</h2>
+      <p>Select the account that the funds should originate from and enter the amount of the payment.  If the account doesn’t have enough fund, the payment will be rejected.</p>
+    </div>
+    <div id="date-help-card" class="help-card">
+      <h2>Expected Arrival Date</h2>
+      <p>The date of payment will depend on the method of payment selected. Learn more about payment posting within processing schedules.</p>
+      <h3>ACH Transfer</h3>
+      <h3>Funds Transfer</h3>
     </div>
   </div>
   <div id="help-app-search">

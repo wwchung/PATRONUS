@@ -85,7 +85,7 @@ menuObj.addEventListener('click', function() {
   toggleMenu();
   
   // Close help
-  if (helpAppObj.classList.contains('visible')) {
+  if (!helpAppObj.classList.contains('invisible-slide-down')) {
     toggleHelp();
   }
 });

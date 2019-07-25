@@ -367,6 +367,7 @@ footer {
 .modal h2 {
   color: #0068ac;
   font-size: 1.5em;
+  font-weight: 700;
   margin: 0 0 1.25rem;
 }
 
@@ -472,7 +473,6 @@ footer {
   box-shadow: 0 2px 8px rgba(136,136,136,.3);
   cursor: pointer;
   margin: 0 0 1rem;
-  padding: 1rem;
 }
 
 .help-card:last-child {
@@ -480,19 +480,28 @@ footer {
 }
 
 .help-card:hover {
-  outline: 4px solid #3ec7ff;
+  box-shadow: 0 2px 16px #3ec7ff;
 }
 
 .help-card h2 {
   color: #585858;
   font-size: 1em;
-  margin: 0 0 .5rem;
+  padding: 1rem 1rem .5rem;
 }
 
 .help-card p {
   color: #585858;
   font-size: .875em;
   line-height: 1.4;
+  padding: 0 1rem 1rem;
+}
+
+.help-card h3 {
+  border-top: 1px solid #f0f0f0;
+  color: #f48024;
+  font-size: .875em;
+  font-weight: 500;
+  padding: 1rem;
 }
 
 .outline {
@@ -514,12 +523,14 @@ footer {
   width: 100%;
 }
 
-input {
+input,
+select {
   border: none;
   font-family: 'PNC Sans', sans-serif;
 }
 
-input:focus {
+input:focus,
+select:focus {
   outline: none;
 }
 

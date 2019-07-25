@@ -249,3 +249,32 @@ function setConfirmationTable() {
   
   confirmationTableObj.appendChild(trObj);
 }
+
+// ----- HELP CARD ----- //
+
+let payeeHelpCardObj = document.getElementById('payee-help-card');
+let payeeObj = document.getElementById('payee');
+payeeHelpCardObj.addEventListener('mouseover', function() {
+  payeeObj.classList.add('outline');
+});
+payeeHelpCardObj.addEventListener('mouseout', function() {
+  payeeObj.classList.remove('outline');
+});
+
+let amountHelpCardObj = document.getElementById('amount-help-card');
+let amountObj = document.getElementById('amount');
+amountHelpCardObj.addEventListener('mouseover', function() {
+  amountObj.classList.add('outline');
+});
+amountHelpCardObj.addEventListener('mouseout', function() {
+  amountObj.classList.remove('outline');
+});
+
+let dateHelpCardObj = document.getElementById('date-help-card');
+let dateObj = document.getElementById('date');
+dateHelpCardObj.addEventListener('mouseover', function() {
+  dateObj.classList.add('outline');
+});
+dateHelpCardObj.addEventListener('mouseout', function() {
+  dateObj.classList.remove('outline');
+});

@@ -178,15 +178,8 @@ section {
 
 .input-field select,
 .input-field input {
-  border: none;
-  font-family: 'PNC Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 500;
-}
-
-.input-field select:focus,
-.input-field input:focus {
-  outline: none;
 }
 
 .input-field input {
@@ -198,6 +191,15 @@ section {
   height: 2.25rem;
   -moz-appearance: none;
   -webkit-appearance: none;
+}
+
+.input-container {
+  display: flex;
+}
+
+.input-container select,
+.input-container input {
+  flex: 1 1 auto;
 }
 
 #amount-input {
