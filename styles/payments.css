@@ -206,7 +206,7 @@ section {
   text-align: right;
 }
 
-#submit {
+.primary-button {
   background: #0068ac;
   box-shadow: 0 4px 8px 0 rgba(0,104,172,.2);
   color: #fff;
@@ -215,10 +215,21 @@ section {
   width: 12rem;
 }
 
-#submit:hover {
+.primary-button:hover {
   background: #215586;
   box-shadow: 0 4px 8px 0 rgba(0,81,138,.2);
   color: #fff;
+}
+
+.primary-button-disabled {
+  background: #cbcfd2;
+  color: #0068ac;
+  cursor: not-allowed;
+}
+
+.primary-button-disabled:hover {
+  background: #cbcfd2;
+  color: #0068ac;
 }
 
 /* ----- CONFIRMATION MODAL BODY ----- */

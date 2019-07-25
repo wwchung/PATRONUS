@@ -36,16 +36,6 @@ accountAll.pendingTransactions = pendingTransactionsAll;
 
 accounts.unshift(accountAll);
 
-// ----- FORMAT AMOUNT ----- //
-
-function formatAmount(amount) {
-  if (amount < 0) {
-    return `($${Math.abs(amount).toLocaleString(undefined, {minimumFractionDigits: 2})})`;
-  } else {
-    return `$${amount.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
-  }
-}
-
 // ----- GLOBAL VARIABLE ----- //
 
 // Selected account index

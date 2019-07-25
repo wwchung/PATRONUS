@@ -100,11 +100,13 @@ let paymentModalObj = document.getElementsByClassName('modal')[0];
 function openPaymentModal() {
   modalOverlayObj.classList.remove('invisible');
   paymentModalObj.classList.remove('invisible-slide-down');
+  setCurrentDate();
 }
 
 function closePaymentModal() {
   paymentModalObj.classList.add('invisible-slide-down');
   modalOverlayObj.classList.add('invisible');
+  resetPaymentInfo();
 }
 
 let paymentModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[0];
@@ -133,7 +135,7 @@ function getPaymentInfo() {
   date = dateInput.value;
   account = accountInput.options[accountInput.selectedIndex].text;
   type = typeInput.options[typeInput.selectedIndex].text;
-  amount = amountInput.value;
+  amount = formatAmount(Number(amountInput.value.replace('$', '')));
 }
 
 function resetPaymentInfo() {
@@ -144,15 +146,53 @@ function resetPaymentInfo() {
   amount = '';
   
   amountInput.value = '$0.00';
-  dateInput.value = '7/14/2019';
   memoInput.value = '';
   noteToSelfInput.value = '';
+}
+
+function isValidAmount(amountStr) {
+  let amount = amountStr.replace('$', '');
+  let regex = /^[1-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;
+  return regex.test(amount);
+}
+
+amountInput.addEventListener('input', function() {
+  if (isValidAmountDate()) {
+    submitObj.classList.remove('primary-button-disabled');
+  } else {
+    submitObj.classList.add('primary-button-disabled');
+  }
+});
+
+function setCurrentDate() {
+  let date = new Date();
+  date.setDate(date.getDate() + 1);
+  dateInput.value = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+}
+
+function isValidDate(dateStr) {
+  let date = new Date(dateStr);
+  return date.getTime() === date.getTime() && date > new Date() && date.getYear() < 2020;
+}
+
+dateInput.addEventListener('input', function() {
+  if (isValidAmountDate()) {
+    submitObj.classList.remove('primary-button-disabled');
+  } else {
+    submitObj.classList.add('primary-button-disabled');
+  }
+})
+
+function isValidAmountDate() {
+  return isValidAmount(amountInput.value) && isValidDate(dateInput.value);
 }
 
 let submitObj = document.getElementById('submit');
 
 submitObj.addEventListener('click', function() {
-  submit();
+  if (!submitObj.classList.contains('primary-button-disabled')) {
+    submit();
+  }
 });
 
 function submit() {
