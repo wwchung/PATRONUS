@@ -246,7 +246,7 @@ h5 {
 article {
   background: #fff;
   border: 1px #d8d8d8 solid;
-  padding: 1.25rem;
+  padding: 1.25rem 1.25rem 1.5rem;
 }
 
 /* ----- ACCOUNT OVERVIEW ----- */
@@ -416,6 +416,10 @@ td:nth-child(5) {
   padding: 0 1.75rem 2rem;
 }
 
+#no-suggested-task {
+  animation: fade-in 1s;
+}
+
 .modal .task {
   margin: 0;
 }
@@ -434,10 +438,6 @@ td:nth-child(5) {
   display: flex;
   justify-content: center;
   padding: 3.375rem 0;
-}
-
-.task-add-selected {
-
 }
 
 .task-add-selected::after {

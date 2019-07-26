@@ -520,6 +520,13 @@ function loadTasks(account) {
   
   // Reset suggested tasks
   suggestedTasksObj.innerHTML = '';
+  
+  if (account.suggestedTasks.length === 0) {
+    let noSuggestedTaskObj = document.createElement('p');
+    noSuggestedTaskObj.id = 'no-suggested-task';
+    noSuggestedTaskObj.innerHTML = 'The data is not currently available.';
+    suggestedTasksObj.appendChild(noSuggestedTaskObj);
+  }
     
   for (let i = 0; i < account.suggestedTasks.length; i++) {
     suggestedTasksObj.appendChild(createTaskObj(account.suggestedTasks[i], i));
