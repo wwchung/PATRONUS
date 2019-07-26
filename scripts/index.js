@@ -445,7 +445,7 @@ function openTaskManagerModal() {
 function closeTaskManagerModal() {
   taskManagerModalObj.classList.add('invisible-slide-down');
   modalOverlayObj.classList.add('invisible');
-  saveTasks();
+  closeNewTask();
 }
 
 let taskManagerModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[0];
@@ -604,8 +604,12 @@ function saveTask() {
   };
   
   closeNewTask();
+  
   accounts[curr].tasks.push(task);
   loadTasks(accounts[curr]);
+  
+  let tasks = accounts[curr].tasks;
+  setTasks(tasks);
 }
 
 let saveObj = document.getElementById('save');
