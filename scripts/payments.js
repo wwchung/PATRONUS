@@ -150,6 +150,10 @@ function resetPaymentInfo() {
   dateInput.value = '';
   memoInput.value = '';
   noteToSelfInput.value = '';
+  
+  payeeInput.value = 'Splendid Energy';
+  typeInput.value = 'Bill Pay';
+  accountInput.value = 'Residential x8901';
 }
 
 amountInput.addEventListener('input', function() {

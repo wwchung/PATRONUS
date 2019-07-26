@@ -339,7 +339,7 @@ footer {
 .modal-content {
   background: #fff;
   box-shadow: 0 18px 40px -12px rgba(0,0,0,.2);
-  width: 64rem;
+  width: 56rem;
 }
 
 .modal-header {
@@ -372,6 +372,14 @@ footer {
   font-size: 1.5em;
   font-weight: 700;
   padding: 1.75rem 1.75rem 1.25rem;
+}
+
+#payee-header {
+  padding: 1.75rem 1.75rem 1.25rem;
+}
+
+#payment-header {
+  padding: 1.25rem 1.75rem;
 }
 
 .input-field {
@@ -451,6 +459,25 @@ footer {
 .primary-button-disabled:hover {
   background: #cbcfd2;
   color: #0068ac;
+}
+
+/* ----- PAYMENT MODAL BODY ----- */
+
+.modal-section:last-child {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1.75rem;
+}
+
+.modal-row {
+  display: grid;
+  grid: auto-flow / repeat(2, 1fr);
+  grid-gap: 2rem;
+  padding: 0 1.75rem 1.25rem;
+}
+
+.modal-row:last-child {
+  padding: 0 1.75rem 1.5rem;
 }
 
 /* ----- HELP APP ----- */

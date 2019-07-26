@@ -127,25 +127,6 @@ section {
   padding: 1rem;
 }
 
-/* ----- PAYMENT MODAL BODY ----- */
-
-.modal-section:last-child {
-  display: flex;
-  justify-content: center;
-  margin: 0 0 1.75rem;
-}
-
-.modal-row {
-  display: grid;
-  grid: auto-flow / repeat(2, 1fr);
-  grid-gap: 2rem;
-  padding: 0 1.75rem 1.25rem;
-}
-
-.modal-row:last-child {
-  padding: 0 1.75rem 1.5rem;
-}
-
 /* ----- CONFIRMATION MODAL BODY ----- */
 
 #confirmation {

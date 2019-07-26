@@ -421,6 +421,10 @@ function createTaskObj(task, num) {
     taskObj.appendChild(repeatObj);
   }
   
+  taskObj.addEventListener('click', function() {
+    openTasksHub(num);
+  })
+  
   return taskObj;
 }
 
@@ -440,12 +444,14 @@ function openTaskManagerModal() {
   modalOverlayObj.classList.remove('invisible');
   taskManagerModalObj.classList.remove('invisible-slide-down');
   loadTasks(accounts[curr]);
+  toggleHelpCards();
 }
 
 function closeTaskManagerModal() {
   taskManagerModalObj.classList.add('invisible-slide-down');
   modalOverlayObj.classList.add('invisible');
   closeNewTask();
+  toggleHelpCards();
 }
 
 let taskManagerModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[0];
@@ -631,6 +637,64 @@ saveObj.addEventListener('click', function() {
   }
 });
 
+// ----- TASK HUB ----- //
+
+let taskHubObj = document.getElementById('task-hub');
+let taskTabsObj = document.getElementById('task-tabs');
+
+function openTasksHub(selected) {
+  loadTaskTabs(selected);
+  taskHubObj.classList.toggle('invisible');
+}
+
+function loadTaskTabs(selected) {  
+  // Reset tasks tabs
+  taskTabsObj.innerHTML = '';
+    
+  for (let i = 0; i < accounts[curr].tasks.length; i++) {
+    taskTabsObj.appendChild(createTaskTabObj(accounts[curr].tasks[i], i));
+  }
+}
+
+function createTaskTabObj(task, num) {
+  let numObj = document.createElement('h4');
+  numObj.className = 'task-num';
+  if (curr === 0) {
+    numObj.innerHTML = `TASK ${num + 1}<span class="task-account"> - ${task.account}</span>`;
+  } else {
+    numObj.innerHTML = `TASK ${num + 1}`;
+  }
+
+  let nameObj = document.createElement('h3');
+  nameObj.className = 'task-name';
+  nameObj.innerHTML = task.name;
+
+  let detailsObj = document.createElement('p');
+  detailsObj.className = 'task-details';
+  detailsObj.innerHTML = task.details === '' ? '<br>' : task.details;
+
+  let dueObj = document.createElement('p');
+  dueObj.className = 'task-due';
+  dueObj.innerHTML = task.due;
+
+  let taskObj = document.createElement('div');
+  taskObj.className = 'task-tab';
+  
+  let repeatObj = document.createElement('img');
+  repeatObj.className = 'repeat';
+  repeatObj.src = 'images/repeat.svg';
+
+  taskObj.appendChild(numObj);
+  taskObj.appendChild(nameObj);
+  taskObj.appendChild(detailsObj);
+  taskObj.appendChild(dueObj);
+  if (task.recurring) {
+    taskObj.appendChild(repeatObj);
+  }
+  
+  return taskObj;
+}
+
 // ----- HELP CARD ----- //
 
 let accountHelpCardObj = document.getElementById('account-help-card');
@@ -649,3 +713,8 @@ taskHelpCardObj.addEventListener('mouseover', function() {
 taskHelpCardObj.addEventListener('mouseout', function() {
   rightObj.classList.remove('outline');
 });
+
+function toggleHelpCards() {
+  accountHelpCardObj.classList.toggle('hidden');
+  taskHelpCardObj.classList.toggle('hidden');
+}
