@@ -105,9 +105,26 @@ function formatAmount(amount) {
   }
 }
 
+// ----- VALIDATE AMOUNT & DATE ----- //
+
+function isValidAmount(amountStr) {
+  let amount = amountStr.replace('$', '');
+  let regex = /^[1-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;
+  return regex.test(amount);
+}
+
+function isValidDate(dateStr) {
+  let date = new Date(dateStr);
+  return date.getTime() === date.getTime() && date > new Date() && date.getYear() < 2020;
+}
+
+function isValidAmountDate(amountStr, dateStr) {
+  return isValidAmount(amountStr) && isValidDate(dateStr);
+}
+
 // ----- DATA ----- //
 
-let accountsData = [
+let accounts = [
   {
     'name': 'Residential x8901',
     'tasks': [],
@@ -192,49 +209,11 @@ let accountsData = [
   },
   {
     'name': 'Payroll x0123',
-    'tasks': [
-      {
-        'account': 'Payroll x0123',
-        'name': 'ACH payment to ABC',
-        'details': 'ABC Company ∙ $10,000 ∙ ACH',
-        'due': '07/29/2019',
-        'recurring': false
-      },
-      {
-        'account': 'Payroll x0123',
-        'name': 'Approve account transfers',
-        'details': '3 Pending Transfers',
-        'due': '07/29/2019 12:00 PM',
-        'recurring': true
-      },
-      {
-        'account': 'Payroll x0123',
-        'name': 'Approve payments',
-        'details': '4 Pending Payments',
-        'due': '07/29/2019 12:00 PM',
-        'recurring': true
-      }
-    ],
-    'suggestedTasks': [
-      {
-        'account': 'Payroll x0123',
-        'name': 'ACH payment to XYZ',
-        'details': 'ABC Company ∙ $10,000',
-        'due': '07/30/2019',
-        'recurring': true
-      },
-      {
-        'account': 'Payroll x0123',
-        'name': 'ACH payment to John',
-        'details': 'XYZ Company ∙ $1,250',
-        'due': '07/30/2019',
-        'recurring': true
-      }
-    ],
+    'tasks': [],
+    'suggestedTasks': [],
     'postedAvailable': 5714448.67,
     'postedLedger': 6235440.67,
     'postedTransactions': [
-      
       {
         'account': 'Payroll x0123',
         'status': 'Posted',
@@ -386,13 +365,49 @@ let accountsData = [
     'tasks': [
       {
         'account': 'Commercial x9012',
-        'name': 'Assign user X to team Y',
-        'details': '',
-        'due': '07/09/2019',
+        'name': 'ACH Payment to Indeed',
+        'details': 'Indeed Design ∙ $10,000',
+        'due': '07/30/2019',
         'recurring': false
+      },
+      {
+        'account': 'Commercial x9012',
+        'name': 'Bill Payment to Splendid',
+        'details': 'Splendid Energy ∙ $1,250',
+        'due': '07/30/2019',
+        'recurring': true
+      },
+      {
+        'account': 'Commercial x9012',
+        'name': 'ACH Payment to Indeed',
+        'details': 'Indeed Design ∙ $10,000',
+        'due': '07/30/2019',
+        'recurring': false
+      },
+      {
+        'account': 'Commercial x9012',
+        'name': 'Bill Payment to Splendid',
+        'details': 'Splendid Energy ∙ $1,250',
+        'due': '07/30/2019',
+        'recurring': true
       }
     ],
-    'suggestedTasks': [],
+    'suggestedTasks': [
+      {
+        'account': 'Commercial x9012',
+        'name': 'ACH Payment to Indeed',
+        'details': 'Indeed Design ∙ $10,000',
+        'due': '07/30/2019',
+        'recurring': false
+      },
+      {
+        'account': 'Commercial x9012',
+        'name': 'Bill Payment to Splendid',
+        'details': 'Splendid Energy ∙ $1,250',
+        'due': '07/30/2019',
+        'recurring': true
+      }
+    ],
     'postedAvailable': 5723938.67,
     'postedLedger': 6234930.67,
     'postedTransactions': [
@@ -644,9 +659,3 @@ let accountsData = [
     'pendingTransactions': []
   }
 ];
-
-let accounts = JSON.parse(localStorage.getItem('accounts'));
-if (accounts === null) {
-  localStorage.setItem('accounts', JSON.stringify(accountsData));
-  accounts = accountsData;
-}

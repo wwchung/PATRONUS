@@ -472,6 +472,7 @@ function createNewTaskObj() {
   
   let payObj = document.createElement('a');
   payObj.innerHTML = 'MAKE PAYMENT';
+  payObj.addEventListener('click', openNewTask);
   
   let approveObj = document.createElement('a');
   approveObj.innerHTML = 'APPROVE PAYMENT';
@@ -526,8 +527,93 @@ function loadTasks(account) {
 }
 
 function saveTasks() {
-  
+  let tasks = accounts[curr].tasks;
+  setTasks(tasks);
 }
+
+// ----- NEW TASK ----- //
+
+let newTaskObj = document.getElementsByClassName('new-task')[0];
+
+function openNewTask() {
+  newTaskObj.classList.remove('new-task-hidden');
+}
+
+let cancelObj = document.getElementById('cancel');
+cancelObj.addEventListener('click', closeNewTask);
+
+function closeNewTask() {
+  newTaskObj.classList.add('new-task-hidden');
+  recurringObj.classList.remove('recurring-selected');
+  recurringIconObj.classList.remove('recurring-icon-selected');
+  recurringDetailsObj.classList.add('hidden');
+  
+  amountInput.value = '';
+  dateInput.value = '';
+  memoInput.value = '';
+  noteToSelfInput.value = '';
+}
+
+let recurringObj = document.getElementsByClassName('recurring')[0];
+let recurringIconObj = document.getElementsByClassName('recurring-icon')[0];
+let recurringDetailsObj = document.getElementById('recurring-details');
+recurringObj.addEventListener('click', function() {
+  recurringObj.classList.add('recurring-selected');
+  recurringIconObj.classList.add('recurring-icon-selected');
+  recurringDetailsObj.classList.remove('hidden');
+});
+
+let nameInput = document.getElementById('name-input');
+let payeeInput = document.getElementById('payee-input');
+let typeInput = document.getElementById('type-input');
+let accountInput =document.getElementById('account-input');
+let amountInput = document.getElementById('amount-input');
+let dateInput = document.getElementById('date-input');
+let memoInput = document.getElementById('memo-input');
+let noteToSelfInput = document.getElementById('note-to-self-input');
+
+amountInput.addEventListener('input', function() {
+  if (isValidAmountDate(amountInput.value, dateInput.value)) {
+    saveObj.classList.remove('primary-button-disabled');
+  } else {
+    saveObj.classList.add('primary-button-disabled');
+  }
+});
+
+dateInput.addEventListener('input', function() {
+  if (isValidAmountDate(amountInput.value, dateInput.value)) {
+    saveObj.classList.remove('primary-button-disabled');
+  } else {
+    saveObj.classList.add('primary-button-disabled');
+  }
+})
+
+function saveTask() {
+  let account = accountInput.value;
+  let name = nameInput.value;
+  let details = `${payeeInput.value} ∙ ${formatAmount(Number(amountInput.value.replace('$', '')))}`;
+  let due = dateInput.value;
+  let recurring = recurringObj.classList.contains('recurring-selected');
+  
+  let task = {
+    'account': account,
+    'name': name,
+    'details': details,
+    'due': due,
+    'recurring': recurring
+  };
+  
+  closeNewTask();
+  accounts[curr].tasks.push(task);
+  loadTasks(accounts[curr]);
+}
+
+let saveObj = document.getElementById('save');
+saveObj.addEventListener('click', function() {
+  if(!saveObj.classList.contains('primary-button-disabled')) {
+    saveTask();
+  }
+});
 
 // ----- HELP CARD ----- //
 

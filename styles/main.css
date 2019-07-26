@@ -355,9 +355,8 @@ footer {
 }
 
 .modal-body {
-  max-height: calc(100vh - 16rem);
+  max-height: calc(100vh - 12rem);
   overflow: auto;
-  padding: 1.75rem;
 }
 
 .modal h1 {
@@ -368,7 +367,86 @@ footer {
   color: #0068ac;
   font-size: 1.5em;
   font-weight: 700;
-  margin: 0 0 1.25rem;
+  padding: 1.75rem 1.75rem 1.25rem;
+}
+
+.input-field {
+  border-bottom: 1px solid rgba(0,0,0,.5);
+  display: flex;
+  flex-flow: column;
+}
+
+.input-field label {
+  color: rgba(0,0,0,.5);
+  font-size: .875em;
+  font-weight: 500;
+}
+
+.input-field select,
+.input-field input {
+  font-size: 1.125em;
+  font-weight: 500;
+}
+
+.input-field input {
+  padding: .375rem 0;
+}
+
+.input-field select {
+  height: 2.25rem;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.input-container {
+  display: flex;
+}
+
+.input-container select,
+.input-container input {
+  flex: 1 1 auto;
+}
+
+#amount-input {
+  text-align: right;
+}
+
+.primary-button,
+.secondary-button {
+  border: 2px solid #0068ac;
+  box-shadow: 0 4px 8px 0 rgba(0,104,172,.2);
+  font-size: 1em;
+  padding: .5rem 0;
+  width: 12rem;
+}
+
+.primary-button {
+  background: #0068ac;
+  color: #fff;
+}
+
+.secondary-button {
+  background: #fff;
+  color: #00518a;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  background: #215586;
+  box-shadow: 0 4px 8px 0 rgba(0,81,138,.2);
+  color: #fff;
+}
+
+.primary-button-disabled {
+  background: #cbcfd2;
+  border: 2px solid #cbcfd2;
+  color: #0068ac;
+  cursor: not-allowed;
+}
+
+.primary-button-disabled:hover {
+  background: #cbcfd2;
+  color: #0068ac;
 }
 
 /* ----- HELP APP ----- */
@@ -531,6 +609,7 @@ footer {
 
 input,
 select {
+  background: none;
   border: none;
   font-family: 'PNC Sans', sans-serif;
 }

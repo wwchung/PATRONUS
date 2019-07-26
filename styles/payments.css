@@ -76,21 +76,7 @@ section {
 /* ----- MAKE A PAYMENT ----- */
 
 #payment {
-  background: #fff;
-  border: 2px solid #0068ac;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-  color: #0068ac;
-  font-size: 1em;
-  margin: 1.25rem 0 0;
-  padding: .75rem 0;
-  width: 12rem;
-}
-
-#payment:hover {
-  background: #215586;
-  border: 2px solid #01549b;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-  color: #fff;
+  margin: 1.25rem 0 .25rem;
 }
 
 /* ----- PAYMENTS HUB TAB ----- */
@@ -143,99 +129,31 @@ section {
 
 /* ----- PAYMENT MODAL BODY ----- */
 
-.modal-section {
-  padding: 0 0 1.75em;
-}
-
 .modal-section:last-child {
   display: flex;
   justify-content: center;
-  padding: 0;
+  margin: 0 0 1.75rem;
 }
 
 .modal-row {
   display: grid;
   grid: auto-flow / repeat(2, 1fr);
   grid-gap: 2rem;
-  margin: 0 0 1.25rem;
+  padding: 0 1.75rem 1.25rem;
 }
 
 .modal-row:last-child {
-  margin: 0;
-}
-
-.input-field {
-  border-bottom: 1px solid rgba(0,0,0,.5);
-  display: flex;
-  flex-flow: column;
-}
-
-.input-field label {
-  color: rgba(0,0,0,.5);
-  font-size: .875em;
-  font-weight: 500;
-}
-
-.input-field select,
-.input-field input {
-  font-size: 1.125em;
-  font-weight: 500;
-}
-
-.input-field input {
-  padding: .375rem 0;
-}
-
-.input-field select {
-  background: none;
-  height: 2.25rem;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-}
-
-.input-container {
-  display: flex;
-}
-
-.input-container select,
-.input-container input {
-  flex: 1 1 auto;
-}
-
-#amount-input {
-  text-align: right;
-}
-
-.primary-button {
-  background: #0068ac;
-  box-shadow: 0 4px 8px 0 rgba(0,104,172,.2);
-  color: #fff;
-  font-size: 1em;
-  padding: .75rem 0;
-  width: 12rem;
-}
-
-.primary-button:hover {
-  background: #215586;
-  box-shadow: 0 4px 8px 0 rgba(0,81,138,.2);
-  color: #fff;
-}
-
-.primary-button-disabled {
-  background: #cbcfd2;
-  color: #0068ac;
-  cursor: not-allowed;
-}
-
-.primary-button-disabled:hover {
-  background: #cbcfd2;
-  color: #0068ac;
+  padding: 0 1.75rem 1.5rem;
 }
 
 /* ----- CONFIRMATION MODAL BODY ----- */
 
 #confirmation {
-  margin: 0 0 1.25rem;
+  padding: 1.75rem 1.75rem 1.25rem;
+}
+
+#confirmation-div {
+  padding: 0 1.75rem 1.75rem;
 }
 
 #confirmation-table th:nth-child(5),

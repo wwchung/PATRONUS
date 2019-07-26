@@ -100,7 +100,6 @@ let paymentModalObj = document.getElementsByClassName('modal')[0];
 function openPaymentModal() {
   modalOverlayObj.classList.remove('invisible');
   paymentModalObj.classList.remove('invisible-slide-down');
-  setCurrentDate();
 }
 
 function closePaymentModal() {
@@ -145,47 +144,27 @@ function resetPaymentInfo() {
   type = '';
   amount = '';
   
-  amountInput.value = '$0.00';
+  amountInput.value = '';
+  dateInput.value = '';
   memoInput.value = '';
   noteToSelfInput.value = '';
 }
 
-function isValidAmount(amountStr) {
-  let amount = amountStr.replace('$', '');
-  let regex = /^[1-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;
-  return regex.test(amount);
-}
-
 amountInput.addEventListener('input', function() {
-  if (isValidAmountDate()) {
+  if (isValidAmountDate(amountInput.value, dateInput.value)) {
     submitObj.classList.remove('primary-button-disabled');
   } else {
     submitObj.classList.add('primary-button-disabled');
   }
 });
 
-function setCurrentDate() {
-  let date = new Date();
-  date.setDate(date.getDate() + 1);
-  dateInput.value = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-}
-
-function isValidDate(dateStr) {
-  let date = new Date(dateStr);
-  return date.getTime() === date.getTime() && date > new Date() && date.getYear() < 2020;
-}
-
 dateInput.addEventListener('input', function() {
-  if (isValidAmountDate()) {
+  if (isValidAmountDate(amountInput.value, dateInput.value)) {
     submitObj.classList.remove('primary-button-disabled');
   } else {
     submitObj.classList.add('primary-button-disabled');
   }
 })
-
-function isValidAmountDate() {
-  return isValidAmount(amountInput.value) && isValidDate(dateInput.value);
-}
 
 let submitObj = document.getElementById('submit');
 

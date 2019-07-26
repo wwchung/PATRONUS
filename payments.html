@@ -62,7 +62,7 @@
           <h2 id="scheduled-amount">$0.00</h2>
         </div>
       </div>
-      <button id="payment">MAKE A PAYMENT</button>
+      <button id="payment" class="secondary-button">MAKE A PAYMENT</button>
     </div>
   </section>
   <section>
@@ -98,7 +98,9 @@
             <label>Search existing payees</label>
             <div class="input-container">
               <select id="payee-input">
-                <option value="1">Candid Consulting</option>
+                <option value="Splendid Energy">Splendid Energy</option>
+                <option value="Indeed Design">Indeed Design</option>
+                <option value="Candid Consulting">Candid Consulting</option>
               </select>
               <img src="images/caret.svg">
             </div>
@@ -107,10 +109,10 @@
             <label>Payment type</label>
             <div class="input-container">
               <select id="type-input">
-                <option value="1">Bill Pay</option>
-                <option value="2">ACH Transfer</option>
-                <option value="3">Funds Transfer</option>
-                <option value="4">Payroll</option>
+                <option value="Bill Pay">Bill Pay</option>
+                <option value="ACH Transfer">ACH Transfer</option>
+                <option value="Funds Transfer">Funds Transfer</option>
+                <option value="Payroll">Payroll</option>
               </select>
               <img src="images/caret.svg">
             </div>
@@ -124,25 +126,25 @@
             <label>From account</label>
             <div class="input-container">
               <select id="account-input">
-                <option value="1">Residential x8901</option>
-                <option value="2">Payroll x0123</option>
-                <option value="3">Commercial x9012</option>
-                <option value="4">Utilities x7890</option>
-                <option value="5">Checking x1234</option>
+                <option value="Residential x8901">Residential x8901</option>
+                <option value="Payroll x0123">Payroll x0123</option>
+                <option value="Commercial x9012">Commercial x9012</option>
+                <option value="Utilities x7890">Utilities x7890</option>
+                <option value="Checking x1234">Checking x1234</option>
               </select>
               <img src="images/caret.svg">
             </div>
           </div>
           <div id="amount" class="input-field">
             <label>Amount</label>
-            <input id="amount-input" value="$0.00">
+            <input id="amount-input" placeholder="$0.00">
           </div>
         </div>
         <div class="modal-row">
           <div id="date" class="input-field">
             <label>Expected arrival date</label>
             <div class="input-container">
-              <input id="date-input">
+              <input id="date-input" placeholder="MM/DD/YYYY">
               <img src="images/date.svg">
             </div>
           </div>
@@ -173,7 +175,9 @@
     </div>
     <div class="modal-body">
       <p id="confirmation">1 payment for a total of <b id="confirmation-amount"></b> was submitted for approval.</p>
-      <table id="confirmation-table"></table>
+      <div id="confirmation-div">
+        <table id="confirmation-table"></table>
+      </div>
     </div>
   </div>
 </div>

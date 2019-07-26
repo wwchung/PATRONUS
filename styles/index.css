@@ -409,11 +409,11 @@ td:nth-child(5) {
 }
 
 #current-tasks {
-  margin: 0 0 2.5rem;
+  padding: 0 1.75rem .75rem;
 }
 
 #suggested-tasks {
-  margin: 0 0 .25rem;
+  padding: 0 1.75rem 2rem;
 }
 
 .modal .task {
@@ -468,6 +468,107 @@ td:nth-child(5) {
 
 #dropdown-content a:first-child {
   background: #cbcfd2;
+}
+
+.new-task {
+  background: #f5f5f5;
+  display: grid;
+  grid: auto-flow / 1fr 3fr;
+  grid-gap: 4rem;
+  margin: 1.75rem 0 .75rem;
+  padding: 1.75rem 3rem;
+}
+
+.new-task label {
+  font-size: .75em;
+}
+
+.new-task .input-field select,
+.new-task .input-field input {
+  font-size: 1em;
+}
+
+#new-task-details {
+  display: flex;
+  flex-flow: column;
+}
+
+#name-input {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.recurring {
+  align-items: center;
+  align-self: flex-start;
+  color: #777;
+  display: flex;
+  font-size: 1em;
+  margin: 2rem 0 0;
+}
+
+.recurring-selected {
+  color: #0068ac;
+}
+
+.recurring-icon {
+  fill: #777;
+  margin: 0 0 0 .5rem;
+}
+
+.recurring-icon-selected {
+  fill: #0068ac;
+}
+
+.recurring:hover {
+  color: #0068ac;
+}
+
+.recurring:hover .recurring-icon {
+  fill: #0068ac;
+}
+
+#recurring-details {
+  margin: 1rem 0 0;
+}
+
+#recurring-details .input-field {
+  margin: 0 0 1rem;
+}
+
+.new-task-section:last-child {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.new-task-section h3 {
+  color: #0068ac;
+  font-size: 1.25em;
+  margin: 0 0 .75rem;
+}
+
+.new-task-row {
+  display: grid;
+  grid: auto-flow / repeat(2, 1fr);
+  grid-gap: 2rem;
+  margin: 0 0 1rem;
+}
+
+.new-task-row:last-child {
+  margin: 0 0 1.5rem;
+}
+
+#cancel,
+#save {
+  width: 10rem;
+}
+
+#cancel {
+  margin: 0 1rem 0 0;
+}
+
+.new-task-hidden {
+  display: none;
 }
 
 /* ----- FOOTER ----- */
