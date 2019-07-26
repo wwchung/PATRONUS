@@ -100,12 +100,14 @@ let paymentModalObj = document.getElementsByClassName('modal')[0];
 function openPaymentModal() {
   modalOverlayObj.classList.remove('invisible');
   paymentModalObj.classList.remove('invisible-slide-down');
+  toggleHelpCards();
 }
 
 function closePaymentModal() {
   paymentModalObj.classList.add('invisible-slide-down');
   modalOverlayObj.classList.add('invisible');
   resetPaymentInfo();
+  toggleHelpCards();
 }
 
 let paymentModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[0];
@@ -299,3 +301,9 @@ dateHelpCardObj.addEventListener('mouseover', function() {
 dateHelpCardObj.addEventListener('mouseout', function() {
   dateObj.classList.remove('outline');
 });
+
+function toggleHelpCards() {
+  payeeHelpCardObj.classList.toggle('hidden');
+  amountHelpCardObj.classList.toggle('hidden');
+  dateHelpCardObj.classList.toggle('hidden');
+}
