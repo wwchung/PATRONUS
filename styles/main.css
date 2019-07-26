@@ -50,6 +50,10 @@
   src: url(../fonts/PNCSans-BoldItalic.otf);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #fafafa;
   font-family: 'PNC Sans', sans-serif;

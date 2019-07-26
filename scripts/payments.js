@@ -131,7 +131,7 @@ let amount;
 
 function getPaymentInfo() {
   name = payeeInput.options[payeeInput.selectedIndex].text;
-  date = dateInput.value;
+  date = formatDate(dateInput.value);
   account = accountInput.options[accountInput.selectedIndex].text;
   type = typeInput.options[typeInput.selectedIndex].text;
   amount = formatAmount(Number(amountInput.value.replace('$', '')));

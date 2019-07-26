@@ -526,16 +526,13 @@ function loadTasks(account) {
   }
 }
 
-function saveTasks() {
-  let tasks = accounts[curr].tasks;
-  setTasks(tasks);
-}
-
 // ----- NEW TASK ----- //
 
 let newTaskObj = document.getElementsByClassName('new-task')[0];
 
 function openNewTask() {
+  let taskAddObj = document.getElementById('task-add');
+  taskAddObj.classList.add('task-add-selected');
   newTaskObj.classList.remove('new-task-hidden');
 }
 
@@ -543,24 +540,32 @@ let cancelObj = document.getElementById('cancel');
 cancelObj.addEventListener('click', closeNewTask);
 
 function closeNewTask() {
+  let taskAddObj = document.getElementById('task-add');
+  taskAddObj.classList.remove('task-add-selected');
   newTaskObj.classList.add('new-task-hidden');
+  
   recurringObj.classList.remove('recurring-selected');
   recurringIconObj.classList.remove('recurring-icon-selected');
   recurringDetailsObj.classList.add('hidden');
   
+  nameInput.value = '';
   amountInput.value = '';
   dateInput.value = '';
   memoInput.value = '';
   noteToSelfInput.value = '';
+  
+  payeeInput.value = 'Splendid Energy';
+  typeInput.value = 'Bill Pay';
+  accountInput.value = 'Residential x8901';
 }
 
 let recurringObj = document.getElementsByClassName('recurring')[0];
 let recurringIconObj = document.getElementsByClassName('recurring-icon')[0];
 let recurringDetailsObj = document.getElementById('recurring-details');
 recurringObj.addEventListener('click', function() {
-  recurringObj.classList.add('recurring-selected');
-  recurringIconObj.classList.add('recurring-icon-selected');
-  recurringDetailsObj.classList.remove('hidden');
+  recurringObj.classList.toggle('recurring-selected');
+  recurringIconObj.classList.toggle('recurring-icon-selected');
+  recurringDetailsObj.classList.toggle('hidden');
 });
 
 let nameInput = document.getElementById('name-input');
@@ -592,7 +597,7 @@ function saveTask() {
   let account = accountInput.value;
   let name = nameInput.value;
   let details = `${payeeInput.value} ∙ ${formatAmount(Number(amountInput.value.replace('$', '')))}`;
-  let due = dateInput.value;
+  let due = formatDate(dateInput.value);
   let recurring = recurringObj.classList.contains('recurring-selected');
   
   let task = {

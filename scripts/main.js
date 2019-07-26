@@ -105,6 +105,13 @@ function formatAmount(amount) {
   }
 }
 
+// ----- FORMAT Date ----- //
+
+function formatDate(dateStr) {
+  let date = new Date(dateStr);
+  return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+}
+
 // ----- VALIDATE AMOUNT & DATE ----- //
 
 function isValidAmount(amountStr) {
@@ -127,7 +134,15 @@ function isValidAmountDate(amountStr, dateStr) {
 let accounts = [
   {
     'name': 'Residential x8901',
-    'tasks': [],
+    'tasks': [
+      {
+        'account': 'Residential x8901',
+        'name': 'Assign user X to team Y',
+        'details': '',
+        'due': '07/30/2019',
+        'recurring': false
+      }
+    ],
     'suggestedTasks': [],
     'postedAvailable': -493.54,
     'postedLedger': -493.54,
@@ -209,7 +224,15 @@ let accounts = [
   },
   {
     'name': 'Payroll x0123',
-    'tasks': [],
+    'tasks': [
+      {
+        'account': 'Payroll x0123',
+        'name': 'Approve account transfers',
+        'details': '3 Pending Transfers',
+        'due': '08/01/2019',
+        'recurring': false
+      }
+    ],
     'suggestedTasks': [],
     'postedAvailable': 5714448.67,
     'postedLedger': 6235440.67,
@@ -363,49 +386,14 @@ let accounts = [
   {
     'name': 'Commercial x9012',
     'tasks': [
-      {
-        'account': 'Commercial x9012',
-        'name': 'ACH Payment to Indeed',
-        'details': 'Indeed Design ∙ $10,000',
-        'due': '07/30/2019',
-        'recurring': false
-      },
-      {
-        'account': 'Commercial x9012',
-        'name': 'Bill Payment to Splendid',
-        'details': 'Splendid Energy ∙ $1,250',
-        'due': '07/30/2019',
-        'recurring': true
-      },
-      {
-        'account': 'Commercial x9012',
-        'name': 'ACH Payment to Indeed',
-        'details': 'Indeed Design ∙ $10,000',
-        'due': '07/30/2019',
-        'recurring': false
-      },
-      {
-        'account': 'Commercial x9012',
-        'name': 'Bill Payment to Splendid',
-        'details': 'Splendid Energy ∙ $1,250',
-        'due': '07/30/2019',
-        'recurring': true
-      }
     ],
     'suggestedTasks': [
       {
         'account': 'Commercial x9012',
-        'name': 'ACH Payment to Indeed',
-        'details': 'Indeed Design ∙ $10,000',
+        'name': 'Funds Transfer to Indeed',
+        'details': 'Indeed Investment ∙ $10,000',
         'due': '07/30/2019',
         'recurring': false
-      },
-      {
-        'account': 'Commercial x9012',
-        'name': 'Bill Payment to Splendid',
-        'details': 'Splendid Energy ∙ $1,250',
-        'due': '07/30/2019',
-        'recurring': true
       }
     ],
     'postedAvailable': 5723938.67,
@@ -560,7 +548,15 @@ let accounts = [
   {
     'name': 'Utilities x7890',
     'tasks': [],
-    'suggestedTasks': [],
+    'suggestedTasks': [
+      {
+        'account': 'Utilities x7890',
+        'name': 'Bill Payment to Splendid',
+        'details': 'Splendid Energy ∙ $1,250',
+        'due': '07/30/2019',
+        'recurring': true
+      }
+    ],
     'postedAvailable': 498.79,
     'postedLedger': 498.79,
     'postedTransactions': [
