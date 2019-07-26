@@ -137,9 +137,9 @@ let accounts = [
     'tasks': [
       {
         'account': 'Residential x8901',
-        'name': 'Assign user X to team Y',
-        'details': '',
-        'due': '07/30/2019',
+        'name': 'Approve account transfers',
+        'details': '3 Pending Transfers',
+        'due': '08/01/2019',
         'recurring': false
       }
     ],
@@ -227,9 +227,9 @@ let accounts = [
     'tasks': [
       {
         'account': 'Payroll x0123',
-        'name': 'Approve account transfers',
-        'details': '3 Pending Transfers',
-        'due': '08/01/2019',
+        'name': 'Assign user X to team Y',
+        'details': '',
+        'due': '07/30/2019',
         'recurring': false
       }
     ],
