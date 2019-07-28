@@ -125,24 +125,12 @@ function isValidDate(dateStr) {
   return date.getTime() === date.getTime() && date > new Date() && date.getYear() < 2020;
 }
 
-function isValidAmountDate(amountStr, dateStr) {
-  return isValidAmount(amountStr) && isValidDate(dateStr);
-}
-
 // ----- DATA ----- //
 
 let accounts = [
   {
     'name': 'Residential x8901',
-    'tasks': [
-      {
-        'account': 'Residential x8901',
-        'name': 'Approve account transfers',
-        'details': '3 Pending Transfers',
-        'due': '08/01/2019',
-        'recurring': false
-      }
-    ],
+    'tasks': [],
     'suggestedTasks': [],
     'postedAvailable': -493.54,
     'postedLedger': -493.54,
@@ -224,15 +212,7 @@ let accounts = [
   },
   {
     'name': 'Payroll x0123',
-    'tasks': [
-      {
-        'account': 'Payroll x0123',
-        'name': 'Assign user X to team Y',
-        'details': '',
-        'due': '07/30/2019',
-        'recurring': false
-      }
-    ],
+    'tasks': [],
     'suggestedTasks': [],
     'postedAvailable': 5714448.67,
     'postedLedger': 6235440.67,
@@ -385,14 +365,17 @@ let accounts = [
   },
   {
     'name': 'Commercial x9012',
-    'tasks': [
-    ],
+    'tasks': [],
     'suggestedTasks': [
       {
         'account': 'Commercial x9012',
         'name': 'Funds Transfer to Indeed',
-        'details': 'Indeed Investment ∙ $10,000',
-        'due': '07/30/2019',
+        'payee': 'Indeed Investment',
+        'type': 'Funds Transfer',
+        'amount': 10000.00,
+        'date': '07/30/2019',
+        'memo': '',
+        'noteToSelf': '',
         'recurring': false
       }
     ],
@@ -552,8 +535,12 @@ let accounts = [
       {
         'account': 'Utilities x7890',
         'name': 'Bill Payment to Splendid',
-        'details': 'Splendid Energy ∙ $1,250',
-        'due': '07/30/2019',
+        'payee': 'Splendid Energy',
+        'type': 'Bill Pay',
+        'amount': 1250.00,
+        'date': '07/30/2019',
+        'memo': '',
+        'noteToSelf': '',
         'recurring': true
       }
     ],

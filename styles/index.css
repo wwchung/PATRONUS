@@ -584,8 +584,9 @@ td:nth-child(5) {
 /* ----- TASKS ----- */
 
 #task-hub {
+  position: fixed;
   transition: .2s;
-/*  z-index: 1;*/
+  z-index: 1;
 }
 
 #task-modal {
@@ -597,50 +598,59 @@ td:nth-child(5) {
   max-height: calc(100vh - 24rem);
 }
 
-#task-tabs-container {
+#task-tabs {
   background: rgba(0,0,0,.7);
   bottom: 0;
+  display: flex;
   height: 12rem;
+  overflow-y: hidden;
   position: fixed;
   width: 100%;
 }
 
-#task-tabs {
-  display: flex;
-  height: 12rem;
-  overflow-y: hidden;
-}
-
 .task-tab {
-  background: #fff;
+  background: #e8e8e8;
   border-radius: 4px 4px 0 0;
-  box-shadow: 0 2px 8px rgba(136,136,136,.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
   cursor: pointer;
   flex: 0 0 auto;
   line-height: 1.6;
-  margin: 6rem 1rem 0;
+  margin: 0 1rem;
   padding: 1.25rem;
-  position: relative;
+  transform: translateY(6rem);
   transition: .2s;
-  width: 20rem;
+  width: 16rem;
 }
 
 .task-tab:hover {
-  box-shadow: 0 2px 8px rgba(136,136,136,.7);
-  margin: 2rem 1rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.7);
+  transform: translateY(2rem);
 }
 
 .task-tab:first-child {
-  margin: 6rem 1rem 0 6rem;
+  margin-left: 2rem;
 }
 
-.task-tab:first-child:hover {
-  margin: 2rem 1rem 0 6rem;
+.task-tab:last-child:after {
+  content: '';
+  height: 12rem;
+  left: 100%;
+  position: absolute;
+  width: 2rem;
 }
 
 .task-tab-selected {
-  box-shadow: 0 2px 8px rgba(136,136,136,.7);
-  margin: 2rem 1rem 0; 
+  background: #fff;
+  transform: translateY(2rem);
+}
+
+.task-tab .task-name {
+  font-size: 1.25em;
+}
+
+.task-tab .repeat {
+  bottom: 3.3125rem;
+  right: 1.5rem;
 }
 
 /* ----- FOOTER ----- */

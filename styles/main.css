@@ -419,7 +419,7 @@ footer {
   flex: 1 1 auto;
 }
 
-#amount-input {
+.amount-input {
   text-align: right;
 }
 
@@ -588,6 +588,7 @@ footer {
   box-shadow: 0 2px 8px rgba(136,136,136,.3);
   cursor: pointer;
   margin: 0 0 1rem;
+  transition: opacity .2s, visibility .2s;
 }
 
 .help-card:last-child {
@@ -595,7 +596,7 @@ footer {
 }
 
 .help-card:hover {
-  box-shadow: 0 2px 16px #3ec7ff;
+  outline: 4px solid #3ec7ff;
 }
 
 .help-card h2 {

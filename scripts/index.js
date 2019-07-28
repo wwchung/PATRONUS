@@ -378,14 +378,14 @@ function setTasks(tasks) {
     taskContainerObj.appendChild(noTasksObj);
   } else {
     for (let i = 0; i < tasks.length; i++) {
-      taskContainerObj.appendChild(createTaskObj(tasks[i], i));
+      taskContainerObj.appendChild(createTaskObj(tasks[i], i, true));
     }
   }
 }
 
 // ----- TASK ----- //
 
-function createTaskObj(task, num) {
+function createTaskObj(task, num, clickable) {
   let numObj = document.createElement('h4');
   numObj.className = 'task-num';
   if (curr === 0) {
@@ -400,11 +400,11 @@ function createTaskObj(task, num) {
 
   let detailsObj = document.createElement('p');
   detailsObj.className = 'task-details';
-  detailsObj.innerHTML = task.details === '' ? '<br>' : task.details;
+  detailsObj.innerHTML = task.payee === '' ? '<br>' : `${task.payee} ∙ ${formatAmount(task.amount)}`;
 
   let dueObj = document.createElement('p');
   dueObj.className = 'task-due';
-  dueObj.innerHTML = task.due;
+  dueObj.innerHTML = task.date;
 
   let taskObj = document.createElement('div');
   taskObj.className = 'task';
@@ -420,10 +420,11 @@ function createTaskObj(task, num) {
   if (task.recurring) {
     taskObj.appendChild(repeatObj);
   }
-  
-  taskObj.addEventListener('click', function() {
-    openTasksHub(num);
-  })
+  if (clickable) {
+    taskObj.addEventListener('click', function() {
+      openTaskHub(num);
+    });
+  }
   
   return taskObj;
 }
@@ -441,17 +442,17 @@ let modalOverlayObj = document.getElementsByClassName('modal-overlay')[0];
 let taskManagerModalObj = document.getElementsByClassName('modal')[0];
 
 function openTaskManagerModal() {
+  hideHelpCards();
   modalOverlayObj.classList.remove('invisible');
   taskManagerModalObj.classList.remove('invisible-slide-down');
   loadTasks(accounts[curr]);
-  toggleHelpCards();
 }
 
 function closeTaskManagerModal() {
   taskManagerModalObj.classList.add('invisible-slide-down');
   modalOverlayObj.classList.add('invisible');
+  showHelpCards();
   closeNewTask();
-  toggleHelpCards();
 }
 
 let taskManagerModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[0];
@@ -512,14 +513,14 @@ function createNewTaskObj() {
   return newTaskObj;
 }
 
-function loadTasks(account) {
+function loadTasks(account) {  
   taskManagerHeaderObj.innerHTML = `Task Manager - ${account.name}`;
   
   // Reset current tasks
   currentTasksObj.innerHTML = '';
     
   for (let i = 0; i < account.tasks.length; i++) {
-    currentTasksObj.appendChild(createTaskObj(account.tasks[i], i));
+    currentTasksObj.appendChild(createTaskObj(account.tasks[i], i, false));
   }
   
   currentTasksObj.appendChild(createNewTaskObj());
@@ -530,12 +531,12 @@ function loadTasks(account) {
   if (account.suggestedTasks.length === 0) {
     let noSuggestedTaskObj = document.createElement('p');
     noSuggestedTaskObj.id = 'no-suggested-task';
-    noSuggestedTaskObj.innerHTML = 'The data is not currently available.';
+    noSuggestedTaskObj.innerHTML = 'You have no suggested tasks.';
     suggestedTasksObj.appendChild(noSuggestedTaskObj);
   }
     
   for (let i = 0; i < account.suggestedTasks.length; i++) {
-    suggestedTasksObj.appendChild(createTaskObj(account.suggestedTasks[i], i));
+    suggestedTasksObj.appendChild(createTaskObj(account.suggestedTasks[i], i, false));
   }
 }
 
@@ -575,23 +576,25 @@ function closeNewTask() {
 let recurringObj = document.getElementsByClassName('recurring')[0];
 let recurringIconObj = document.getElementsByClassName('recurring-icon')[0];
 let recurringDetailsObj = document.getElementById('recurring-details');
-recurringObj.addEventListener('click', function() {
+recurringObj.addEventListener('click', toggleRecurring);
+
+function toggleRecurring() {
   recurringObj.classList.toggle('recurring-selected');
   recurringIconObj.classList.toggle('recurring-icon-selected');
   recurringDetailsObj.classList.toggle('hidden');
-});
+}
 
 let nameInput = document.getElementById('name-input');
-let payeeInput = document.getElementById('payee-input');
-let typeInput = document.getElementById('type-input');
-let accountInput =document.getElementById('account-input');
-let amountInput = document.getElementById('amount-input');
-let dateInput = document.getElementById('date-input');
-let memoInput = document.getElementById('memo-input');
-let noteToSelfInput = document.getElementById('note-to-self-input');
+let payeeInput = document.getElementsByClassName('payee-input')[0];
+let typeInput = document.getElementsByClassName('type-input')[0];
+let accountInput =document.getElementsByClassName('account-input')[0];
+let amountInput = document.getElementsByClassName('amount-input')[0];
+let dateInput = document.getElementsByClassName('date-input')[0];
+let memoInput = document.getElementsByClassName('memo-input')[0];
+let noteToSelfInput = document.getElementsByClassName('note-to-self-input')[0];
 
 amountInput.addEventListener('input', function() {
-  if (isValidAmountDate(amountInput.value, dateInput.value)) {
+  if (isValidAmount(amountInput.value)) {
     saveObj.classList.remove('primary-button-disabled');
   } else {
     saveObj.classList.add('primary-button-disabled');
@@ -599,7 +602,7 @@ amountInput.addEventListener('input', function() {
 });
 
 dateInput.addEventListener('input', function() {
-  if (isValidAmountDate(amountInput.value, dateInput.value)) {
+  if (isValidDate(dateInput.value)) {
     saveObj.classList.remove('primary-button-disabled');
   } else {
     saveObj.classList.add('primary-button-disabled');
@@ -609,21 +612,35 @@ dateInput.addEventListener('input', function() {
 function saveTask() {
   let account = accountInput.value;
   let name = nameInput.value;
-  let details = `${payeeInput.value} ∙ ${formatAmount(Number(amountInput.value.replace('$', '')))}`;
-  let due = formatDate(dateInput.value);
+  let payee = payeeInput.value;
+  let type = typeInput.value;
+  let amount = Number(amountInput.value.replace('$', ''));
+  let date = formatDate(dateInput.value);
+  let memo = memoInput.value;
+  let noteToSelf = noteToSelfInput.value;
   let recurring = recurringObj.classList.contains('recurring-selected');
   
   let task = {
     'account': account,
     'name': name,
-    'details': details,
-    'due': due,
+    'payee': payee,
+    'type': type,
+    'amount': amount,
+    'date': date,
+    'memo': memo,
+    'noteToSelf': noteToSelf,
     'recurring': recurring
   };
   
   closeNewTask();
   
-  accounts[curr].tasks.push(task);
+  accounts[0].tasks.push(task);
+  
+  for (let i = 0; i < accounts.length; i++) {
+    if (accounts[i].name === account) {
+      accounts[i].tasks.push(task);
+    }
+  }
   loadTasks(accounts[curr]);
   
   let tasks = accounts[curr].tasks;
@@ -632,7 +649,7 @@ function saveTask() {
 
 let saveObj = document.getElementById('save');
 saveObj.addEventListener('click', function() {
-  if(!saveObj.classList.contains('primary-button-disabled')) {
+  if (!saveObj.classList.contains('primary-button-disabled')) {
     saveTask();
   }
 });
@@ -642,21 +659,57 @@ saveObj.addEventListener('click', function() {
 let taskHubObj = document.getElementById('task-hub');
 let taskTabsObj = document.getElementById('task-tabs');
 
-function openTasksHub(selected) {
-  loadTaskTabs(selected);
+function openTaskHub(selected) {
+  setTaskTabs(selected);
+  setTaskModal(selected);
+  hideHelpCards();
   taskHubObj.classList.toggle('invisible');
 }
 
-function loadTaskTabs(selected) {  
+function closeTaskHub(selected) {
+  taskHubObj.classList.toggle('invisible');
+  showHelpCards();
+}
+
+let taskPayeeInput = document.getElementsByClassName('payee-input')[1];
+let taskTypeInput = document.getElementsByClassName('type-input')[1];
+let taskAccountInput =document.getElementsByClassName('account-input')[1];
+let taskAmountInput = document.getElementsByClassName('amount-input')[1];
+let taskDateInput = document.getElementsByClassName('date-input')[1];
+let taskMemoInput = document.getElementsByClassName('memo-input')[1];
+let taskNoteToSelfInput = document.getElementsByClassName('note-to-self-input')[1];
+
+function setTaskModal(selected) {
+  let task = accounts[curr].tasks[selected];
+  
+  let taskTabObjs = document.getElementsByClassName('task-tab');
+  for (let i = 0; i < taskTabObjs.length; i++) {
+    taskTabObjs[i].classList.remove('task-tab-selected');
+  }
+  taskTabObjs[selected].classList.add('task-tab-selected');
+  
+  taskPayeeInput.value = task.payee;
+  taskTypeInput.value = task.type;
+  taskAccountInput.value = task.account;
+  taskAmountInput.value = task.amount === 0 ? '' : formatAmount(task.amount);
+  taskDateInput.value = task.date;
+  taskMemoInput.value = task.memo;
+  taskNoteToSelfInput.value = task.noteToSelf;
+}
+
+let taskHubModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[1];
+taskHubModalCloseIconObj.addEventListener('click', closeTaskHub);
+
+function setTaskTabs(selected) {  
   // Reset tasks tabs
   taskTabsObj.innerHTML = '';
     
   for (let i = 0; i < accounts[curr].tasks.length; i++) {
-    taskTabsObj.appendChild(createTaskTabObj(accounts[curr].tasks[i], i));
+    taskTabsObj.appendChild(createTaskTabObj(accounts[curr].tasks[i], i, i === selected));
   }
 }
 
-function createTaskTabObj(task, num) {
+function createTaskTabObj(task, num, selected) {
   let numObj = document.createElement('h4');
   numObj.className = 'task-num';
   if (curr === 0) {
@@ -671,14 +724,20 @@ function createTaskTabObj(task, num) {
 
   let detailsObj = document.createElement('p');
   detailsObj.className = 'task-details';
-  detailsObj.innerHTML = task.details === '' ? '<br>' : task.details;
+  detailsObj.innerHTML = task.payee === '' ? '<br>' : `${task.payee} ∙ ${formatAmount(task.amount)}`;
 
   let dueObj = document.createElement('p');
   dueObj.className = 'task-due';
-  dueObj.innerHTML = task.due;
+  dueObj.innerHTML = task.date;
 
   let taskObj = document.createElement('div');
   taskObj.className = 'task-tab';
+  if (selected) {
+    taskObj.classList.add('task-tab-selected');
+  }
+  taskObj.addEventListener('click', function() {
+    setTaskModal(num);
+  });
   
   let repeatObj = document.createElement('img');
   repeatObj.className = 'repeat';
@@ -714,7 +773,12 @@ taskHelpCardObj.addEventListener('mouseout', function() {
   rightObj.classList.remove('outline');
 });
 
-function toggleHelpCards() {
-  accountHelpCardObj.classList.toggle('hidden');
-  taskHelpCardObj.classList.toggle('hidden');
+function showHelpCards() {
+  accountHelpCardObj.classList.remove('invisible');
+  taskHelpCardObj.classList.remove('invisible');
+}
+
+function hideHelpCards() {
+  accountHelpCardObj.classList.add('invisible');
+  taskHelpCardObj.classList.add('invisible');
 }

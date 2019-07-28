@@ -134,7 +134,7 @@
               <div class="input-field">
                 <label>Search existing payees</label>
                 <div class="input-container">
-                  <select id="payee-input">
+                  <select class="payee-input">
                     <option value="Splendid Energy">Splendid Energy</option>
                     <option value="Indeed Investment">Indeed Investment</option>
                     <option value="Candid Consulting">Candid Consulting</option>
@@ -145,7 +145,7 @@
               <div class="input-field">
                 <label>Payment type</label>
                 <div class="input-container">
-                  <select id="type-input">
+                  <select class="type-input">
                     <option value="Bill Pay">Bill Pay</option>
                     <option value="ACH Transfer">ACH Transfer</option>
                     <option value="Funds Transfer">Funds Transfer</option>
@@ -162,7 +162,7 @@
               <div class="input-field">
                 <label>From account</label>
                 <div class="input-container">
-                  <select id="account-input">
+                  <select class="account-input">
                     <option value="Residential x8901">Residential x8901</option>
                     <option value="Payroll x0123">Payroll x0123</option>
                     <option value="Commercial x9012">Commercial x9012</option>
@@ -174,32 +174,32 @@
               </div>
               <div id="amount" class="input-field">
                 <label>Amount</label>
-                <input id="amount-input" placeholder="$0.00">
+                <input class="amount-input" placeholder="$0.00">
               </div>
             </div>
             <div class="new-task-row">
               <div id="date" class="input-field">
                 <label>Expected arrival date</label>
                 <div class="input-container">
-                  <input id="date-input" placeholder="MM/DD/YYYY">
+                  <input class="date-input" placeholder="MM/DD/YYYY">
                   <img src="images/date.svg">
                 </div>
               </div>
               <div class="input-field">
                 <label>Memo</label>
-                <input id="memo-input">
+                <input class="memo-input">
               </div>
             </div>
             <div class="new-task-row">
               <div class="input-field">
                 <label>Note to self</label>
-                <input id="note-to-self-input">
+                <input class="note-to-self-input">
               </div>
             </div>
           </div>
           <div class="new-task-section">
             <button id="cancel" class="secondary-button">CANCEL</button>
-            <button id="save" class="primary-button primary-button-disabled">SAVE</button>
+            <button id="save" class="primary-button">SAVE</button>
           </div>
         </div>
       </div>
@@ -223,7 +223,7 @@
             <div class="payee input-field">
               <label>Search existing payees</label>
               <div class="input-container">
-                <select id="payee-input">
+                <select class="payee-input">
                   <option value="Splendid Energy">Splendid Energy</option>
                   <option value="Indeed Investment">Indeed Investment</option>
                   <option value="Candid Consulting">Candid Consulting</option>
@@ -234,7 +234,7 @@
             <div class="payee input-field">
               <label>Payment type</label>
               <div class="input-container">
-                <select id="type-input">
+                <select class="type-input">
                   <option value="Bill Pay">Bill Pay</option>
                   <option value="ACH Transfer">ACH Transfer</option>
                   <option value="Funds Transfer">Funds Transfer</option>
@@ -251,7 +251,7 @@
             <div class="input-field">
               <label>From account</label>
               <div class="input-container">
-                <select id="account-input">
+                <select class="account-input">
                   <option value="Residential x8901">Residential x8901</option>
                   <option value="Payroll x0123">Payroll x0123</option>
                   <option value="Commercial x9012">Commercial x9012</option>
@@ -263,26 +263,26 @@
             </div>
             <div id="amount" class="input-field">
               <label>Amount</label>
-              <input id="amount-input" placeholder="$0.00">
+              <input class="amount-input" placeholder="$0.00">
             </div>
           </div>
           <div class="modal-row">
             <div id="date" class="input-field">
               <label>Expected arrival date</label>
               <div class="input-container">
-                <input id="date-input" placeholder="MM/DD/YYYY">
+                <input class="date-input" placeholder="MM/DD/YYYY">
                 <img src="images/date.svg">
               </div>
             </div>
             <div class="input-field">
               <label>Memo</label>
-              <input id="memo-input">
+              <input class="memo-input">
             </div>
           </div>
           <div class="modal-row">
             <div class="input-field">
               <label>Note to self</label>
-              <input id="note-to-self-input">
+              <input class="note-to-self-input">
             </div>
           </div>
         </div>
@@ -292,9 +292,7 @@
       </div>
     </div>
   </div>
-  <div id="task-tabs-container">
-    <div id="task-tabs"></div>
-  </div>
+  <div id="task-tabs"></div>
 </div>
 
 <div id="help"><img id="help-icon" src="images/help.svg"><img id="help-close-icon" class="hidden" src="images/help-close.svg"></div>

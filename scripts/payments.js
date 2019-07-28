@@ -3,11 +3,11 @@
 let currHubTab = 0;
 
 let paymentsHubTabObjs = document.getElementsByClassName('payments-hub-tab');
-for (let i = 0; i < paymentsHubTabObjs.length; i++) {
-  paymentsHubTabObjs[i].addEventListener('click', function() {
-    setPaymentsHubTab(i);
-  });
-}
+//for (let i = 0; i < paymentsHubTabObjs.length; i++) {
+//  paymentsHubTabObjs[i].addEventListener('click', function() {
+//    setPaymentsHubTab(i);
+//  });
+//}
 
 function setPaymentsHubTab(i) {
   paymentsHubTabObjs[currHubTab].classList.remove('payments-hub-tab-selected');
@@ -100,14 +100,14 @@ let paymentModalObj = document.getElementsByClassName('modal')[0];
 function openPaymentModal() {
   modalOverlayObj.classList.remove('invisible');
   paymentModalObj.classList.remove('invisible-slide-down');
-  toggleHelpCards();
+  showHelpCards();
 }
 
 function closePaymentModal() {
   paymentModalObj.classList.add('invisible-slide-down');
   modalOverlayObj.classList.add('invisible');
   resetPaymentInfo();
-  toggleHelpCards();
+  hideHelpCards();
 }
 
 let paymentModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[0];
@@ -154,10 +154,12 @@ function resetPaymentInfo() {
   payeeInput.value = 'Splendid Energy';
   typeInput.value = 'Bill Pay';
   accountInput.value = 'Residential x8901';
+  
+  submitObj.classList.add('primary-button-disabled');
 }
 
 amountInput.addEventListener('input', function() {
-  if (isValidAmountDate(amountInput.value, dateInput.value)) {
+  if (isValidAmount(amountInput.value)) {
     submitObj.classList.remove('primary-button-disabled');
   } else {
     submitObj.classList.add('primary-button-disabled');
@@ -165,7 +167,7 @@ amountInput.addEventListener('input', function() {
 });
 
 dateInput.addEventListener('input', function() {
-  if (isValidAmountDate(amountInput.value, dateInput.value)) {
+  if (isValidDate(dateInput.value)) {
     submitObj.classList.remove('primary-button-disabled');
   } else {
     submitObj.classList.add('primary-button-disabled');
@@ -183,7 +185,13 @@ submitObj.addEventListener('click', function() {
 function submit() {
   getPaymentInfo();
   paymentModalObj.classList.add('invisible-slide-down');
-  setTimeout(openConfirmationModal, 100);
+  setTimeout(openConfirmationModal, 200);
+  hideHelpCards();
+  
+  // Close help
+  if (!helpAppObj.classList.contains('invisible-slide-down')) {
+    toggleHelp();
+  }
 }
 
 // ----- CONFIRMATION MODAL ----- //
@@ -200,6 +208,7 @@ function openConfirmationModal() {
 function closeConfirmationModal() {
   confirmationModalObj.classList.add('invisible-slide-down');
   modalOverlayObj.classList.add('invisible');
+  resetPaymentInfo();
 }
 
 let confirmationModalCloseIconObj = document.getElementsByClassName('modal-close-icon')[1];
@@ -306,8 +315,14 @@ dateHelpCardObj.addEventListener('mouseout', function() {
   dateObj.classList.remove('outline');
 });
 
-function toggleHelpCards() {
-  payeeHelpCardObj.classList.toggle('hidden');
-  amountHelpCardObj.classList.toggle('hidden');
-  dateHelpCardObj.classList.toggle('hidden');
+function showHelpCards() {
+  payeeHelpCardObj.classList.remove('hidden');
+  amountHelpCardObj.classList.remove('hidden');
+  dateHelpCardObj.classList.remove('hidden');
+}
+
+function hideHelpCards() {
+  payeeHelpCardObj.classList.add('hidden');
+  amountHelpCardObj.classList.add('hidden');
+  dateHelpCardObj.classList.add('hidden');
 }
