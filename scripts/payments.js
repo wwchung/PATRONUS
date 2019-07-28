@@ -100,6 +100,7 @@ let paymentModalObj = document.getElementsByClassName('modal')[0];
 function openPaymentModal() {
   modalOverlayObj.classList.remove('invisible');
   paymentModalObj.classList.remove('invisible-slide-down');
+  console.log('hi');
   showHelpCards();
 }
 
@@ -120,7 +121,7 @@ let paymentModalBodyObj = document.getElementsByClassName('modal-body')[0];
 let payeeInput = document.getElementById('payee-input');
 let typeInput = document.getElementById('type-input');
 let accountInput =document.getElementById('account-input');
-let amountInput = document.getElementById('amount-input');
+let amountInput = document.getElementsByClassName('amount-input')[0];
 let dateInput = document.getElementById('date-input');
 let memoInput = document.getElementById('memo-input');
 let noteToSelfInput = document.getElementById('note-to-self-input');
