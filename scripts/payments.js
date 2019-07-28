@@ -288,14 +288,12 @@ function setConfirmationTable() {
 // ----- HELP CARD ----- //
 
 let payeeHelpCardObj = document.getElementById('payee-help-card');
-let payeeObjs = document.getElementsByClassName('payee');
+let payeeObj = document.getElementById('payee');
 payeeHelpCardObj.addEventListener('mouseover', function() {
-  payeeObjs[0].classList.add('outline');
-  payeeObjs[1].classList.add('outline');
+  payeeObj.classList.add('outline');
 });
 payeeHelpCardObj.addEventListener('mouseout', function() {
-  payeeObjs[0].classList.remove('outline');
-  payeeObjs[1].classList.remove('outline');
+  payeeObj.classList.remove('outline');
 });
 
 let amountHelpCardObj = document.getElementById('amount-help-card');

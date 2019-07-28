@@ -375,11 +375,11 @@ footer {
 }
 
 #payee-header {
-  padding: 1.75rem 1.75rem 1.25rem;
+  padding: 1.75rem 0 1.25rem;
 }
 
 #payment-header {
-  padding: 1.25rem 1.75rem;
+  padding: 1.25rem 0;
 }
 
 .input-field {
@@ -463,6 +463,10 @@ footer {
 
 /* ----- PAYMENT MODAL BODY ----- */
 
+.modal-section {
+  padding: 0 1.75rem;
+}
+
 .modal-section:last-child {
   display: flex;
   justify-content: center;
@@ -473,11 +477,11 @@ footer {
   display: grid;
   grid: auto-flow / repeat(2, 1fr);
   grid-gap: 2rem;
-  padding: 0 1.75rem 1.25rem;
+  margin: 0 0 1.25rem;
 }
 
 .modal-row:last-child {
-  padding: 0 1.75rem 1.5rem;
+  margin: 0 0 1.5rem;
 }
 
 /* ----- HELP APP ----- */
