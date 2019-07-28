@@ -316,13 +316,13 @@ dateHelpCardObj.addEventListener('mouseout', function() {
 });
 
 function showHelpCards() {
-  payeeHelpCardObj.classList.remove('hidden');
-  amountHelpCardObj.classList.remove('hidden');
-  dateHelpCardObj.classList.remove('hidden');
+  payeeHelpCardObj.classList.remove('invisible');
+  amountHelpCardObj.classList.remove('invisible');
+  dateHelpCardObj.classList.remove('invisible');
 }
 
 function hideHelpCards() {
-  payeeHelpCardObj.classList.add('hidden');
-  amountHelpCardObj.classList.add('hidden');
-  dateHelpCardObj.classList.add('hidden');
+  payeeHelpCardObj.classList.add('invisible');
+  amountHelpCardObj.classList.add('invisible');
+  dateHelpCardObj.classList.add('invisible');
 }
