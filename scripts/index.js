@@ -400,7 +400,11 @@ function createTaskObj(task, num, clickable) {
 
   let detailsObj = document.createElement('p');
   detailsObj.className = 'task-details';
-  detailsObj.innerHTML = task.payee === '' ? '<br>' : `${task.payee} ∙ ${formatAmount(task.amount)}`;
+  if (task.amount === 0) {
+    detailsObj.innerHTML = task.payee === '' ? '<br>' : `${task.payee}`;
+  } else {
+    detailsObj.innerHTML = task.payee === '' ? '<br>' : `${task.payee} ∙ ${formatAmount(task.amount)}`;
+  }
 
   let dueObj = document.createElement('p');
   dueObj.className = 'task-due';
