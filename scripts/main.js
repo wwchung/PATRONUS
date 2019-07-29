@@ -369,10 +369,10 @@ let accounts = [
     'suggestedTasks': [
       {
         'account': 'Commercial x9012',
-        'name': 'Funds Transfer to Indeed',
-        'payee': 'Indeed Investment',
+        'name': 'ACH Transfer to Candid',
+        'payee': 'Candid Consulting',
         'type': 'Funds Transfer',
-        'amount': 10000.00,
+        'amount': 1000.00,
         'date': '07/30/2019',
         'memo': '',
         'noteToSelf': '',
@@ -537,7 +537,7 @@ let accounts = [
         'name': 'Bill Payment to Splendid',
         'payee': 'Splendid Energy',
         'type': 'Bill Pay',
-        'amount': 1250.00,
+        'amount': 250.00,
         'date': '07/30/2019',
         'memo': '',
         'noteToSelf': '',
