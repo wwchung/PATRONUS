@@ -575,6 +575,8 @@ function closeNewTask() {
   payeeInput.value = 'Splendid Energy';
   typeInput.value = 'Bill Pay';
   accountInput.value = 'Residential x8901';
+  
+  saveObj.classList.add('primary-button-disabled');
 }
 
 let recurringObj = document.getElementsByClassName('recurring')[0];
@@ -597,8 +599,16 @@ let dateInput = document.getElementsByClassName('date-input')[0];
 let memoInput = document.getElementsByClassName('memo-input')[0];
 let noteToSelfInput = document.getElementsByClassName('note-to-self-input')[0];
 
+nameInput.addEventListener('input', function() {
+  if (isValidInput()) {
+    saveObj.classList.remove('primary-button-disabled');
+  } else {
+    saveObj.classList.add('primary-button-disabled');
+  }
+});
+
 amountInput.addEventListener('input', function() {
-  if (isValidAmount(amountInput.value)) {
+  if (isValidInput()) {
     saveObj.classList.remove('primary-button-disabled');
   } else {
     saveObj.classList.add('primary-button-disabled');
@@ -606,12 +616,20 @@ amountInput.addEventListener('input', function() {
 });
 
 dateInput.addEventListener('input', function() {
-  if (isValidDate(dateInput.value)) {
+  if (isValidInput()) {
     saveObj.classList.remove('primary-button-disabled');
   } else {
     saveObj.classList.add('primary-button-disabled');
   }
 })
+
+function isValidInput() {
+  return hasTaskName() && (isValidAmount(amountInput.value) || amountInput.value === '') && isValidDate(dateInput.value);
+}
+
+function hasTaskName() {
+  return nameInput.value !== '';
+}
 
 function saveTask() {
   let account = accountInput.value;
